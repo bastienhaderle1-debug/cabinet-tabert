@@ -59,7 +59,7 @@ function nl2br(value) {
   return escapeHtml(value).replace(/\n/g, '<br>');
 }
 
-const PRODUCTION_ORIGIN = 'https://www.carol-anne-chiropraxie.fr';
+const PRODUCTION_ORIGIN = 'https://www.coraline-tabert-osteopathe.fr';
 const isLocalApiContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
 const siteApiBase = (() => {
   const configured = document.documentElement.getAttribute('data-api-base')

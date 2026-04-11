@@ -1,4 +1,4 @@
-﻿/* chiropraxie.css */
+/* osteopathe.css */
 
 /* Poster */
 .chiro-poster{
@@ -255,7 +255,7 @@
 }
 
 .seance__top::before{
-  content:"Étape " counter(seance-step);
+  content:"�tape " counter(seance-step);
   display:inline-flex;
   align-items:center;
   min-height:30px;

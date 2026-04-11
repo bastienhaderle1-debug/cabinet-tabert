@@ -36,28 +36,58 @@
       "permanent": true
     },
     {
-      "source": "/chiropracteur-proche-saint-leonard-de-noblat.html",
-      "destination": "/chiropracteur-proche-clermont-l-herault.html",
+      "source": "/chiropraxie.html",
+      "destination": "/osteopathe.html",
       "permanent": true
     },
     {
-      "source": "/chiropracteur-proche-eymoutiers.html",
-      "destination": "/chiropracteur-proche-gignac.html",
+      "source": "/chiropracteur-proche-clermont-l-herault.html",
+      "destination": "/osteopathe-proche-clermont-l-herault.html",
       "permanent": true
     },
     {
-      "source": "/chiropracteur-proche-chateauneuf-la-foret.html",
-      "destination": "/chiropracteur-proche-saint-andre-de-sangonis.html",
+      "source": "/chiropracteur-proche-gignac.html",
+      "destination": "/osteopathe-proche-gignac.html",
       "permanent": true
     },
     {
-      "source": "/chiropracteur-proche-peyrat-le-chateau.html",
-      "destination": "/chiropracteur-proche-paulhan.html",
+      "source": "/chiropracteur-proche-saint-andre-de-sangonis.html",
+      "destination": "/osteopathe-proche-saint-andre-de-sangonis.html",
       "permanent": true
     },
     {
-      "source": "/chiropracteur-proche-panazol-limoges-est.html",
-      "destination": "/chiropracteur-proche-aspiran.html",
+      "source": "/chiropracteur-proche-paulhan.html",
+      "destination": "/osteopathe-proche-paulhan.html",
+      "permanent": true
+    },
+    {
+      "source": "/chiropracteur-proche-aspiran.html",
+      "destination": "/osteopathe-proche-aspiran.html",
+      "permanent": true
+    },
+    {
+      "source": "/osteopathe-proche-saint-leonard-de-noblat.html",
+      "destination": "/osteopathe-proche-clermont-l-herault.html",
+      "permanent": true
+    },
+    {
+      "source": "/osteopathe-proche-eymoutiers.html",
+      "destination": "/osteopathe-proche-gignac.html",
+      "permanent": true
+    },
+    {
+      "source": "/osteopathe-proche-chateauneuf-la-foret.html",
+      "destination": "/osteopathe-proche-saint-andre-de-sangonis.html",
+      "permanent": true
+    },
+    {
+      "source": "/osteopathe-proche-peyrat-le-chateau.html",
+      "destination": "/osteopathe-proche-paulhan.html",
+      "permanent": true
+    },
+    {
+      "source": "/osteopathe-proche-panazol-limoges-est.html",
+      "destination": "/osteopathe-proche-aspiran.html",
       "permanent": true
     }
   ],

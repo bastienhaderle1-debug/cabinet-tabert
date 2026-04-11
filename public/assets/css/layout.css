@@ -1,4 +1,4 @@
-﻿/* layout.css */
+/* layout.css */
 body{
   font-family:var(--ff-body);
   color:var(--c-text);
@@ -306,7 +306,7 @@ body.page-prestations .siteHeader__cta{
   }
 
   body.home,
-  body.page-chiropraxie{
+  body.page-osteopathe{
     padding-top:140px;
   }
 
@@ -425,7 +425,7 @@ body.page-prestations .siteHeader__cta{
   }
 
   body.home .siteHeader__inner,
-  body.page-chiropraxie .siteHeader__inner{
+  body.page-osteopathe .siteHeader__inner{
     display:grid;
     grid-template-columns:minmax(0, 1fr) auto;
     grid-template-areas:
@@ -437,12 +437,12 @@ body.page-prestations .siteHeader__cta{
   }
 
   body.home .siteHeader__brand,
-  body.page-chiropraxie .siteHeader__brand{
+  body.page-osteopathe .siteHeader__brand{
     grid-area:brand;
   }
 
   body.home .siteHeader__cta,
-  body.page-chiropraxie .siteHeader__cta{
+  body.page-osteopathe .siteHeader__cta{
     grid-area:cta;
     min-height:44px;
     width:100%;
@@ -452,7 +452,7 @@ body.page-prestations .siteHeader__cta{
   }
 
   body.home .siteHeader__burger,
-  body.page-chiropraxie .siteHeader__burger{
+  body.page-osteopathe .siteHeader__burger{
     grid-area:burger;
     margin-left:0;
     justify-self:end;
@@ -562,7 +562,7 @@ body.page-prestations .siteHeader__cta{
   }
 
   body.home,
-  body.page-chiropraxie{
+  body.page-osteopathe{
     padding-top:132px;
   }
 
@@ -646,7 +646,7 @@ body.page-prestations .siteHeader__cta{
 
 @media (max-width:420px){
   body.home,
-  body.page-chiropraxie{
+  body.page-osteopathe{
     padding-top:126px;
   }
 
