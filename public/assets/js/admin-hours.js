@@ -197,11 +197,6 @@
       createField('URL de réservation', contentState.shared.bookingUrl, (value) => { contentState.shared.bookingUrl = value; }),
       createField('Adresse', contentState.shared.addressText, (value) => { contentState.shared.addressText = value; }),
       createField('URL Google Maps / itinéraire', contentState.shared.mapsUrl, (value) => { contentState.shared.mapsUrl = value; }),
-      createField('Email', contentState.shared.email, (value) => { contentState.shared.email = value; }),
-      createField('Téléphone affiché', contentState.shared.phoneDisplay, (value) => { contentState.shared.phoneDisplay = value; }),
-      createField('Lien téléphone', contentState.shared.phoneHref, (value) => { contentState.shared.phoneHref = value; }, { help: 'Exemple : tel:+33781602221' }),
-      createField('Libellé Instagram pied de page', contentState.shared.instagramLabel, (value) => { contentState.shared.instagramLabel = value; }),
-      createField('URL Instagram', contentState.shared.instagramUrl, (value) => { contentState.shared.instagramUrl = value; }),
       createField('Nom dans le copyright', contentState.shared.footerCopyName, (value) => { contentState.shared.footerCopyName = value; })
     );
     shared.appendChild(sharedGrid);
@@ -212,18 +207,14 @@
     homeSeoGrid.className = 'grid two';
     homeSeoGrid.append(
       createField('Title SEO', contentState.home.seo.title, (value) => { contentState.home.seo.title = value; }),
-      createField('OG title', contentState.home.seo.ogTitle, (value) => { contentState.home.seo.ogTitle = value; }),
       createField('Description SEO', contentState.home.seo.description, (value) => { contentState.home.seo.description = value; }, { multiline: true }),
-      createField('OG description', contentState.home.seo.ogDescription, (value) => { contentState.home.seo.ogDescription = value; }, { multiline: true }),
       createField('Kicker hero', contentState.home.hero.kicker, (value) => { contentState.home.hero.kicker = value; }),
       createField('Titre hero', contentState.home.hero.title, (value) => { contentState.home.hero.title = value; }),
       createField('Texte hero', contentState.home.hero.text, (value) => { contentState.home.hero.text = value; }, { multiline: true }),
       createField('Nom sous le hero', contentState.home.hero.brand, (value) => { contentState.home.hero.brand = value; }),
       createField('Bouton hero', contentState.home.hero.ctaLabel, (value) => { contentState.home.hero.ctaLabel = value; }),
-      createField('Lien du bouton hero', contentState.home.hero.ctaUrl, (value) => { contentState.home.hero.ctaUrl = value; }),
       createField('Titre horaires', contentState.home.schedule.title, (value) => { contentState.home.schedule.title = value; }),
-      createField('Sous-titre horaires', contentState.home.schedule.subtitle, (value) => { contentState.home.schedule.subtitle = value; }, { multiline: true }),
-      createField('Titre liens locaux', contentState.home.localLinksTitle, (value) => { contentState.home.localLinksTitle = value; })
+      createField('Sous-titre horaires', contentState.home.schedule.subtitle, (value) => { contentState.home.schedule.subtitle = value; }, { multiline: true })
     );
     homeSeo.appendChild(homeSeoGrid);
     contentEditor.appendChild(homeSeo);
@@ -252,8 +243,6 @@
         const grid = document.createElement('div');
         grid.className = 'grid two';
         grid.append(
-          createField('Label bouton', item.label, (value) => { item.label = value; }, { help: 'Utilise un retour à la ligne pour forcer un saut.' }),
-          createField('Classe CSS de position', item.className, (value) => { item.className = value; }),
           createField('Titre popup', item.title, (value) => { item.title = value; }),
           createField('Texte popup', item.text, (value) => { item.text = value; }, { multiline: true })
         );
@@ -277,7 +266,6 @@
         const grid = document.createElement('div');
         grid.className = 'grid two';
         grid.append(
-          createField('Label bouton', item.label, (value) => { item.label = value; }),
           createField('Titre panneau', item.title, (value) => { item.title = value; }),
           createField('Texte panneau', item.text, (value) => { item.text = value; }, { multiline: true })
         );
@@ -326,9 +314,7 @@
     prestationsGrid.className = 'grid two';
     prestationsGrid.append(
       createField('Title SEO prestations', contentState.prestations.seo.title, (value) => { contentState.prestations.seo.title = value; }),
-      createField('OG title prestations', contentState.prestations.seo.ogTitle, (value) => { contentState.prestations.seo.ogTitle = value; }),
       createField('Description SEO prestations', contentState.prestations.seo.description, (value) => { contentState.prestations.seo.description = value; }, { multiline: true }),
-      createField('OG description prestations', contentState.prestations.seo.ogDescription, (value) => { contentState.prestations.seo.ogDescription = value; }, { multiline: true }),
       createField('Titre page prestations', contentState.prestations.title, (value) => { contentState.prestations.title = value; }),
       createField('Étape / sous-titre', contentState.prestations.stepLabel, (value) => { contentState.prestations.stepLabel = value; }),
       createField('Titre du résumé', contentState.prestations.summaryTitle, (value) => { contentState.prestations.summaryTitle = value; }),

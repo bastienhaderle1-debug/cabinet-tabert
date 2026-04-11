@@ -212,41 +212,25 @@ function applySharedContent(shared) {
   document.querySelectorAll('.siteHeader__cta').forEach((node) => {
     node.textContent = shared.bookingLabel;
   });
-  setAnchorHref('.siteFooter__contact[href^="mailto:"]', `mailto:${shared.email}`);
-  setAnchorHref('.siteFooter__contact[href^="tel:"]', shared.phoneHref);
-  setAnchorHref('.siteFooter__contact[href*="instagram.com"]', shared.instagramUrl);
+  setAnchorHref('.siteFooter__contact[href*="doctolib.fr"]', shared.bookingUrl);
 
-  setAnchorHref('.hero-contact-content a[href^="mailto:"]', `mailto:${shared.email}`);
-  setAnchorHref('.hero-contact-content a[href^="tel:"]', shared.phoneHref);
-  setAnchorHref('.hero-contact-content a[href*="instagram.com"]', shared.instagramUrl);
+  setAnchorHref('.hero-contact-content a[href*="doctolib.fr"]', shared.bookingUrl);
   setAnchorHref('.hero-contact-content a[href*="google.com/maps/dir"]', shared.mapsUrl);
 
-  setAnchorHref('.contact-band .contact-item[href^="mailto:"]', `mailto:${shared.email}`);
-  setAnchorHref('.contact-band .contact-item[href^="tel:"]', shared.phoneHref);
-  setAnchorHref('.contact-band .contact-item[href*="instagram.com"]', shared.instagramUrl);
+  setAnchorHref('.contact-band .contact-item[href*="doctolib.fr"]', shared.bookingUrl);
   setAnchorHref('.contact-band .contact-item[href*="google.com/maps/dir"]', shared.mapsUrl);
 
-  setAnchorHref('.floating-contact__content a[href^="mailto:"]', `mailto:${shared.email}`);
-  setAnchorHref('.floating-contact__content a[href^="tel:"]', shared.phoneHref);
-  setAnchorHref('.floating-contact__content a[href*="instagram.com"]', shared.instagramUrl);
+  setAnchorHref('.floating-contact__content a[href*="doctolib.fr"]', shared.bookingUrl);
   setAnchorHref('.floating-contact__content a[href*="google.com/maps/dir"]', shared.mapsUrl);
 
-  updateAnchorText('.siteFooter__contact[href^="mailto:"]', shared.email);
-  updateAnchorText('.siteFooter__contact[href^="tel:"]', shared.phoneDisplay);
-  updateAnchorText('.siteFooter__contact[href*="instagram.com"]', shared.instagramLabel);
+  updateAnchorText('.siteFooter__contact[href*="doctolib.fr"]', shared.bookingLabel);
 
-  updateAnchorText('.hero-contact-content a[href^="mailto:"]', shared.email);
-  updateAnchorText('.hero-contact-content a[href^="tel:"]', shared.phoneDisplay);
-  updateAnchorText('.hero-contact-content a[href*="instagram.com"]', 'Instagram');
+  updateAnchorText('.hero-contact-content a[href*="doctolib.fr"]', shared.bookingLabel);
 
-  updateAnchorText('.contact-band .contact-item[href^="mailto:"]', shared.email);
-  updateAnchorText('.contact-band .contact-item[href^="tel:"]', shared.phoneDisplay);
-  updateAnchorText('.contact-band .contact-item[href*="instagram.com"]', 'Instagram');
+  updateAnchorText('.contact-band .contact-item[href*="doctolib.fr"]', shared.bookingLabel);
   updateAnchorText('.contact-band .contact-item[href*="google.com/maps/dir"]', shared.addressText);
 
-  updateAnchorText('.floating-contact__content a[href^="mailto:"]', shared.email);
-  updateAnchorText('.floating-contact__content a[href^="tel:"]', shared.phoneDisplay);
-  updateAnchorText('.floating-contact__content a[href*="instagram.com"]', 'Instagram');
+  updateAnchorText('.floating-contact__content a[href*="doctolib.fr"]', shared.bookingLabel);
 }
 
 function applyHomeContent(content) {

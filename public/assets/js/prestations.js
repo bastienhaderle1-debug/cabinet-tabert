@@ -94,24 +94,10 @@
       node.textContent = shared.bookingLabel;
     });
 
-    document.querySelectorAll('a[href^="mailto:"]').forEach((node) => {
-      node.setAttribute('href', `mailto:${shared.email}`);
+    document.querySelectorAll('a[href*="doctolib.fr"]').forEach((node) => {
+      node.setAttribute('href', shared.bookingUrl);
       const label = node.querySelector('span');
-      if (label) label.textContent = shared.email;
-    });
-
-    document.querySelectorAll('a[href^="tel:"]').forEach((node) => {
-      node.setAttribute('href', shared.phoneHref);
-      const label = node.querySelector('span');
-      if (label) label.textContent = shared.phoneDisplay;
-    });
-
-    document.querySelectorAll('a[href*="instagram.com"]').forEach((node) => {
-      node.setAttribute('href', shared.instagramUrl);
-      const label = node.querySelector('span');
-      if (label) {
-        label.textContent = node.closest('.siteFooter') ? shared.instagramLabel : 'Instagram';
-      }
+      if (label) label.textContent = shared.bookingLabel;
     });
 
     const footerCopy = document.querySelector('.siteFooter__copy');

@@ -57,12 +57,14 @@ function sanitizeObject(value, label) {
 
 function sanitizeSeo(value, label) {
   const seo = sanitizeObject(value, label);
+  const title = asTrimmedString(seo.title);
+  const description = asTrimmedString(seo.description);
 
   return {
-    title: asTrimmedString(seo.title),
-    description: asTrimmedString(seo.description),
-    ogTitle: asTrimmedString(seo.ogTitle),
-    ogDescription: asTrimmedString(seo.ogDescription)
+    title,
+    description,
+    ogTitle: title,
+    ogDescription: description
   };
 }
 
@@ -76,41 +78,41 @@ function sanitizeShared(value) {
     bookingUrl: asTrimmedString(shared.bookingUrl),
     addressText: asTrimmedString(shared.addressText),
     mapsUrl: asTrimmedString(shared.mapsUrl),
-    email: asTrimmedString(shared.email),
-    phoneDisplay: asTrimmedString(shared.phoneDisplay),
-    phoneHref: asTrimmedString(shared.phoneHref),
-    instagramLabel: asTrimmedString(shared.instagramLabel),
-    instagramUrl: asTrimmedString(shared.instagramUrl),
     footerCopyName: asTrimmedString(shared.footerCopyName)
   };
 }
 
-function sanitizeBodymap(value) {
+function sanitizeBodymap(value, currentValue = {}) {
   const bodymap = sanitizeObject(value, 'home.bodymap');
+  const currentBodymap = sanitizeObject(currentValue || {}, 'home.bodymap actuel');
 
   const hotspots = sanitizeArray(bodymap.hotspots || [], 'home.bodymap.hotspots');
   const lockerItems = sanitizeArray(bodymap.lockerItems || [], 'home.bodymap.lockerItems');
+  const currentHotspots = Array.isArray(currentBodymap.hotspots) ? currentBodymap.hotspots : [];
+  const currentLockerItems = Array.isArray(currentBodymap.lockerItems) ? currentBodymap.lockerItems : [];
 
   return {
     title: asTrimmedString(bodymap.title),
-    hotspots: hotspots.map((raw) => {
+    hotspots: hotspots.map((raw, index) => {
       const item = sanitizeObject(raw, 'home.bodymap.hotspot');
+      const currentItem = sanitizeObject(currentHotspots[index] || {}, 'home.bodymap.hotspot actuel');
 
       return {
-        label: asTrimmedString(item.label),
+        label: asTrimmedString(currentItem.label),
         title: asTrimmedString(item.title),
         text: asTrimmedString(item.text),
-        className: asTrimmedString(item.className)
+        className: asTrimmedString(currentItem.className)
       };
     }),
     lockerTitle: asTrimmedString(bodymap.lockerTitle),
     lockerDefaultTitle: asTrimmedString(bodymap.lockerDefaultTitle),
     lockerDefaultText: asTrimmedString(bodymap.lockerDefaultText),
-    lockerItems: lockerItems.map((raw) => {
+    lockerItems: lockerItems.map((raw, index) => {
       const item = sanitizeObject(raw, 'home.bodymap.lockerItem');
+      const currentItem = sanitizeObject(currentLockerItems[index] || {}, 'home.bodymap.lockerItem actuel');
 
       return {
-        label: asTrimmedString(item.label),
+        label: asTrimmedString(currentItem.label),
         title: asTrimmedString(item.title),
         text: asTrimmedString(item.text)
       };
@@ -155,11 +157,14 @@ function sanitizeServices(value) {
   });
 }
 
-function sanitizeContentPayload(payload) {
+function sanitizeContentPayload(payload, currentContent = {}) {
   const content = sanitizeObject(payload, 'contenu');
   const shared = sanitizeShared(content.shared);
   const home = sanitizeObject(content.home, 'home');
   const prestations = sanitizeObject(content.prestations, 'prestations');
+  const currentHome = sanitizeObject(currentContent.home || {}, 'home actuel');
+  const currentHero = sanitizeObject(currentHome.hero || {}, 'home.hero actuel');
+  const currentBodymap = sanitizeObject(currentHome.bodymap || {}, 'home.bodymap actuel');
 
   const nextContent = {
     updatedAt: new Date().toISOString(),
@@ -172,15 +177,15 @@ function sanitizeContentPayload(payload) {
         text: asTrimmedString(home.hero?.text),
         brand: asTrimmedString(home.hero?.brand),
         ctaLabel: asTrimmedString(home.hero?.ctaLabel),
-        ctaUrl: asTrimmedString(home.hero?.ctaUrl)
+        ctaUrl: asTrimmedString(currentHero.ctaUrl)
       },
-      bodymap: sanitizeBodymap(home.bodymap),
+      bodymap: sanitizeBodymap(home.bodymap, currentBodymap),
       reviews: sanitizeReviews(home.reviews),
       schedule: {
         title: asTrimmedString(home.schedule?.title),
         subtitle: asTrimmedString(home.schedule?.subtitle)
       },
-      localLinksTitle: asTrimmedString(home.localLinksTitle)
+      localLinksTitle: asTrimmedString(currentHome.localLinksTitle)
     },
     prestations: {
       seo: sanitizeSeo(prestations.seo, 'prestations.seo'),
@@ -316,7 +321,7 @@ module.exports = async (req, res) => {
 
     try {
       const current = await loadContent();
-      const nextData = sanitizeContentPayload(getRequestBody(req));
+      const nextData = sanitizeContentPayload(getRequestBody(req), current.data);
       await writeContentToGithub(nextData, current.sha);
       sendJson(res, 200, nextData);
     } catch (error) {
