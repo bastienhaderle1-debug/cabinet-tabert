@@ -4,7 +4,8 @@
   const isLocalContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
   const apiBase = (() => {
     const configured = document.documentElement.getAttribute('data-api-base')
-      || window.localStorage.getItem('adminApiBase');
+      || window.localStorage.getItem('adminApiBase')
+      || window.localStorage.getItem('siteApiBase');
 
     if (configured) {
       return configured.replace(/\/$/, '');
@@ -51,6 +52,32 @@
     }
 
     return message;
+  }
+
+  async function parseApiJson(response, fallbackMessage) {
+    const contentType = response.headers.get('content-type') || '';
+    const raw = await response.text();
+
+    if (!contentType.includes('application/json')) {
+      const snippet = raw.trim().slice(0, 120);
+      throw new Error(`L'API (${apiBase}) a répondu avec autre chose que du JSON (${snippet || 'réponse vide'}).`);
+    }
+
+    try {
+      const payload = JSON.parse(raw);
+
+      if (!response.ok) {
+        throw new Error(payload.error || fallbackMessage);
+      }
+
+      return payload;
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        throw new Error(`Réponse JSON invalide reçue depuis l'API (${apiBase}).`);
+      }
+
+      throw error;
+    }
   }
 
   function setStatus(node, message, isError) {
@@ -395,11 +422,7 @@
       headers: { Accept: 'application/json' }
     });
 
-    if (!response.ok) {
-      throw new Error('Impossible de charger le contenu.');
-    }
-
-    contentState = await response.json();
+    contentState = await parseApiJson(response, 'Impossible de charger le contenu.');
     renderContentEditor();
   }
 
@@ -408,11 +431,7 @@
       headers: { Accept: 'application/json' }
     });
 
-    if (!response.ok) {
-      throw new Error('Impossible de charger les horaires.');
-    }
-
-    hoursState = await response.json();
+    hoursState = await parseApiJson(response, 'Impossible de charger les horaires.');
     renderHoursEditor();
   }
 
@@ -428,10 +447,7 @@
       body: JSON.stringify(contentState)
     });
 
-    const payload = await response.json();
-    if (!response.ok) {
-      throw new Error(payload.error || 'Impossible d’enregistrer le contenu.');
-    }
+    const payload = await parseApiJson(response, 'Impossible d’enregistrer le contenu.');
 
     contentState = payload;
     renderContentEditor();
@@ -450,10 +466,7 @@
       body: JSON.stringify(hoursState)
     });
 
-    const payload = await response.json();
-    if (!response.ok) {
-      throw new Error(payload.error || 'Impossible d’enregistrer les horaires.');
-    }
+    const payload = await parseApiJson(response, 'Impossible d’enregistrer les horaires.');
 
     hoursState = payload;
     renderHoursEditor();

@@ -59,18 +59,56 @@ function nl2br(value) {
   return escapeHtml(value).replace(/\n/g, '<br>');
 }
 
+const PRODUCTION_ORIGIN = 'https://www.carol-anne-chiropraxie.fr';
+const isLocalApiContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+const siteApiBase = (() => {
+  const configured = document.documentElement.getAttribute('data-api-base')
+    || window.localStorage.getItem('siteApiBase')
+    || window.localStorage.getItem('adminApiBase');
+
+  if (configured) {
+    return configured.replace(/\/$/, '');
+  }
+
+  if (isLocalApiContext) {
+    return PRODUCTION_ORIGIN;
+  }
+
+  return window.location.origin.replace(/\/$/, '');
+})();
+
+function buildApiUrl(path) {
+  return `${siteApiBase}${path}`;
+}
+
+async function parseApiJson(response, fallbackMessage) {
+  const contentType = response.headers.get('content-type') || '';
+  const raw = await response.text();
+
+  if (!response.ok) {
+    throw new Error(fallbackMessage);
+  }
+
+  if (!contentType.includes('application/json')) {
+    const snippet = raw.trim().slice(0, 120);
+    throw new Error(`L'API a répondu avec autre chose que du JSON (${snippet || 'réponse vide'}).`);
+  }
+
+  try {
+    return JSON.parse(raw);
+  } catch (error) {
+    throw new Error(fallbackMessage);
+  }
+}
+
 async function fetchSiteContent() {
-  const response = await fetch('/api/content', {
+  const response = await fetch(buildApiUrl('/api/content'), {
     headers: {
       Accept: 'application/json'
     }
   });
 
-  if (!response.ok) {
-    throw new Error('Impossible de charger le contenu du site.');
-  }
-
-  return response.json();
+  return parseApiJson(response, `Impossible de charger le contenu du site depuis ${siteApiBase}.`);
 }
 
 function setMetaContent(selector, value) {
