@@ -1,4 +1,22 @@
 (function () {
+  const PRODUCTION_ORIGIN = 'https://www.carol-anne-chiropraxie.fr';
+  const currentOrigin = window.location.origin;
+  const isLocalContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+  const apiBase = (() => {
+    const configured = document.documentElement.getAttribute('data-api-base')
+      || window.localStorage.getItem('adminApiBase');
+
+    if (configured) {
+      return configured.replace(/\/$/, '');
+    }
+
+    if (isLocalContext) {
+      return PRODUCTION_ORIGIN;
+    }
+
+    return currentOrigin.replace(/\/$/, '');
+  })();
+
   const contentEditor = document.getElementById('content-editor');
   const scheduleEditor = document.getElementById('schedule-editor');
   const passwordInput = document.getElementById('admin-password');
@@ -12,6 +30,28 @@
 
   let contentState = null;
   let hoursState = null;
+
+  function buildApiUrl(path) {
+    return `${apiBase}${path}`;
+  }
+
+  function getFriendlyError(error, fallbackMessage) {
+    const message = String(error && error.message ? error.message : fallbackMessage || '').trim();
+
+    if (!message) {
+      return fallbackMessage;
+    }
+
+    if (/failed to fetch|networkerror/i.test(message)) {
+      if (isLocalContext) {
+        return `Connexion impossible à l'API (${apiBase}). Ouvrez la page via Vercel, ou définissez une autre API avec localStorage.adminApiBase.`;
+      }
+
+      return `Connexion impossible à l'API (${apiBase}).`;
+    }
+
+    return message;
+  }
 
   function setStatus(node, message, isError) {
     node.textContent = message || '';
@@ -351,7 +391,7 @@
   }
 
   async function loadContent() {
-    const response = await fetch('/api/content', {
+    const response = await fetch(buildApiUrl('/api/content'), {
       headers: { Accept: 'application/json' }
     });
 
@@ -364,7 +404,7 @@
   }
 
   async function loadHours() {
-    const response = await fetch('/api/hours', {
+    const response = await fetch(buildApiUrl('/api/hours'), {
       headers: { Accept: 'application/json' }
     });
 
@@ -379,7 +419,7 @@
   async function saveContent() {
     setStatus(contentStatusNode, 'Enregistrement du contenu en cours…', false);
 
-    const response = await fetch('/api/content', {
+    const response = await fetch(buildApiUrl('/api/content'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -401,7 +441,7 @@
   async function saveHours() {
     setStatus(hoursStatusNode, 'Enregistrement des horaires en cours…', false);
 
-    const response = await fetch('/api/hours', {
+    const response = await fetch(buildApiUrl('/api/hours'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -431,10 +471,10 @@
     } catch (error) {
       console.error(error);
       if (!contentState) {
-        setStatus(contentStatusNode, error.message || 'Impossible de charger le contenu.', true);
+        setStatus(contentStatusNode, getFriendlyError(error, 'Impossible de charger le contenu.'), true);
       }
       if (!hoursState) {
-        setStatus(hoursStatusNode, error.message || 'Impossible de charger les horaires.', true);
+        setStatus(hoursStatusNode, getFriendlyError(error, 'Impossible de charger les horaires.'), true);
       }
     }
   }

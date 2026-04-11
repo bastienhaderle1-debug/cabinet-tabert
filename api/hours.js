@@ -8,6 +8,21 @@ const GITHUB_BRANCH = process.env.GITHUB_BRANCH || 'main';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
+function setCorsHeaders(req, res) {
+  const origin = req.headers.origin;
+  const allowAnyOrigin = !origin || origin === 'null';
+
+  if (allowAnyOrigin) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-admin-password, Accept');
+}
+
 function sendJson(res, statusCode, payload) {
   res.statusCode = statusCode;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -156,6 +171,8 @@ function getRequestBody(req) {
 }
 
 module.exports = async (req, res) => {
+  setCorsHeaders(req, res);
+
   if (req.method === 'OPTIONS') {
     res.statusCode = 204;
     res.setHeader('Allow', 'GET,POST,OPTIONS');
