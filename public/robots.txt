@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.coraline-tabert-osteopathe.fr/sitemap.xml
+Sitemap: https://cabinet-tabert.vercel.app/sitemap.xml

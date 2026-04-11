@@ -1,7 +1,7 @@
 (function () {
   const root = document.querySelector('.prestations');
   if (!root) return;
-  const PRODUCTION_ORIGIN = 'https://www.coraline-tabert-osteopathe.fr';
+  const PRODUCTION_ORIGIN = 'https://cabinet-tabert.vercel.app';
   const isLocalApiContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
   const siteApiBase = (() => {
     const configured = document.documentElement.getAttribute('data-api-base')

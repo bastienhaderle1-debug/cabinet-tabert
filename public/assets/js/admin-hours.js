@@ -1,5 +1,5 @@
 (function () {
-  const PRODUCTION_ORIGIN = 'https://www.coraline-tabert-osteopathe.fr';
+  const PRODUCTION_ORIGIN = 'https://cabinet-tabert.vercel.app';
   const currentOrigin = window.location.origin;
   const isLocalContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
   const apiBase = (() => {
