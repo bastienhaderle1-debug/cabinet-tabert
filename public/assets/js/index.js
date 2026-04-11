@@ -85,19 +85,30 @@ async function parseApiJson(response, fallbackMessage) {
   const contentType = response.headers.get('content-type') || '';
   const raw = await response.text();
 
-  if (!response.ok) {
-    throw new Error(fallbackMessage);
-  }
-
   if (!contentType.includes('application/json')) {
     const snippet = raw.trim().slice(0, 120);
     throw new Error(`L'API a répondu avec autre chose que du JSON (${snippet || 'réponse vide'}).`);
   }
 
   try {
-    return JSON.parse(raw);
+    const payload = JSON.parse(raw);
+
+    if (!response.ok) {
+      const errorMessage = typeof payload?.error === 'string'
+        ? payload.error
+        : typeof payload?.error?.message === 'string'
+          ? payload.error.message
+          : fallbackMessage;
+      throw new Error(errorMessage);
+    }
+
+    return payload;
   } catch (error) {
-    throw new Error(fallbackMessage);
+    if (error instanceof SyntaxError) {
+      throw new Error(fallbackMessage);
+    }
+
+    throw error;
   }
 }
 

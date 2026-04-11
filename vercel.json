@@ -2,33 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "cleanUrls": false,
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/public/assets/$1"
-    },
-    {
-      "src": "/(.*\\.(?:html|xml|txt|ico|png))",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/$",
-      "dest": "/public/index.html"
-    }
-  ],
   "redirects": [
     {
       "source": "/index.html",

@@ -67,7 +67,12 @@
       const payload = JSON.parse(raw);
 
       if (!response.ok) {
-        throw new Error(payload.error || fallbackMessage);
+        const errorMessage = typeof payload?.error === 'string'
+          ? payload.error
+          : typeof payload?.error?.message === 'string'
+            ? payload.error.message
+            : fallbackMessage;
+        throw new Error(errorMessage);
       }
 
       return payload;
@@ -81,7 +86,7 @@
   }
 
   function setStatus(node, message, isError) {
-    node.textContent = message || '';
+    node.textContent = typeof message === 'string' ? message : String(message || '');
     node.classList.toggle('is-error', Boolean(isError));
   }
 
