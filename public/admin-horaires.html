@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Administration des horaires | Coraline TABERT</title>
+  <title>Administration du site | Coraline TABERT</title>
   <meta name="robots" content="noindex,nofollow" />
   <style>
     :root{
       --bg:#f5f2e6;
       --surface:#fffdf7;
+      --surface-alt:#f7f3ea;
       --text:#2f3d2f;
       --muted:#667260;
       --primary:#5a7e5a;
@@ -21,23 +22,36 @@
     }
     *{box-sizing:border-box}
     body{margin:0;background:linear-gradient(180deg,#fbf8ef 0,#f5f2e6 100%);color:var(--text)}
-    main{width:min(980px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
+    main{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
     h1,h2,h3{font-family:Georgia,serif;color:var(--primary);margin:0}
+    p{margin:0}
     .hero{margin-bottom:24px}
-    .hero p{max-width:68ch;color:var(--muted);line-height:1.7}
-    .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    .hero p{max-width:74ch;color:var(--muted);line-height:1.7}
     .stack{display:grid;gap:18px}
-    .auth{display:grid;gap:10px}
+    .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    .grid{display:grid;gap:18px}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .sectionHead{display:grid;gap:6px}
+    .sectionHead p{color:var(--muted);line-height:1.6}
     .field{display:grid;gap:8px}
     .field label{font-weight:700}
-    .field input,.slot input,.slot textarea{
+    .field input,.field textarea{
       width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text);font:inherit
     }
+    .field textarea{min-height:110px;resize:vertical}
     .field small{color:var(--muted)}
-    .cabinet{display:grid;gap:14px;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72)}
-    .slot-list{display:grid;gap:12px}
-    .slot{display:grid;grid-template-columns:1fr 2fr auto;gap:10px;align-items:start}
-    .slot textarea{min-height:64px;resize:vertical}
+    .cluster{display:flex;flex-wrap:wrap;gap:12px}
+    .group{
+      display:grid;gap:14px;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72)
+    }
+    .group.alt{background:var(--surface-alt)}
+    .groupHeader{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .groupHeader p{color:var(--muted)}
+    .repeater{display:grid;gap:12px}
+    .repeaterItem{
+      display:grid;gap:12px;padding:16px;border:1px solid rgba(23,54,45,.1);border-radius:16px;background:#fff
+    }
+    .repeaterItem__head{display:flex;justify-content:space-between;gap:12px;align-items:center}
     .actions{display:flex;flex-wrap:wrap;gap:12px}
     button{
       border:0;border-radius:999px;padding:12px 18px;background:var(--primary);color:#fff;font:700 14px/1 Manrope, Arial, sans-serif;cursor:pointer
@@ -47,37 +61,64 @@
     .status{min-height:24px;color:var(--muted);font-weight:600}
     .status.is-error{color:var(--danger)}
     .meta{font-size:14px;color:var(--muted)}
+    .divider{height:1px;background:var(--line);margin:6px 0}
+    @media (max-width:900px){
+      .grid.two{grid-template-columns:1fr}
+    }
     @media (max-width:720px){
-      .slot{grid-template-columns:1fr}
-      main{width:min(100% - 20px,980px);padding-top:20px}
+      main{width:min(100% - 20px,1180px);padding-top:20px}
       .panel{padding:16px}
+      .groupHeader,.repeaterItem__head{align-items:start;flex-direction:column}
     }
   </style>
 </head>
 <body>
   <main>
     <section class="hero">
-      <h1>Modifier les horaires</h1>
-      <p>Cette page permet à Caroline de mettre à jour les horaires affichés sur le site. Les changements sont enregistrés via l’API et seront visibles sur la page d’accueil.</p>
+      <h1>Administration du site</h1>
+      <p>Cette page permet de modifier le contenu principal du site, les prestations et les horaires des cabinets. Les changements sont enregistrés via l’API puis répercutés sur le site public.</p>
     </section>
 
     <section class="panel stack">
-      <div class="auth">
-        <div class="field">
-          <label for="admin-password">Mot de passe</label>
-          <input id="admin-password" type="password" autocomplete="current-password" />
-          <small>Le mot de passe est nécessaire pour enregistrer les modifications.</small>
-        </div>
+      <div class="sectionHead">
+        <h2>Authentification</h2>
+        <p>Le même mot de passe est utilisé pour enregistrer le contenu et les horaires.</p>
+      </div>
+
+      <div class="field">
+        <label for="admin-password">Mot de passe</label>
+        <input id="admin-password" type="password" autocomplete="current-password" />
+      </div>
+
+      <div class="actions">
+        <button id="save-all-button" type="button">Enregistrer tout</button>
+        <button id="save-content-button" type="button" class="secondary">Enregistrer le contenu</button>
+        <button id="save-hours-button" type="button" class="secondary">Enregistrer les horaires</button>
+      </div>
+    </section>
+
+    <section class="panel stack">
+      <div class="sectionHead">
+        <h2>Contenu éditorial</h2>
+        <p>Accueil, prestations, avis, zones, liens de contact et SEO principal.</p>
+      </div>
+
+      <div id="content-editor" class="stack"></div>
+
+      <p id="content-status" class="status" aria-live="polite"></p>
+      <p id="content-meta" class="meta"></p>
+    </section>
+
+    <section class="panel stack">
+      <div class="sectionHead">
+        <h2>Horaires des cabinets</h2>
+        <p>Cabinets, adresses, bouton d’itinéraire et créneaux affichés sur la page d’accueil.</p>
       </div>
 
       <div id="schedule-editor" class="stack"></div>
 
-      <div class="actions">
-        <button id="save-button" type="button">Enregistrer les horaires</button>
-      </div>
-
-      <p id="status" class="status" aria-live="polite"></p>
-      <p id="meta" class="meta"></p>
+      <p id="hours-status" class="status" aria-live="polite"></p>
+      <p id="hours-meta" class="meta"></p>
     </section>
   </main>
 

@@ -8,7 +8,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "Site Laly/**",
+      "src": "public/**",
       "use": "@vercel/static"
     }
   ],
@@ -18,21 +18,46 @@
     },
     {
       "src": "/assets/(.*)",
-      "dest": "/Site Laly/assets/$1"
+      "dest": "/public/assets/$1"
     },
     {
       "src": "/(.*\\.(?:html|xml|txt|ico|png))",
-      "dest": "/Site Laly/$1"
+      "dest": "/public/$1"
     },
     {
       "src": "/$",
-      "dest": "/Site Laly/index.html"
+      "dest": "/public/index.html"
     }
   ],
   "redirects": [
     {
       "source": "/index.html",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/chiropracteur-proche-saint-leonard-de-noblat.html",
+      "destination": "/chiropracteur-proche-clermont-l-herault.html",
+      "permanent": true
+    },
+    {
+      "source": "/chiropracteur-proche-eymoutiers.html",
+      "destination": "/chiropracteur-proche-gignac.html",
+      "permanent": true
+    },
+    {
+      "source": "/chiropracteur-proche-chateauneuf-la-foret.html",
+      "destination": "/chiropracteur-proche-saint-andre-de-sangonis.html",
+      "permanent": true
+    },
+    {
+      "source": "/chiropracteur-proche-peyrat-le-chateau.html",
+      "destination": "/chiropracteur-proche-paulhan.html",
+      "permanent": true
+    },
+    {
+      "source": "/chiropracteur-proche-panazol-limoges-est.html",
+      "destination": "/chiropracteur-proche-aspiran.html",
       "permanent": true
     }
   ],

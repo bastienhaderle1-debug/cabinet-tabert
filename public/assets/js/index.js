@@ -1,5 +1,3 @@
-/* index.js */
-
 function runWhenIdle(callback) {
   if ('requestIdleCallback' in window) {
     window.requestIdleCallback(callback, { timeout: 1200 });
@@ -46,6 +44,221 @@ function scheduleFrame(callback) {
       callback();
     });
   };
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function nl2br(value) {
+  return escapeHtml(value).replace(/\n/g, '<br>');
+}
+
+async function fetchSiteContent() {
+  const response = await fetch('/api/content', {
+    headers: {
+      Accept: 'application/json'
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Impossible de charger le contenu du site.');
+  }
+
+  return response.json();
+}
+
+function setMetaContent(selector, value) {
+  if (!value) return;
+  const node = document.querySelector(selector);
+  if (node) {
+    node.setAttribute('content', value);
+  }
+}
+
+function setTextContent(selector, value) {
+  const node = document.querySelector(selector);
+  if (node && typeof value === 'string') {
+    node.textContent = value;
+  }
+}
+
+function setAnchorHref(selector, value) {
+  document.querySelectorAll(selector).forEach((node) => {
+    if (value) {
+      node.setAttribute('href', value);
+    }
+  });
+}
+
+function updateAnchorText(selector, value) {
+  document.querySelectorAll(selector).forEach((node) => {
+    if (typeof value !== 'string') return;
+    const label = node.querySelector('span');
+    if (label) {
+      label.textContent = value;
+    }
+  });
+}
+
+function renderBodymapHotspots(container, hotspots) {
+  const picture = container.querySelector('picture');
+  const pictureMarkup = picture ? picture.outerHTML : '';
+  const hotspotMarkup = hotspots.map((item) => `
+    <button class="bodymap__tag ${escapeHtml(item.className || '')}" type="button"
+            data-title="${escapeHtml(item.title)}"
+            data-text="${escapeHtml(item.text)}">
+      ${nl2br(item.label)}
+    </button>
+  `).join('');
+
+  container.innerHTML = pictureMarkup + hotspotMarkup;
+}
+
+function renderBodymapLocker(listNode, items) {
+  listNode.innerHTML = items.map((item) => `
+    <li class="bodymap__lockerItem">
+      <button class="bodymap__lockerBtn" type="button"
+              data-title="${escapeHtml(item.title)}"
+              data-text="${escapeHtml(item.text)}">
+        ${escapeHtml(item.label)}
+      </button>
+    </li>
+  `).join('');
+}
+
+function renderReviews(trackNode, items) {
+  trackNode.innerHTML = items.map((item) => `
+    <article class="avis__card" role="listitem">
+      <div class="avis__stars" aria-label="5 étoiles">★★★★★</div>
+      <h3 class="avis__quote">${escapeHtml(item.quote)}</h3>
+      <p class="avis__text">${nl2br(item.text)}</p>
+      <p class="avis__name">${escapeHtml(item.name)}</p>
+    </article>
+  `).join('');
+}
+
+function applySharedContent(shared) {
+  if (!shared) return;
+
+  setTextContent('.siteHeader__brandName', shared.brandName);
+  setTextContent('.siteHeader__brandRole', shared.brandRole);
+  setTextContent('.siteFooter__copy', '');
+
+  const footerCopy = document.querySelector('.siteFooter__copy');
+  if (footerCopy) {
+    footerCopy.innerHTML = `&copy; <span data-current-year></span> ${escapeHtml(shared.footerCopyName)}`;
+    const yearNode = footerCopy.querySelector('[data-current-year]');
+    if (yearNode) {
+      yearNode.textContent = String(new Date().getFullYear());
+    }
+  }
+
+  setAnchorHref('.siteHeader__cta', shared.bookingUrl);
+  document.querySelectorAll('.siteHeader__cta').forEach((node) => {
+    node.textContent = shared.bookingLabel;
+  });
+  setAnchorHref('.siteFooter__contact[href^="mailto:"]', `mailto:${shared.email}`);
+  setAnchorHref('.siteFooter__contact[href^="tel:"]', shared.phoneHref);
+  setAnchorHref('.siteFooter__contact[href*="instagram.com"]', shared.instagramUrl);
+
+  setAnchorHref('.hero-contact-content a[href^="mailto:"]', `mailto:${shared.email}`);
+  setAnchorHref('.hero-contact-content a[href^="tel:"]', shared.phoneHref);
+  setAnchorHref('.hero-contact-content a[href*="instagram.com"]', shared.instagramUrl);
+  setAnchorHref('.hero-contact-content a[href*="google.com/maps/dir"]', shared.mapsUrl);
+
+  setAnchorHref('.contact-band .contact-item[href^="mailto:"]', `mailto:${shared.email}`);
+  setAnchorHref('.contact-band .contact-item[href^="tel:"]', shared.phoneHref);
+  setAnchorHref('.contact-band .contact-item[href*="instagram.com"]', shared.instagramUrl);
+  setAnchorHref('.contact-band .contact-item[href*="google.com/maps/dir"]', shared.mapsUrl);
+
+  setAnchorHref('.floating-contact__content a[href^="mailto:"]', `mailto:${shared.email}`);
+  setAnchorHref('.floating-contact__content a[href^="tel:"]', shared.phoneHref);
+  setAnchorHref('.floating-contact__content a[href*="instagram.com"]', shared.instagramUrl);
+  setAnchorHref('.floating-contact__content a[href*="google.com/maps/dir"]', shared.mapsUrl);
+
+  updateAnchorText('.siteFooter__contact[href^="mailto:"]', shared.email);
+  updateAnchorText('.siteFooter__contact[href^="tel:"]', shared.phoneDisplay);
+  updateAnchorText('.siteFooter__contact[href*="instagram.com"]', shared.instagramLabel);
+
+  updateAnchorText('.hero-contact-content a[href^="mailto:"]', shared.email);
+  updateAnchorText('.hero-contact-content a[href^="tel:"]', shared.phoneDisplay);
+  updateAnchorText('.hero-contact-content a[href*="instagram.com"]', 'Instagram');
+
+  updateAnchorText('.contact-band .contact-item[href^="mailto:"]', shared.email);
+  updateAnchorText('.contact-band .contact-item[href^="tel:"]', shared.phoneDisplay);
+  updateAnchorText('.contact-band .contact-item[href*="instagram.com"]', 'Instagram');
+  updateAnchorText('.contact-band .contact-item[href*="google.com/maps/dir"]', shared.addressText);
+
+  updateAnchorText('.floating-contact__content a[href^="mailto:"]', shared.email);
+  updateAnchorText('.floating-contact__content a[href^="tel:"]', shared.phoneDisplay);
+  updateAnchorText('.floating-contact__content a[href*="instagram.com"]', 'Instagram');
+}
+
+function applyHomeContent(content) {
+  const shared = content.shared || {};
+  const home = content.home || {};
+  const hero = home.hero || {};
+  const bodymap = home.bodymap || {};
+  const reviews = home.reviews || {};
+  const schedule = home.schedule || {};
+  const seo = home.seo || {};
+
+  if (seo.title) {
+    document.title = seo.title;
+  }
+
+  setMetaContent('meta[name="description"]', seo.description);
+  setMetaContent('meta[property="og:title"]', seo.ogTitle || seo.title);
+  setMetaContent('meta[property="og:description"]', seo.ogDescription || seo.description);
+
+  applySharedContent(shared);
+
+  setTextContent('.hero-badge__kicker', hero.kicker);
+  setTextContent('.hero-badge__title', hero.title);
+
+  const heroText = document.querySelector('.hero-badge__text');
+  if (heroText) {
+    heroText.innerHTML = `${escapeHtml(hero.text || '')}<span class="hero-badge__brand">${escapeHtml(hero.brand || '')}</span>`;
+  }
+
+  const heroCta = document.querySelector('.hero-badge__btn');
+  if (heroCta) {
+    heroCta.textContent = hero.ctaLabel || shared.bookingLabel || heroCta.textContent;
+    if (hero.ctaUrl) {
+      heroCta.setAttribute('href', hero.ctaUrl);
+    }
+  }
+
+  setTextContent('.bodymap__title', bodymap.title);
+  setTextContent('.bodymap__lockerTitle', bodymap.lockerTitle);
+  setTextContent('[data-bodymap-locker-title]', bodymap.lockerDefaultTitle);
+  setTextContent('[data-bodymap-locker-text]', bodymap.lockerDefaultText);
+
+  const hotspotsContainer = document.querySelector('.bodymap__canvas');
+  if (hotspotsContainer && Array.isArray(bodymap.hotspots) && bodymap.hotspots.length) {
+    renderBodymapHotspots(hotspotsContainer, bodymap.hotspots);
+  }
+
+  const lockerList = document.querySelector('.bodymap__lockerList');
+  if (lockerList && Array.isArray(bodymap.lockerItems) && bodymap.lockerItems.length) {
+    renderBodymapLocker(lockerList, bodymap.lockerItems);
+  }
+
+  setTextContent('.avis__title', reviews.title);
+  const reviewsTrack = document.querySelector('.avis__track');
+  if (reviewsTrack && Array.isArray(reviews.items) && reviews.items.length) {
+    renderReviews(reviewsTrack, reviews.items);
+  }
+
+  setTextContent('.schedule-section__title', schedule.title);
+  setTextContent('.schedule-section__subtitle', schedule.subtitle);
+  setTextContent('.local-links__title', home.localLinksTitle);
 }
 
 /* CONTACT POPUPS */
@@ -507,8 +720,17 @@ function initBodymapLocker() {
   });
 }
 
-initWhenNearViewport('.avis', initAvisCarousel);
-initWhenNearViewport('.bodymap', () => {
-  initBodymap();
-  initBodymapLocker();
-}, '320px 0px');
+(async function initHomePage() {
+  try {
+    const content = await fetchSiteContent();
+    applyHomeContent(content);
+  } catch (error) {
+    console.error(error);
+  }
+
+  initWhenNearViewport('.avis', initAvisCarousel);
+  initWhenNearViewport('.bodymap', () => {
+    initBodymap();
+    initBodymapLocker();
+  }, '320px 0px');
+})();
