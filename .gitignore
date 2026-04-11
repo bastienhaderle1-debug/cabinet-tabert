@@ -1,0 +1,6 @@
+.vercel
+Site Laly/
+node_modules/
+.env
+.env.local
+*.log

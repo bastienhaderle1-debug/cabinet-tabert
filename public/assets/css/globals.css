@@ -1,0 +1,140 @@
+﻿/* globals.css */
+:root{
+  --c-primary:#5a7e5a;
+  --c-accent:#4d6b4d;
+  --c-hero:#435f43;
+  --c-highlight:#f7e4ac;
+
+  --c-bg:#f5f2e6;
+  --c-surface:#fcfbf2;
+  --c-line:#d7ddcc;
+
+  --c-text:#2f3d2f;
+  --c-muted:#667260;
+
+  --r-sm:10px;
+  --r-md:16px;
+  --r-lg:26px;
+
+  --shadow-soft:0 18px 48px rgba(58,76,55,.10);
+  --shadow-md:0 14px 36px rgba(44,58,42,.12);
+  --shadow-lg:0 28px 72px rgba(44,58,42,.16);
+  --shadow-focus:0 0 0 4px rgba(105,138,101,.24);
+  --grad-accent:linear-gradient(135deg, #6a8b66 0%, #4d6b4d 100%);
+  --grad-hero:linear-gradient(135deg, #5a7e5a 0%, #8fa376 100%);
+  --grad-surface:linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(250,247,237,.92) 100%);
+
+  --ff-title:"Bookman Old Style", "Book Antiqua", Georgia, serif;
+  --ff-body:"Manrope", sans-serif;
+}
+
+/* Basic reset */
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-width:320px;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:15.5px;
+  letter-spacing:.003em;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+[hidden]{
+  display:none !important;
+}
+
+*::selection{
+  background:rgba(143,163,118,.28);
+  color:#233023;
+}
+
+:focus-visible{
+  outline:2px solid var(--c-accent);
+  outline-offset:3px;
+  box-shadow:var(--shadow-focus);
+}
+
+.visually-hidden{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0, 0, 0, 0);
+  white-space:nowrap;
+  border:0;
+}
+
+.icon{
+  display:inline-block;
+  width:1em;
+  height:1em;
+  fill:currentColor;
+  flex:0 0 auto;
+  vertical-align:middle;
+}
+
+h1,
+h2,
+h3{
+  text-wrap:balance;
+  font-weight:700;
+  line-height:.98;
+  letter-spacing:.01em;
+}
+
+p,
+li{
+  letter-spacing:.004em;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+}
+
+

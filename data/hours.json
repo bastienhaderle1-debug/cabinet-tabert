@@ -1,0 +1,43 @@
+{
+  "updatedAt": "2026-04-11T12:00:00.000Z",
+  "cabinets": [
+    {
+      "id": "canet",
+      "name": "Canet",
+      "address": "3 Lotissement la sarriette, 34800 Canet",
+      "ctaLabel": "Venir au cabinet de Canet",
+      "ctaUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Lotissement+la+sarriette+34800+Canet",
+      "schedules": [
+        {
+          "day": "Mardi",
+          "time": "09h00 - 11h00\n14h00 - 17h00"
+        }
+      ]
+    },
+    {
+      "id": "montpellier",
+      "name": "Montpellier",
+      "address": "3 Rue Paul Lacroix, 34070 Montpellier",
+      "ctaLabel": "Venir au cabinet de Montpellier",
+      "ctaUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Rue+Paul+Lacroix+34070+Montpellier",
+      "schedules": [
+        {
+          "day": "Lundi",
+          "time": "10h30 - 12h30\n14h00 - 18h00"
+        },
+        {
+          "day": "Mercredi",
+          "time": "10h45 - 13h00\n14h00 - 18h00"
+        },
+        {
+          "day": "Jeudi",
+          "time": "10h45 - 13h00\n14h00 - 18h00"
+        },
+        {
+          "day": "Vendredi",
+          "time": "10h45 - 13h00\n14h00 - 18h00"
+        }
+      ]
+    }
+  ]
+}
