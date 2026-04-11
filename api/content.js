@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const DATA_FILE = 'data/content.json';
 const GITHUB_OWNER = process.env.GITHUB_OWNER || 'bastienhaderle1-debug';
-const GITHUB_REPO = process.env.GITHUB_REPO || 'Haderl-Carol-Anne-Chiropraxie';
+const GITHUB_REPO = process.env.GITHUB_REPO || 'cabinet-tabert';
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH || 'main';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
