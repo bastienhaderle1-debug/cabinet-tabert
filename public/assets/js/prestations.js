@@ -114,14 +114,6 @@
       if (label) label.textContent = normalizedShared.bookingLabel;
     });
 
-    const footerCopy = document.querySelector('.siteFooter__copy');
-    if (footerCopy) {
-      footerCopy.innerHTML = `&copy; <span data-current-year></span> ${escapeHtml(shared.footerCopyName)}`;
-      const yearNode = footerCopy.querySelector('[data-current-year]');
-      if (yearNode) {
-        yearNode.textContent = String(new Date().getFullYear());
-      }
-    }
   }
 
   function renderServices(services) {

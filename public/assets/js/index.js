@@ -214,16 +214,6 @@ function applySharedContent(shared) {
 
   setTextContent('.siteHeader__brandName', normalizedShared.brandName);
   setTextContent('.siteHeader__brandRole', normalizedShared.brandRole);
-  setTextContent('.siteFooter__copy', '');
-
-  const footerCopy = document.querySelector('.siteFooter__copy');
-  if (footerCopy) {
-    footerCopy.innerHTML = `&copy; <span data-current-year></span> ${escapeHtml(shared.footerCopyName)}`;
-    const yearNode = footerCopy.querySelector('[data-current-year]');
-    if (yearNode) {
-      yearNode.textContent = String(new Date().getFullYear());
-    }
-  }
 
   setAnchorHref('.siteHeader__cta', normalizedShared.bookingUrl);
   document.querySelectorAll('.siteHeader__cta').forEach((node) => {

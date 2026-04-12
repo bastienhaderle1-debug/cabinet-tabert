@@ -8,8 +8,7 @@
     "addressText": "3 Lotissement la sarriette, 34800 Canet",
     "secondaryAddressText": "3 Rue Paul Lacroix, 34070 Montpellier",
     "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Lotissement+la+sarriette+34800+Canet",
-    "secondaryMapsUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Rue+Paul+Lacroix+34070+Montpellier",
-    "footerCopyName": "Cabinet Coraline TABERT"
+    "secondaryMapsUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Rue+Paul+Lacroix+34070+Montpellier"
   },
   "home": {
     "seo": {

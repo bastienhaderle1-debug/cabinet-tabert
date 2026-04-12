@@ -22,8 +22,6 @@
   const scheduleEditor = document.getElementById('schedule-editor');
   const passwordInput = document.getElementById('admin-password');
   const saveAllButton = document.getElementById('save-all-button');
-  const saveContentButton = document.getElementById('save-content-button');
-  const saveHoursButton = document.getElementById('save-hours-button');
   const contentStatusNode = document.getElementById('content-status');
   const contentMetaNode = document.getElementById('content-meta');
   const hoursStatusNode = document.getElementById('hours-status');
@@ -105,6 +103,8 @@
     const input = options.multiline ? document.createElement('textarea') : document.createElement('input');
     if (!options.multiline) {
       input.type = options.type || 'text';
+    } else if (options.rows) {
+      input.rows = options.rows;
     }
     input.value = value || '';
     input.addEventListener('input', () => onInput(input.value));
@@ -197,7 +197,8 @@
       createField('URL de réservation', contentState.shared.bookingUrl, (value) => { contentState.shared.bookingUrl = value; }),
       createField('Adresse', contentState.shared.addressText, (value) => { contentState.shared.addressText = value; }),
       createField('URL Google Maps / itinéraire', contentState.shared.mapsUrl, (value) => { contentState.shared.mapsUrl = value; }),
-      createField('Nom dans le copyright', contentState.shared.footerCopyName, (value) => { contentState.shared.footerCopyName = value; })
+      createField('Adresse 2', contentState.shared.secondaryAddressText, (value) => { contentState.shared.secondaryAddressText = value; }),
+      createField('URL Google Maps / itinÃ©raire 2', contentState.shared.secondaryMapsUrl, (value) => { contentState.shared.secondaryMapsUrl = value; }),
     );
     shared.appendChild(sharedGrid);
     contentEditor.appendChild(shared);
@@ -230,7 +231,7 @@
       createField('Titre par défaut du panneau', contentState.home.bodymap.lockerDefaultTitle, (value) => { contentState.home.bodymap.lockerDefaultTitle = value; })
     );
     bodymapGroup.appendChild(
-      createField('Texte par défaut du panneau', contentState.home.bodymap.lockerDefaultText, (value) => { contentState.home.bodymap.lockerDefaultText = value; }, { multiline: true })
+      createField('Texte par défaut du panneau', contentState.home.bodymap.lockerDefaultText, (value) => { contentState.home.bodymap.lockerDefaultText = value; }, { multiline: true, rows: 3 })
     );
 
     bodymapGroup.appendChild(createRepeater(
@@ -494,24 +495,6 @@
       setStatus(hoursStatusNode, message, true);
     }
   }
-
-  saveContentButton.addEventListener('click', async () => {
-    try {
-      await saveContent();
-    } catch (error) {
-      console.error(error);
-      setStatus(contentStatusNode, error.message || 'Impossible d’enregistrer le contenu.', true);
-    }
-  });
-
-  saveHoursButton.addEventListener('click', async () => {
-    try {
-      await saveHours();
-    } catch (error) {
-      console.error(error);
-      setStatus(hoursStatusNode, error.message || 'Impossible d’enregistrer les horaires.', true);
-    }
-  });
 
   saveAllButton.addEventListener('click', handleSaveAll);
 

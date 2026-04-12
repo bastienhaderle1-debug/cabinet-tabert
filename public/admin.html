@@ -28,28 +28,28 @@
     .hero{margin-bottom:24px}
     .hero p{max-width:74ch;color:var(--muted);line-height:1.7}
     .stack{display:grid;gap:18px}
-    .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
-    .grid{display:grid;gap:18px}
-    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .grid{display:grid;gap:16px}
+    .grid.two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     .sectionHead{display:grid;gap:6px}
     .sectionHead p{color:var(--muted);line-height:1.6}
-    .field{display:grid;gap:8px}
+    .field{display:grid;gap:6px}
     .field label{font-weight:700}
     .field input,.field textarea{
-      width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text);font:inherit
+      width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);font:inherit
     }
-    .field textarea{min-height:110px;resize:vertical}
+    .field textarea{min-height:84px;resize:vertical}
     .field small{color:var(--muted)}
     .cluster{display:flex;flex-wrap:wrap;gap:12px}
     .group{
-      display:grid;gap:14px;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72)
+      display:grid;gap:12px;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72)
     }
     .group.alt{background:var(--surface-alt)}
     .groupHeader{display:flex;justify-content:space-between;gap:12px;align-items:center}
     .groupHeader p{color:var(--muted)}
     .repeater{display:grid;gap:12px}
     .repeaterItem{
-      display:grid;gap:12px;padding:16px;border:1px solid rgba(23,54,45,.1);border-radius:16px;background:#fff
+      display:grid;gap:10px;padding:14px;border:1px solid rgba(23,54,45,.1);border-radius:14px;background:#fff
     }
     .repeaterItem__head{display:flex;justify-content:space-between;gap:12px;align-items:center}
     .actions{display:flex;flex-wrap:wrap;gap:12px}
@@ -91,9 +91,7 @@
       </div>
 
       <div class="actions">
-        <button id="save-all-button" type="button">Enregistrer tout</button>
-        <button id="save-content-button" type="button" class="secondary">Enregistrer le contenu</button>
-        <button id="save-hours-button" type="button" class="secondary">Enregistrer les horaires</button>
+        <button id="save-all-button" type="button">Enregistrer toutes les modifications</button>
       </div>
     </section>
 
