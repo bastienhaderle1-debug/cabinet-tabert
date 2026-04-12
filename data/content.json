@@ -2,26 +2,28 @@
   "updatedAt": "2026-04-11T15:30:00.000Z",
   "shared": {
     "brandName": "Coraline TABERT",
-    "brandRole": "Ostéopathe à Canet",
+    "brandRole": "Ostéopathe à Canet et Montpellier",
     "bookingLabel": "Prendre rendez-vous",
     "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697482&pid=practice-44027&source=profile",
     "addressText": "3 Lotissement la sarriette, 34800 Canet",
+    "secondaryAddressText": "3 Rue Paul Lacroix, 34070 Montpellier",
     "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Lotissement+la+sarriette+34800+Canet",
+    "secondaryMapsUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Rue+Paul+Lacroix+34070+Montpellier",
     "footerCopyName": "Cabinet Coraline TABERT"
   },
   "home": {
     "seo": {
-      "title": "Coraline TABERT | Cabinet d'ostéopathie à Canet",
-      "description": "Cabinet d'ostéopathie de Coraline TABERT à Canet. Consultations sur rendez-vous, prise en charge douce et personnalisée.",
-      "ogTitle": "Coraline TABERT | Cabinet d'ostéopathie à Canet",
-      "ogDescription": "Cabinet d'ostéopathie de Coraline TABERT à Canet. Consultations sur rendez-vous, prise en charge douce et personnalisée."
+      "title": "Coraline TABERT | Cabinet d'ostéopathie à Canet et Montpellier",
+      "description": "Cabinet d'ostéopathie de Coraline TABERT à Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisée.",
+      "ogTitle": "Coraline TABERT | Cabinet d'ostéopathie à Canet et Montpellier",
+      "ogDescription": "Cabinet d'ostéopathie de Coraline TABERT à Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisée."
     },
     "hero": {
       "kicker": "CABINET D'OSTÉOPATHIE",
       "title": "Soulagez durablement vos douleurs",
-      "text": "Prise en charge personnalisée • Non-invasive et spécifique • À Canet",
+      "text": "Prise en charge personnalisée • Non-invasive et spécifique • À Canet et Montpellier",
       "brand": "Coraline TABERT",
-      "ctaLabel": "Prendre rendez-vous",
+      "ctaLabel": "Prendre rendez vous sur Doctolib",
       "ctaUrl": "prestations.html"
     },
     "bodymap": {
@@ -154,16 +156,16 @@
   },
   "prestations": {
     "seo": {
-      "title": "Prestations d'ostéopathie | Coraline TABERT à Canet",
-      "description": "Consultez les prestations d'ostéopathie de Coraline TABERT à Canet : première consultation, suivi, enfant et femme enceinte.",
-      "ogTitle": "Prestations d'ostéopathie | Coraline TABERT à Canet",
-      "ogDescription": "Consultez les prestations d'ostéopathie de Coraline TABERT à Canet : première consultation, suivi, enfant et femme enceinte."
+      "title": "Prestations d'ostéopathie | Coraline TABERT à Canet et Montpellier",
+      "description": "Consultez les prestations d'ostéopathie de Coraline TABERT à Canet et Montpellier : première consultation, suivi, enfant et femme enceinte.",
+      "ogTitle": "Prestations d'ostéopathie | Coraline TABERT à Canet et Montpellier",
+      "ogDescription": "Consultez les prestations d'ostéopathie de Coraline TABERT à Canet et Montpellier : première consultation, suivi, enfant et femme enceinte."
     },
     "title": "Les prestations",
     "stepLabel": "Choisissez un service",
     "summaryTitle": "Résumé",
     "summaryCabinetName": "Cabinet Coraline TABERT",
-    "summaryCabinetRole": "Ostéopathe à Canet",
+    "summaryCabinetRole": "Ostéopathe à Canet et Montpellier",
     "summaryHint": "Après sélection, cliquez sur “Prendre rendez-vous”.",
     "services": [
       {

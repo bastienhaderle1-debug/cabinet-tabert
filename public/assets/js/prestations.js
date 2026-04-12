@@ -28,6 +28,15 @@
       .replace(/'/g, '&#39;');
   }
 
+  function normalizeCanetMontpellier(value) {
+    if (typeof value !== 'string' || !value) return value;
+    if (/montpellier/i.test(value)) return value;
+
+    return value
+      .replace(/à Canet/gi, 'à Canet et Montpellier')
+      .replace(/À Canet/g, 'À Canet et Montpellier');
+  }
+
   function setMetaContent(selector, value) {
     if (!value) return;
     const node = document.querySelector(selector);
@@ -84,20 +93,25 @@
   function applySharedContent(shared) {
     if (!shared) return;
 
+    const normalizedShared = {
+      ...shared,
+      brandRole: normalizeCanetMontpellier(shared.brandRole)
+    };
+
     const brandName = document.querySelector('.siteHeader__brandName');
     const brandRole = document.querySelector('.siteHeader__brandRole');
-    if (brandName) brandName.textContent = shared.brandName;
-    if (brandRole) brandRole.textContent = shared.brandRole;
+    if (brandName) brandName.textContent = normalizedShared.brandName;
+    if (brandRole) brandRole.textContent = normalizedShared.brandRole;
 
     document.querySelectorAll('.siteHeader__cta, [data-booking-link]').forEach((node) => {
-      node.setAttribute('href', shared.bookingUrl);
-      node.textContent = shared.bookingLabel;
+      node.setAttribute('href', normalizedShared.bookingUrl);
+      node.textContent = normalizedShared.bookingLabel;
     });
 
-    document.querySelectorAll('a[href*="doctolib.fr"]').forEach((node) => {
-      node.setAttribute('href', shared.bookingUrl);
+    document.querySelectorAll('.siteFooter__contact[href*="doctolib.fr"]').forEach((node) => {
+      node.setAttribute('href', normalizedShared.bookingUrl);
       const label = node.querySelector('span');
-      if (label) label.textContent = shared.bookingLabel;
+      if (label) label.textContent = normalizedShared.bookingLabel;
     });
 
     const footerCopy = document.querySelector('.siteFooter__copy');
@@ -221,7 +235,7 @@
         const strong = summaryRows[0].querySelector('.summaryCard__strong');
         const muted = summaryRows[0].querySelector('.summaryCard__muted');
         if (strong) strong.textContent = prestations.summaryCabinetName || strong.textContent;
-        if (muted) muted.textContent = prestations.summaryCabinetRole || muted.textContent;
+        if (muted) muted.textContent = normalizeCanetMontpellier(prestations.summaryCabinetRole || muted.textContent);
       }
 
       if (Array.isArray(prestations.services) && prestations.services.length) {

@@ -77,7 +77,9 @@ function sanitizeShared(value) {
     bookingLabel: asTrimmedString(shared.bookingLabel),
     bookingUrl: asTrimmedString(shared.bookingUrl),
     addressText: asTrimmedString(shared.addressText),
+    secondaryAddressText: asTrimmedString(shared.secondaryAddressText),
     mapsUrl: asTrimmedString(shared.mapsUrl),
+    secondaryMapsUrl: asTrimmedString(shared.secondaryMapsUrl),
     footerCopyName: asTrimmedString(shared.footerCopyName)
   };
 }

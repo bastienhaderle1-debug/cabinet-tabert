@@ -3,13 +3,12 @@
   if (!scheduleGrid) return;
   const PRODUCTION_ORIGIN = 'https://cabinet-tabert.vercel.app';
   const isLocalApiContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+  const configuredApiBase = document.documentElement.getAttribute('data-api-base')
+    || window.localStorage.getItem('siteApiBase')
+    || window.localStorage.getItem('adminApiBase');
   const siteApiBase = (() => {
-    const configured = document.documentElement.getAttribute('data-api-base')
-      || window.localStorage.getItem('siteApiBase')
-      || window.localStorage.getItem('adminApiBase');
-
-    if (configured) {
-      return configured.replace(/\/$/, '');
+    if (configuredApiBase) {
+      return configuredApiBase.replace(/\/$/, '');
     }
 
     if (isLocalApiContext) {
@@ -99,6 +98,10 @@
   }
 
   async function loadSchedules() {
+    if (isLocalApiContext && !configuredApiBase) {
+      return;
+    }
+
     try {
       const response = await fetch(buildApiUrl('/api/hours'), {
         headers: {

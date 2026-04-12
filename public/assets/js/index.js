@@ -59,6 +59,15 @@ function nl2br(value) {
   return escapeHtml(value).replace(/\n/g, '<br>');
 }
 
+function normalizeCanetMontpellier(value) {
+  if (typeof value !== 'string' || !value) return value;
+  if (/montpellier/i.test(value)) return value;
+
+  return value
+    .replace(/à Canet/gi, 'à Canet et Montpellier')
+    .replace(/À Canet/g, 'À Canet et Montpellier');
+}
+
 const PRODUCTION_ORIGIN = 'https://cabinet-tabert.vercel.app';
 const isLocalApiContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
 const siteApiBase = (() => {
@@ -195,8 +204,16 @@ function renderReviews(trackNode, items) {
 function applySharedContent(shared) {
   if (!shared) return;
 
-  setTextContent('.siteHeader__brandName', shared.brandName);
-  setTextContent('.siteHeader__brandRole', shared.brandRole);
+  const normalizedShared = {
+    ...shared,
+    brandRole: normalizeCanetMontpellier(shared.brandRole)
+  };
+  const bookingLabelWithDoctolib = normalizedShared.bookingLabel && /doctolib/i.test(normalizedShared.bookingLabel)
+    ? normalizedShared.bookingLabel
+    : `${normalizedShared.bookingLabel || 'Prendre rendez-vous'} sur Doctolib`;
+
+  setTextContent('.siteHeader__brandName', normalizedShared.brandName);
+  setTextContent('.siteHeader__brandRole', normalizedShared.brandRole);
   setTextContent('.siteFooter__copy', '');
 
   const footerCopy = document.querySelector('.siteFooter__copy');
@@ -208,35 +225,40 @@ function applySharedContent(shared) {
     }
   }
 
-  setAnchorHref('.siteHeader__cta', shared.bookingUrl);
+  setAnchorHref('.siteHeader__cta', normalizedShared.bookingUrl);
   document.querySelectorAll('.siteHeader__cta').forEach((node) => {
-    node.textContent = shared.bookingLabel;
+    node.textContent = normalizedShared.bookingLabel;
   });
-  setAnchorHref('.siteFooter__contact[href*="doctolib.fr"]', shared.bookingUrl);
+  setAnchorHref('.siteFooter__contact[href*="doctolib.fr"]', normalizedShared.bookingUrl);
 
-  setAnchorHref('.hero-contact-content a[href*="doctolib.fr"]', shared.bookingUrl);
-  setAnchorHref('.hero-contact-content a[href*="google.com/maps/dir"]', shared.mapsUrl);
+  setAnchorHref('.hero-contact-content a[href*="doctolib.fr"]', normalizedShared.bookingUrl);
+  setAnchorHref('.hero-contact-content a[href*="google.com/maps/dir"]', normalizedShared.mapsUrl);
 
-  setAnchorHref('.contact-band .contact-item[href*="doctolib.fr"]', shared.bookingUrl);
-  setAnchorHref('.contact-band .contact-item[href*="google.com/maps/dir"]', shared.mapsUrl);
+  setAnchorHref('.contact-band .contact-item[href*="doctolib.fr"]', normalizedShared.bookingUrl);
+  setAnchorHref('.contact-band .contact-item--primary-address', normalizedShared.mapsUrl);
+  setAnchorHref('.contact-band .contact-item--secondary-address', normalizedShared.secondaryMapsUrl);
 
-  setAnchorHref('.floating-contact__content a[href*="doctolib.fr"]', shared.bookingUrl);
-  setAnchorHref('.floating-contact__content a[href*="google.com/maps/dir"]', shared.mapsUrl);
+  setAnchorHref('.floating-contact__content a[href*="doctolib.fr"]', normalizedShared.bookingUrl);
+  setAnchorHref('.floating-contact__content a[href*="google.com/maps/dir"]', normalizedShared.mapsUrl);
 
-  updateAnchorText('.siteFooter__contact[href*="doctolib.fr"]', shared.bookingLabel);
+  updateAnchorText('.siteFooter__contact[href*="doctolib.fr"]', normalizedShared.bookingLabel);
 
-  updateAnchorText('.hero-contact-content a[href*="doctolib.fr"]', shared.bookingLabel);
+  updateAnchorText('.hero-contact-content a[href*="doctolib.fr"]', normalizedShared.bookingLabel);
 
-  updateAnchorText('.contact-band .contact-item[href*="doctolib.fr"]', shared.bookingLabel);
-  updateAnchorText('.contact-band .contact-item[href*="google.com/maps/dir"]', shared.addressText);
+  updateAnchorText('.contact-band .contact-item[href*="doctolib.fr"]', bookingLabelWithDoctolib);
+  updateAnchorText('.contact-band .contact-item--primary-address', normalizedShared.addressText);
+  updateAnchorText('.contact-band .contact-item--secondary-address', normalizedShared.secondaryAddressText);
 
-  updateAnchorText('.floating-contact__content a[href*="doctolib.fr"]', shared.bookingLabel);
+  updateAnchorText('.floating-contact__content a[href*="doctolib.fr"]', normalizedShared.bookingLabel);
 }
 
 function applyHomeContent(content) {
   const shared = content.shared || {};
   const home = content.home || {};
-  const hero = home.hero || {};
+  const hero = {
+    ...(home.hero || {}),
+    text: normalizeCanetMontpellier(home.hero?.text || '')
+  };
   const bodymap = home.bodymap || {};
   const reviews = home.reviews || {};
   const schedule = home.schedule || {};

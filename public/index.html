@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Coraline TABERT | Cabinet d'ostéopathie à Canet</title>
-  <meta name="description" content="Cabinet d'ostéopathie de Coraline TABERT à Canet. Consultations sur rendez-vous, prise en charge douce et personnalisée." />
+  <title>Coraline TABERT | Cabinet d'ostéopathie à Canet et Montpellier</title>
+  <meta name="description" content="Cabinet d'ostéopathie de Coraline TABERT à Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisée." />
   <meta name="robots" content="index,follow" />
   <meta name="google-site-verification" content="gKrpFN4nLu-nKXX74mPhYxNePAkkQWxK-2MVJ1E7urk" />
   <meta name="theme-color" content="#698A65" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Coraline TABERT | Cabinet d'ostéopathie à Canet" />
-  <meta property="og:description" content="Cabinet d'ostéopathie de Coraline TABERT à Canet. Consultations sur rendez-vous, prise en charge douce et personnalisée." />
+  <meta property="og:title" content="Coraline TABERT | Cabinet d'ostéopathie à Canet et Montpellier" />
+  <meta property="og:description" content="Cabinet d'ostéopathie de Coraline TABERT à Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisée." />
   <meta property="og:url" content="https://cabinet-tabert.vercel.app/" />
   <link rel="canonical" href="https://cabinet-tabert.vercel.app/" />
 
@@ -46,6 +46,28 @@
   <link rel="stylesheet" href="assets/css/hero-nav-fix.css?v=20260404-hero" />
   <link rel="stylesheet" href="assets/css/local-page.css" />
   <style>
+    @media (min-width: 769px) {
+      .siteNav {
+        gap: 6px;
+        padding: 4px;
+      }
+
+      .siteNav a {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+
+      .siteNav__nowrap {
+        white-space: nowrap;
+      }
+
+      .siteNav__link--osteopathie.is-active,
+      .siteNav__link--osteopathie[aria-current="page"] {
+        box-shadow: none;
+        transform: none;
+      }
+    }
+
     .hero-badge__brand {
       display: block;
       margin-top: 6px;
@@ -57,6 +79,7 @@
     }
 
     .schedule-section {
+      scroll-margin-top: 132px;
       padding: 32px 0 12px;
     }
 
@@ -318,7 +341,7 @@
             Coraline TABERT
           </strong>
           <span class="siteHeader__brandRole" data-shared-brand-role>
-            Ostéopathe à Canet
+            Ostéopathe à Canet et Montpellier
           </span>
         </span>
       </a>
@@ -333,8 +356,9 @@
       </button>
 
       <nav class="siteNav" id="mobileNav" aria-label="Navigation principale">
-        <a class="is-active" href="index.html" aria-current="page">Accueil</a>
-        <a href="osteopathe.html">L'ostéopathie | À quoi s'attendre ?</a>
+        <a class="is-active" href="index.html" aria-current="page" data-nav-home>Accueil</a>
+        <a href="#horaires-cabinets" data-nav-hours>Horaires</a>
+        <a class="siteNav__link--osteopathie" href="osteopathe.html">L'ostéopathie | À quoi <span class="siteNav__nowrap">s'attendre&nbsp;?</span></a>
         <a href="prestations.html">Voir les prestations</a>
       </nav>
 
@@ -402,12 +426,12 @@
       <p class="hero-badge__kicker">CABINET D'OSTÉOPATHIE</p>
       <h1 class="hero-badge__title">Soulagez durablement vos douleurs</h1>
       <p class="hero-badge__text">
-        Prise en charge personnalisée • Non-invasive et spécifique • À Canet
+        Prise en charge personnalisée • Non-invasive et spécifique • À Canet et Montpellier
         <span class="hero-badge__brand">Coraline TABERT</span>
       </p>
 
-      <div class="hero-badge__actions" data-contact-widget>
-        <a class="hero-badge__btn" href="prestations.html">Prendre rendez-vous</a>
+      <div class="hero-badge__actions" data-contact-widget hidden>
+        <a class="hero-badge__btn" href="prestations.html">Prendre rendez vous sur Doctolib</a>
 
         <button
           class="hero-badge__link hero-contact-trigger js-contact-trigger"
@@ -446,18 +470,25 @@
   <div class="container contact-band__inner">
 
     <!-- Adresse -->
-    <a class="contact-item"
+    <a class="contact-item contact-item--primary-address"
        href="https://www.google.com/maps/dir/?api=1&destination=3+Lotissement+la+sarriette+34800+Canet"
        target="_blank" rel="noopener">
       <svg class="icon" aria-hidden="true"><use href="#icon-pin"></use></svg>
       <span>3 Lotissement la sarriette, 34800 Canet</span>
     </a>
 
+    <a class="contact-item contact-item--secondary-address"
+       href="https://www.google.com/maps/dir/?api=1&destination=3+Rue+Paul+Lacroix+34070+Montpellier"
+       target="_blank" rel="noopener">
+      <svg class="icon" aria-hidden="true"><use href="#icon-pin"></use></svg>
+      <span>3 Rue Paul Lacroix, 34070 Montpellier</span>
+    </a>
+
     <!-- Email -->
     <a class="contact-item"
        href="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697482&pid=practice-44027&source=profile" target="_blank" rel="noopener">
       <svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg>
-      <span>Prendre rendez-vous</span>
+      <span>Prendre rendez-vous sur Doctolib</span>
     </a>
 
     <!-- Téléphone -->
@@ -670,7 +701,7 @@
       </div>
     </section>
 
-    <section class="schedule-section" aria-labelledby="horaires-cabinets-title">
+    <section class="schedule-section" id="horaires-cabinets" aria-labelledby="horaires-cabinets-title">
       <div class="schedule-section__inner">
         <header class="schedule-section__head">
           <h2 class="schedule-section__title" id="horaires-cabinets-title">Horaires des cabinets</h2>
@@ -687,6 +718,11 @@
               <li class="schedule-card__item">
                 <span class="schedule-card__day">Mardi</span>
                 <span class="schedule-card__time">09h00 - 11h00
+14h00 - 17h00</span>
+              </li>
+              <li class="schedule-card__item">
+                <span class="schedule-card__day">Samedi</span>
+                <span class="schedule-card__time">09h00 - 12h00
 14h00 - 17h00</span>
               </li>
             </ul>
@@ -783,10 +819,10 @@
       <p class="siteFooter__copy">© <span data-current-year></span> Cabinet Coraline TABERT</p>
 
       <div class="siteFooter__contacts">
-        <a class="siteFooter__contact" href="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697482&pid=practice-44027&source=profile" target="_blank" rel="noopener">
+        <p class="siteFooter__contact" aria-label="Ancienneté du cabinet">
           <svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg>
-          <span>Prendre rendez-vous</span>
-        </a>
+          <span>Ostéopathe depuis 1998</span>
+        </p>
       </div>
     </div>
   </footer>
@@ -823,6 +859,13 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      var scheduleSection = document.querySelector('.schedule-section');
+      var avisSection = document.querySelector('.avis');
+
+      if (scheduleSection && avisSection && scheduleSection.nextElementSibling !== avisSection) {
+        scheduleSection.insertAdjacentElement('afterend', avisSection);
+      }
+
       var mapButtons = document.querySelectorAll('.map-switcher__btn');
       var mapEmbed = document.querySelector('[data-map-embed]');
       var mapCta = document.querySelector('[data-map-cta]');
@@ -845,6 +888,126 @@
         });
       });
     });
+  </script>
+  <script>
+    (function () {
+      function getHorairesTop(section) {
+        var header = document.querySelector('.siteHeader');
+        var headerOffset = header ? header.offsetHeight + 16 : 132;
+        return Math.max(section.getBoundingClientRect().top + window.scrollY - headerOffset, 0);
+      }
+
+      function scrollToHoraires() {
+        if (window.location.hash !== '#horaires-cabinets') {
+          return;
+        }
+
+        var section = document.getElementById('horaires-cabinets');
+        if (!section) {
+          return;
+        }
+
+        window.scrollTo({
+          top: getHorairesTop(section),
+          behavior: 'auto'
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        scrollToHoraires();
+        window.setTimeout(scrollToHoraires, 150);
+        window.setTimeout(scrollToHoraires, 500);
+      });
+
+      window.addEventListener('load', function () {
+        scrollToHoraires();
+        window.setTimeout(scrollToHoraires, 150);
+      });
+
+      window.addEventListener('hashchange', scrollToHoraires);
+    })();
+  </script>
+  <script>
+    (function () {
+      var homeLink = document.querySelector('[data-nav-home]');
+      var hoursLink = document.querySelector('[data-nav-hours]');
+      var resetEvents = ['wheel', 'touchmove', 'keydown'];
+      var removeResetListeners = function () {};
+
+      if (!homeLink || !hoursLink) {
+        return;
+      }
+
+      function setActive(link) {
+        [homeLink, hoursLink].forEach(function (item) {
+          var isActive = item === link;
+          item.classList.toggle('is-active', isActive);
+
+          if (isActive) {
+            item.setAttribute('aria-current', 'page');
+          } else {
+            item.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      function clearResetListeners() {
+        removeResetListeners();
+        removeResetListeners = function () {};
+      }
+
+      function armResetOnUserMove() {
+        clearResetListeners();
+
+        var resetOnMove = function () {
+          setActive(homeLink);
+          clearResetListeners();
+        };
+
+        resetEvents.forEach(function (eventName) {
+          window.addEventListener(eventName, resetOnMove, { passive: true });
+        });
+
+        removeResetListeners = function () {
+          resetEvents.forEach(function (eventName) {
+            window.removeEventListener(eventName, resetOnMove, { passive: true });
+          });
+        };
+      }
+
+      function activateHoursIfNeeded() {
+        if (window.location.hash === '#horaires-cabinets') {
+          setActive(hoursLink);
+          armResetOnUserMove();
+          return;
+        }
+
+        setActive(homeLink);
+        clearResetListeners();
+      }
+
+      hoursLink.addEventListener('click', function (event) {
+        var section = document.getElementById('horaires-cabinets');
+
+        event.preventDefault();
+        setActive(hoursLink);
+
+        if (section) {
+          history.replaceState(null, '', '#horaires-cabinets');
+          var header = document.querySelector('.siteHeader');
+          var headerOffset = header ? header.offsetHeight + 16 : 132;
+          var targetTop = Math.max(section.getBoundingClientRect().top + window.scrollY - headerOffset, 0);
+          window.scrollTo({ top: targetTop, behavior: 'auto' });
+        } else {
+          window.location.hash = 'horaires-cabinets';
+        }
+
+        window.setTimeout(armResetOnUserMove, 50);
+      });
+
+      document.addEventListener('DOMContentLoaded', activateHoursIfNeeded);
+      window.addEventListener('hashchange', activateHoursIfNeeded);
+    })();
   </script>
   <script src="assets/js/schedule-hours.js" defer></script>
   <script src="assets/js/index.js" defer></script>

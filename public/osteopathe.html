@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ostéopathie à Canet | Coraline TABERT</title>
-  <meta name="description" content="Découvrez l'approche de Coraline TABERT, ostéopathe à Canet : déroulement d'une séance, prise en charge douce et accompagnement de tous les patients." />
+  <title>Ostéopathie à Canet et Montpellier | Coraline TABERT</title>
+  <meta name="description" content="Découvrez l'approche de Coraline TABERT, ostéopathe à Canet et Montpellier : déroulement d'une séance, prise en charge douce et accompagnement de tous les patients." />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#698A65" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Ostéopathie à Canet | Coraline TABERT" />
-  <meta property="og:description" content="Découvrez l'approche de Coraline TABERT, ostéopathe à Canet : déroulement d'une séance, prise en charge douce et accompagnement de tous les patients." />
+  <meta property="og:title" content="Ostéopathie à Canet et Montpellier | Coraline TABERT" />
+  <meta property="og:description" content="Découvrez l'approche de Coraline TABERT, ostéopathe à Canet et Montpellier : déroulement d'une séance, prise en charge douce et accompagnement de tous les patients." />
   <meta property="og:url" content="https://cabinet-tabert.vercel.app/osteopathe.html" />
   <link rel="canonical" href="https://cabinet-tabert.vercel.app/osteopathe.html" />
 
@@ -23,6 +23,29 @@
   <link rel="stylesheet" href="assets/css/globals.min.css" />
   <link rel="stylesheet" href="assets/css/layout.min.css" />
   <link rel="stylesheet" href="assets/css/osteopathe.min.css" />
+  <style>
+    @media (min-width: 769px) {
+      .siteNav {
+        gap: 6px;
+        padding: 4px;
+      }
+
+      .siteNav a {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+
+      .siteNav__nowrap {
+        white-space: nowrap;
+      }
+
+      .siteNav__link--osteopathie.is-active,
+      .siteNav__link--osteopathie[aria-current="page"] {
+        box-shadow: none;
+        transform: none;
+      }
+    }
+  </style>
   <script src="assets/js/site.min.js" defer></script>
   <script src="assets/js/header.min.js" defer></script>
 </head>
@@ -46,7 +69,7 @@
         </picture>
         <span class="siteHeader__brandText">
           <strong class="siteHeader__brandName">Coraline TABERT</strong>
-          <span class="siteHeader__brandRole">Ostéopathe à Canet</span>
+          <span class="siteHeader__brandRole">Ostéopathe à Canet et Montpellier</span>
         </span>
       </a>
 
@@ -60,7 +83,8 @@
 
       <nav class="siteNav" id="mobileNav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
-        <a class="is-active" href="osteopathe.html" aria-current="page">L'ostéopathie | À quoi s'attendre ?</a>
+        <a href="index.html#horaires-cabinets">Horaires</a>
+        <a class="siteNav__link--osteopathie is-active" href="osteopathe.html" aria-current="page">L'ostéopathie | À quoi <span class="siteNav__nowrap">s'attendre&nbsp;?</span></a>
         <a href="prestations.html">Voir les prestations</a>
       </nav>
 
@@ -77,7 +101,7 @@
       <div class="seance__inner">
         <header class="seance__head">
           <h1 class="seance__title" id="seance-title">Comment se déroule une séance d’ostéopathie ?</h1>
-          <p class="seance__subtitle">Une consultation en plusieurs temps, pensée pour comprendre votre situation et vous proposer une prise en charge douce, claire et personnalisée.</p>
+          <p class="seance__subtitle">Une consultation pensée pour comprendre votre situation et vous proposer une prise en charge douce, claire et personnalisée.</p>
         </header>
 
         <ol class="seance__steps">
@@ -194,7 +218,7 @@
             </p>
 
             <p>
-              J’exerce l’ostéopathie en cabinet à <strong>Montpellier depuis plus de 20 ans</strong> et j’ouvre aujourd’hui un <strong>nouveau cabinet à Canet (34)</strong>, afin de proposer cette même qualité d’accompagnement dans un nouveau lieu de consultation.
+              J’exerce l’ostéopathie en cabinet à <strong>Montpellier depuis plus de 20 ans</strong> et à <strong>Canet (34)</strong>, afin de proposer cette même qualité d’accompagnement dans mes deux lieux de consultation.
             </p>
 
             <p>

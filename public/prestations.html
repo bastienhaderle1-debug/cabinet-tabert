@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Prestations d'ost&eacute;opathie | Coraline TABERT &agrave; Canet</title>
-  <meta name="description" content="Consultez les prestations d'ost&eacute;opathie de Coraline TABERT &agrave; Canet : premi&egrave;re consultation, suivi, enfant et femme enceinte." />
+  <title>Prestations d'ost&eacute;opathie | Coraline TABERT &agrave; Canet et Montpellier</title>
+  <meta name="description" content="Consultez les prestations d'ost&eacute;opathie de Coraline TABERT &agrave; Canet et Montpellier : premi&egrave;re consultation, suivi, enfant et femme enceinte." />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#698A65" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Prestations d'ost&eacute;opathie | Coraline TABERT &agrave; Canet" />
-  <meta property="og:description" content="Consultez les prestations d'ost&eacute;opathie de Coraline TABERT &agrave; Canet : premi&egrave;re consultation, suivi, enfant et femme enceinte." />
+  <meta property="og:title" content="Prestations d'ost&eacute;opathie | Coraline TABERT &agrave; Canet et Montpellier" />
+  <meta property="og:description" content="Consultez les prestations d'ost&eacute;opathie de Coraline TABERT &agrave; Canet et Montpellier : premi&egrave;re consultation, suivi, enfant et femme enceinte." />
   <meta property="og:url" content="https://cabinet-tabert.vercel.app/prestations.html" />
   <link rel="canonical" href="https://cabinet-tabert.vercel.app/prestations.html" />
 
@@ -22,6 +22,29 @@
   <link rel="stylesheet" href="assets/css/globals.min.css" />
   <link rel="stylesheet" href="assets/css/layout.min.css" />
   <link rel="stylesheet" href="assets/css/prestations.min.css" />
+  <style>
+    @media (min-width: 769px) {
+      .siteNav {
+        gap: 6px;
+        padding: 4px;
+      }
+
+      .siteNav a {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+
+      .siteNav__nowrap {
+        white-space: nowrap;
+      }
+
+      .siteNav__link--osteopathie.is-active,
+      .siteNav__link--osteopathie[aria-current="page"] {
+        box-shadow: none;
+        transform: none;
+      }
+    }
+  </style>
   <script src="assets/js/site.min.js" defer></script>
   <script src="assets/js/header.min.js" defer></script>
   <script src="assets/js/prestations.js" defer></script>
@@ -52,7 +75,7 @@
         </picture>
         <span class="siteHeader__brandText">
           <strong class="siteHeader__brandName">Coraline TABERT</strong>
-          <span class="siteHeader__brandRole">Ost&eacute;opathe &agrave; Canet</span>
+          <span class="siteHeader__brandRole">Ost&eacute;opathe &agrave; Canet et Montpellier</span>
         </span>
       </a>
 
@@ -66,7 +89,8 @@
 
       <nav class="siteNav" id="mobileNav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
-        <a href="osteopathe.html">L'ost&eacute;opathie | &Agrave; quoi s'attendre ?</a>
+        <a href="index.html#horaires-cabinets">Horaires</a>
+        <a class="siteNav__link--osteopathie" href="osteopathe.html">L'ost&eacute;opathie | &Agrave; quoi <span class="siteNav__nowrap">s'attendre&nbsp;?</span></a>
         <a class="is-active" href="prestations.html" aria-current="page">Voir les prestations</a>
       </nav>
 
@@ -220,7 +244,7 @@
                 </div>
                 <div>
                   <div class="summaryCard__strong">Cabinet Coraline TABERT</div>
-                  <div class="summaryCard__muted">Ost&eacute;opathe &agrave; Canet</div>
+                  <div class="summaryCard__muted">Ost&eacute;opathe &agrave; Canet et Montpellier</div>
                 </div>
               </div>
 
