@@ -269,7 +269,11 @@ function applyHomeContent(content) {
 
   const heroText = document.querySelector('.hero-badge__text');
   if (heroText) {
-    heroText.innerHTML = `${escapeHtml(hero.text || '')}<span class="hero-badge__brand">${escapeHtml(hero.brand || '')}</span>`;
+    const heroCopy = escapeHtml(hero.text || '');
+    const heroBrand = escapeHtml(hero.brand || '');
+    heroText.innerHTML = heroBrand
+      ? `${heroCopy}<span class="hero-badge__brand">${heroBrand}</span>`
+      : heroCopy;
   }
 
   const heroCta = document.querySelector('.hero-badge__btn');

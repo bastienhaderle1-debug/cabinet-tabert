@@ -20,7 +20,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/img/hero-chiro-1-1280.webp" imagesrcset="assets/img/hero-chiro-1-768.webp 640w, assets/img/hero-chiro-1-1280.webp 900w, assets/img/hero-chiro-1.webp 1170w" imagesizes="100vw" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="image" href="assets/img/hero-chiro-1-1280.webp" imagesrcset="assets/img/hero-chiro-1-768.webp 768w, assets/img/hero-chiro-1-1280.webp 1280w, assets/img/hero-chiro-1.webp 1536w" imagesizes="100vw" fetchpriority="high" type="image/webp">
   <link rel="stylesheet" href="assets/css/fonts.min.css" />
 
   <!-- LocalBusiness schema -->
@@ -43,7 +43,7 @@
   <!-- Font Awesome (icônes) -->
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/home.min.css" />
-  <link rel="stylesheet" href="assets/css/hero-nav-fix.css?v=20260412-hero-right" />
+  <link rel="stylesheet" href="assets/css/hero-nav-fix.css?v=20260413-hero-crop2" />
   <link rel="stylesheet" href="assets/css/local-page.css" />
   <style>
     @media (min-width: 769px) {
@@ -371,57 +371,23 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" aria-label="Introduction" data-hero-slider>
+    <section class="hero" aria-label="Introduction">
     <div class="hero__media" aria-hidden="true">
       <picture class="hero__slide is-active">
         <source
           type="image/webp"
-          srcset="assets/img/hero-chiro-1-768.webp 640w, assets/img/hero-chiro-1-1280.webp 900w, assets/img/hero-chiro-1.webp 1170w"
+          srcset="assets/img/hero-chiro-1-768.webp 768w, assets/img/hero-chiro-1-1280.webp 1280w, assets/img/hero-chiro-1.webp 1536w"
           sizes="100vw">
-        <img class="hero__image" src="assets/img/hero-chiro-1-1280.jpg" srcset="assets/img/hero-chiro-1-768.jpg 640w, assets/img/hero-chiro-1-1280.jpg 900w, assets/img/hero-chiro-1.jpg 1170w" sizes="100vw" alt="" width="1170" height="658" fetchpriority="high" decoding="async">
+        <img class="hero__image" src="assets/img/hero-chiro-1-1280.jpg" srcset="assets/img/hero-chiro-1-768.jpg 768w, assets/img/hero-chiro-1-1280.jpg 1280w, assets/img/hero-chiro-1.jpg 1536w" sizes="100vw" alt="Cabinet d'ost�opathie Coraline Tabert" width="1536" height="1024" fetchpriority="high" decoding="async">
       </picture>
-</div>
+    </div>
 
     <div class="hero-badge">
-      <p class="hero-badge__kicker">CABINET D'OSTÉOPATHIE</p>
       <h1 class="hero-badge__title">Soulagez durablement vos douleurs</h1>
-      <p class="hero-badge__text">
-        Prise en charge personnalisée • Non-invasive et spécifique • À Canet et Montpellier
-        <span class="hero-badge__brand">Coraline TABERT</span>
-      </p>
-
-      <div class="hero-badge__actions" data-contact-widget>
-        <a class="hero-badge__btn" href="prestations.html">Prendre rendez vous sur Doctolib</a>
-
-        <button
-          class="hero-badge__link hero-contact-trigger js-contact-trigger"
-          type="button"
-          aria-expanded="false"
-          aria-haspopup="dialog"
-          aria-controls="heroContactPanel">
-          Contact
-        </button>
-
-        <div class="hero-contact-panel js-contact-panel" id="heroContactPanel" role="dialog" aria-label="Coordonnées du cabinet" hidden inert>
-          <button class="hero-contact-close js-contact-close" type="button" aria-label="Fermer">&times;</button>
-
-          <div class="hero-contact-content">
-
-            <a href="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697482&pid=practice-44027&source=profile" target="_blank" rel="noopener">
-              <svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg>
-              <span>Prendre rendez-vous</span>
-            </a>
-
-            <a href="https://www.google.com/maps/dir/?api=1&destination=3+Lotissement+la+sarriette+34800+Canet"
-               target="_blank" rel="noopener">
-              <svg class="icon" aria-hidden="true"><use href="#icon-pin"></use></svg>
-              <span>Venir au cabinet</span>
-            </a>
-          </div>
-        </div>
-
+      <p class="hero-badge__text">Ost�opathe � Canet et Montpellier</p>
+      <div class="hero-badge__actions">
+        <a class="hero-badge__btn" href="prestations.html">Prendre rendez-vous</a>
       </div>
-
     </div>
   </section>
 
