@@ -813,6 +813,145 @@ function initBodymapLocker() {
   });
 }
 
+function initHomeScheduleAndMap() {
+  const scheduleSection = document.querySelector('.schedule-section');
+  const avisSection = document.querySelector('.avis');
+
+  if (scheduleSection && avisSection && scheduleSection.nextElementSibling !== avisSection) {
+    scheduleSection.insertAdjacentElement('afterend', avisSection);
+  }
+
+  const mapButtons = [...document.querySelectorAll('.map-switcher__btn')];
+  const mapEmbed = document.querySelector('[data-map-embed]');
+  const mapCta = document.querySelector('[data-map-cta]');
+
+  if (!mapButtons.length || !mapEmbed || !mapCta) return;
+
+  mapButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      mapButtons.forEach((item) => {
+        item.classList.remove('is-active');
+      });
+
+      button.classList.add('is-active');
+      mapEmbed.src = button.getAttribute('data-map-src') || mapEmbed.src;
+      mapEmbed.title = `Localisation du cabinet de ${button.getAttribute('data-map-label') || ''} sur Google Maps`;
+      mapCta.href = button.getAttribute('data-map-link') || mapCta.href;
+      mapCta.textContent = `CLIQUEZ ICI POUR VENIR AU CABINET DE ${(button.getAttribute('data-map-label') || '').toUpperCase()}`;
+    });
+  });
+}
+
+function initHorairesHashScroll() {
+  function getHorairesTop(section) {
+    const header = document.querySelector('.siteHeader');
+    const headerOffset = header ? header.offsetHeight + 16 : 132;
+    return Math.max(section.getBoundingClientRect().top + window.scrollY - headerOffset, 0);
+  }
+
+  function scrollToHoraires() {
+    if (window.location.hash !== '#horaires-cabinets') return;
+
+    const section = document.getElementById('horaires-cabinets');
+    if (!section) return;
+
+    window.scrollTo({
+      top: getHorairesTop(section),
+      behavior: 'auto'
+    });
+  }
+
+  scrollToHoraires();
+  window.setTimeout(scrollToHoraires, 150);
+  window.setTimeout(scrollToHoraires, 500);
+
+  window.addEventListener('load', () => {
+    scrollToHoraires();
+    window.setTimeout(scrollToHoraires, 150);
+  });
+
+  window.addEventListener('hashchange', scrollToHoraires);
+}
+
+function initHomeNavState() {
+  const homeLink = document.querySelector('[data-nav-home]');
+  const hoursLink = document.querySelector('[data-nav-hours]');
+  const resetEvents = ['wheel', 'touchmove', 'keydown'];
+  let removeResetListeners = () => {};
+
+  if (!homeLink || !hoursLink) return;
+
+  function setActive(link) {
+    [homeLink, hoursLink].forEach((item) => {
+      const isActive = item === link;
+      item.classList.toggle('is-active', isActive);
+
+      if (isActive) {
+        item.setAttribute('aria-current', 'page');
+      } else {
+        item.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function clearResetListeners() {
+    removeResetListeners();
+    removeResetListeners = () => {};
+  }
+
+  function armResetOnUserMove() {
+    clearResetListeners();
+
+    const resetOnMove = () => {
+      setActive(homeLink);
+      clearResetListeners();
+    };
+
+    resetEvents.forEach((eventName) => {
+      window.addEventListener(eventName, resetOnMove, { passive: true });
+    });
+
+    removeResetListeners = () => {
+      resetEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, resetOnMove, { passive: true });
+      });
+    };
+  }
+
+  function activateHoursIfNeeded() {
+    if (window.location.hash === '#horaires-cabinets') {
+      setActive(hoursLink);
+      armResetOnUserMove();
+      return;
+    }
+
+    setActive(homeLink);
+    clearResetListeners();
+  }
+
+  hoursLink.addEventListener('click', (event) => {
+    const section = document.getElementById('horaires-cabinets');
+
+    event.preventDefault();
+    setActive(hoursLink);
+
+    if (section) {
+      history.replaceState(null, '', '#horaires-cabinets');
+      const header = document.querySelector('.siteHeader');
+      const headerOffset = header ? header.offsetHeight + 16 : 132;
+      const targetTop = Math.max(section.getBoundingClientRect().top + window.scrollY - headerOffset, 0);
+      window.scrollTo({ top: targetTop, behavior: 'auto' });
+    } else {
+      window.location.hash = 'horaires-cabinets';
+    }
+
+    window.setTimeout(armResetOnUserMove, 50);
+  });
+
+  activateHoursIfNeeded();
+  window.addEventListener('hashchange', activateHoursIfNeeded);
+}
+
 (async function initHomePage() {
   try {
     const content = await fetchSiteContent();
@@ -821,6 +960,9 @@ function initBodymapLocker() {
     console.error(error);
   }
 
+  initHomeScheduleAndMap();
+  initHorairesHashScroll();
+  initHomeNavState();
   initHeroRailLoop();
   initWhenNearViewport('.avis', initAvisCarousel);
   initWhenNearViewport('.bodymap', () => {
