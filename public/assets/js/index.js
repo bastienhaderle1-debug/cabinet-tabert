@@ -69,11 +69,15 @@ function normalizeCanetMontpellier(value) {
 }
 
 const PRODUCTION_ORIGIN = 'https://cabinet-tabert.vercel.app';
-const isLocalApiContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+const isLocalApiContext =
+  window.location.protocol === 'file:' ||
+  /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+
 const siteApiBase = (() => {
-  const configured = document.documentElement.getAttribute('data-api-base')
-    || window.localStorage.getItem('siteApiBase')
-    || window.localStorage.getItem('adminApiBase');
+  const configured =
+    document.documentElement.getAttribute('data-api-base') ||
+    window.localStorage.getItem('siteApiBase') ||
+    window.localStorage.getItem('adminApiBase');
 
   if (configured) {
     return configured.replace(/\/$/, '');
@@ -103,11 +107,13 @@ async function parseApiJson(response, fallbackMessage) {
     const payload = JSON.parse(raw);
 
     if (!response.ok) {
-      const errorMessage = typeof payload?.error === 'string'
-        ? payload.error
-        : typeof payload?.error?.message === 'string'
-          ? payload.error.message
-          : fallbackMessage;
+      const errorMessage =
+        typeof payload?.error === 'string'
+          ? payload.error
+          : typeof payload?.error?.message === 'string'
+            ? payload.error.message
+            : fallbackMessage;
+
       throw new Error(errorMessage);
     }
 
@@ -128,7 +134,10 @@ async function fetchSiteContent() {
     }
   });
 
-  return parseApiJson(response, `Impossible de charger le contenu du site depuis ${siteApiBase}.`);
+  return parseApiJson(
+    response,
+    `Impossible de charger le contenu du site depuis ${siteApiBase}.`
+  );
 }
 
 function setMetaContent(selector, value) {
@@ -167,10 +176,14 @@ function updateAnchorText(selector, value) {
 function renderBodymapHotspots(container, hotspots) {
   const picture = container.querySelector('picture');
   const pictureMarkup = picture ? picture.outerHTML : '';
+
   const hotspotMarkup = hotspots.map((item) => `
-    <button class="bodymap__tag ${escapeHtml(item.className || '')}" type="button"
-            data-title="${escapeHtml(item.title)}"
-            data-text="${escapeHtml(item.text)}">
+    <button
+      class="bodymap__tag ${escapeHtml(item.className || '')}"
+      type="button"
+      data-title="${escapeHtml(item.title)}"
+      data-text="${escapeHtml(item.text)}"
+    >
       ${nl2br(item.label)}
     </button>
   `).join('');
@@ -181,9 +194,12 @@ function renderBodymapHotspots(container, hotspots) {
 function renderBodymapLocker(listNode, items) {
   listNode.innerHTML = items.map((item) => `
     <li class="bodymap__lockerItem">
-      <button class="bodymap__lockerBtn" type="button"
-              data-title="${escapeHtml(item.title)}"
-              data-text="${escapeHtml(item.text)}">
+      <button
+        class="bodymap__lockerBtn"
+        type="button"
+        data-title="${escapeHtml(item.title)}"
+        data-text="${escapeHtml(item.text)}"
+      >
         ${escapeHtml(item.label)}
       </button>
     </li>
@@ -208,9 +224,11 @@ function applySharedContent(shared) {
     ...shared,
     brandRole: normalizeCanetMontpellier(shared.brandRole)
   };
-  const bookingLabelWithDoctolib = normalizedShared.bookingLabel && /doctolib/i.test(normalizedShared.bookingLabel)
-    ? normalizedShared.bookingLabel
-    : `${normalizedShared.bookingLabel || 'Prendre rendez-vous'} sur Doctolib`;
+
+  const bookingLabelWithDoctolib =
+    normalizedShared.bookingLabel && /doctolib/i.test(normalizedShared.bookingLabel)
+      ? normalizedShared.bookingLabel
+      : `${normalizedShared.bookingLabel || 'Prendre rendez-vous'} sur Doctolib`;
 
   setTextContent('.siteHeader__brandName', normalizedShared.brandName);
   setTextContent('.siteHeader__brandRole', normalizedShared.brandRole);
@@ -219,6 +237,7 @@ function applySharedContent(shared) {
   document.querySelectorAll('.siteHeader__cta').forEach((node) => {
     node.textContent = normalizedShared.bookingLabel;
   });
+
   setAnchorHref('.siteFooter__contact[href*="doctolib.fr"]', normalizedShared.bookingUrl);
 
   setAnchorHref('.hero-contact-content a[href*="doctolib.fr"]', normalizedShared.bookingUrl);
@@ -232,7 +251,6 @@ function applySharedContent(shared) {
   setAnchorHref('.floating-contact__content a[href*="google.com/maps/dir"]', normalizedShared.mapsUrl);
 
   updateAnchorText('.siteFooter__contact[href*="doctolib.fr"]', normalizedShared.bookingLabel);
-
   updateAnchorText('.hero-contact-content a[href*="doctolib.fr"]', normalizedShared.bookingLabel);
 
   updateAnchorText('.contact-band .contact-item[href*="doctolib.fr"]', bookingLabelWithDoctolib);
@@ -269,8 +287,7 @@ function applyHomeContent(content) {
 
   const heroText = document.querySelector('.hero-badge__text');
   if (heroText) {
-    const heroCopy = escapeHtml(hero.text || '');
-    heroText.innerHTML = heroCopy;
+    heroText.innerHTML = escapeHtml(hero.text || '');
   }
 
   const heroCta = document.querySelector('.hero-badge__btn');
@@ -307,14 +324,15 @@ function applyHomeContent(content) {
   setTextContent('.local-links__title', home.localLinksTitle);
 }
 
-/* CONTACT POPUPS */
 (function () {
-  const widgets = [...document.querySelectorAll('[data-contact-widget]')].map((widget) => ({
-    widget,
-    trigger: widget.querySelector('.js-contact-trigger'),
-    panel: widget.querySelector('.js-contact-panel'),
-    closeBtn: widget.querySelector('.js-contact-close')
-  })).filter(({ trigger, panel }) => trigger && panel);
+  const widgets = [...document.querySelectorAll('[data-contact-widget]')]
+    .map((widget) => ({
+      widget,
+      trigger: widget.querySelector('.js-contact-trigger'),
+      panel: widget.querySelector('.js-contact-panel'),
+      closeBtn: widget.querySelector('.js-contact-close')
+    }))
+    .filter(({ trigger, panel }) => trigger && panel);
 
   if (!widgets.length) return;
 
@@ -395,12 +413,14 @@ function initAvisCarousel() {
   const prevBtn = wrap.querySelector('.avis__nav--prev');
   const nextBtn = wrap.querySelector('.avis__nav--next');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   let cardCenters = [];
   let maxScrollLeft = 0;
 
   if (!viewport || cards.length === 0 || !dotsWrap) return;
 
   dotsWrap.replaceChildren();
+
   const dots = cards.map((_, index) => {
     const button = document.createElement('button');
     button.className = 'avis__dot';
@@ -473,12 +493,6 @@ function initAvisCarousel() {
   viewport.addEventListener('scroll', scheduleFrame(updateDots), { passive: true });
   window.addEventListener('resize', refreshCarousel, { passive: true });
 
-  if ('ResizeObserver' in window) {
-    const resizeObserver = new ResizeObserver(refreshCarousel);
-    resizeObserver.observe(viewport);
-    cards.forEach((card) => resizeObserver.observe(card));
-  }
-
   updateMetrics();
   updateDots();
 }
@@ -486,6 +500,8 @@ function initAvisCarousel() {
 function initHeroRailLoop() {
   const lanes = [...document.querySelectorAll('.hero-side-rail__lane')];
   if (!lanes.length) return;
+
+  let isRefreshing = false;
 
   function syncLane(lane) {
     const track = lane.querySelector('.hero-side-rail__track');
@@ -497,37 +513,37 @@ function initHeroRailLoop() {
     const trackStyles = window.getComputedStyle(track);
     const gap = parseFloat(trackStyles.rowGap || trackStyles.gap || '0') || 0;
     const baseHeight = baseGroup.offsetHeight;
+    const laneHeight = lane.clientHeight;
     const loopDistance = baseHeight + gap;
-    if (!loopDistance) return;
 
-    while ((track.scrollHeight - loopDistance) < lane.clientHeight) {
+    if (!loopDistance || !laneHeight) return;
+
+    let safety = 0;
+    while ((track.scrollHeight - loopDistance) < laneHeight && safety < 6) {
       const clone = baseGroup.cloneNode(true);
       clone.dataset.heroRailClone = 'true';
       clone.setAttribute('aria-hidden', 'true');
       track.appendChild(clone);
+      safety += 1;
     }
 
     track.style.setProperty('--hero-rail-loop-distance', `${loopDistance}px`);
   }
 
   const refreshRails = scheduleFrame(() => {
+    if (isRefreshing) return;
+    isRefreshing = true;
+
     lanes.forEach(syncLane);
+
+    window.requestAnimationFrame(() => {
+      isRefreshing = false;
+    });
   });
 
   refreshRails();
   window.addEventListener('load', refreshRails, { passive: true });
   window.addEventListener('resize', refreshRails, { passive: true });
-
-  if ('ResizeObserver' in window) {
-    const resizeObserver = new ResizeObserver(refreshRails);
-    lanes.forEach((lane) => {
-      resizeObserver.observe(lane);
-      const baseGroup = lane.querySelector('.hero-side-rail__group');
-      if (baseGroup) {
-        resizeObserver.observe(baseGroup);
-      }
-    });
-  }
 }
 
 function initBodymap() {
@@ -537,6 +553,7 @@ function initBodymap() {
   const canvas = root.querySelector('.bodymap__canvas');
   const tags = [...root.querySelectorAll('.bodymap__tag')];
   const mobilePopupQuery = window.matchMedia('(max-width:520px)');
+
   if (!canvas || !tags.length) return;
 
   const popups = new Map();
@@ -557,7 +574,9 @@ function initBodymap() {
     const edge = 8;
     const canvasRect = canvas.getBoundingClientRect();
     const tagRect = tag.getBoundingClientRect();
-    const isRightSide = (tagRect.left + tagRect.width / 2) >= (canvasRect.left + canvasRect.width / 2);
+    const isRightSide =
+      (tagRect.left + tagRect.width / 2) >= (canvasRect.left + canvasRect.width / 2);
+
     const popupWidth = popup.offsetWidth;
     const popupHeight = popup.offsetHeight;
 
@@ -603,10 +622,9 @@ function initBodymap() {
 
       if (isCurrent) {
         showPopup(item);
-        return;
+      } else {
+        hidePopup(item);
       }
-
-      hidePopup(item);
     });
   }
 
@@ -680,7 +698,10 @@ function initBodymap() {
         return;
       }
 
-      if (popup && event.relatedTarget instanceof Node && popup.contains(event.relatedTarget)) return;
+      if (popup && event.relatedTarget instanceof Node && popup.contains(event.relatedTarget)) {
+        return;
+      }
+
       setActive(null);
     });
 
@@ -746,6 +767,7 @@ function initBodymapLocker() {
   const panel = locker.querySelector('[data-bodymap-locker-panel]');
   const title = locker.querySelector('[data-bodymap-locker-title]');
   const text = locker.querySelector('[data-bodymap-locker-text]');
+
   if (!buttons.length || !panel || !title || !text) return;
 
   let activeButton = null;
@@ -946,7 +968,7 @@ function initHomeNavState() {
 
     removeResetListeners = () => {
       resetEvents.forEach((eventName) => {
-        window.removeEventListener(eventName, resetOnMove, { passive: true });
+        window.removeEventListener(eventName, resetOnMove);
       });
     };
   }
@@ -997,6 +1019,7 @@ function initHomeNavState() {
   initHorairesHashScroll();
   initHomeNavState();
   initHeroRailLoop();
+
   initWhenNearViewport('.avis', initAvisCarousel);
   initWhenNearViewport('.bodymap', () => {
     initBodymap();
