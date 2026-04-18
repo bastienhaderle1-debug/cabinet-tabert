@@ -22,37 +22,45 @@
     }
     *{box-sizing:border-box}
     body{margin:0;background:linear-gradient(180deg,#fbf8ef 0,#f5f2e6 100%);color:var(--text)}
-    main{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
+    main{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:40px 0 64px}
     h1,h2,h3{font-family:Georgia,serif;color:var(--primary);margin:0}
     p{margin:0}
-    .hero{margin-bottom:24px}
+    .hero{margin-bottom:28px}
     .hero p{max-width:74ch;color:var(--muted);line-height:1.7}
-    .stack{display:grid;gap:18px}
-    .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-    .grid{display:grid;gap:16px}
+    .stack{display:grid;gap:22px}
+    .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .grid{display:grid;gap:18px}
     .grid.two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .sectionHead{display:grid;gap:6px}
+    .sectionHead{display:grid;gap:8px}
     .sectionHead p{color:var(--muted);line-height:1.6}
-    .field{display:grid;gap:6px}
+    .sectionPlain{gap:18px;margin-top:24px}
+    .sectionPlain.panel{
+      padding:0;
+      background:transparent;
+      border:0;
+      border-radius:0;
+      box-shadow:none;
+    }
+    .field{display:grid;gap:8px}
     .field label{font-weight:700}
     .field input,.field textarea{
       width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);font:inherit
     }
     .field textarea{min-height:84px;resize:vertical}
     .field small{color:var(--muted)}
-    .cluster{display:flex;flex-wrap:wrap;gap:12px}
+    .cluster{display:flex;flex-wrap:wrap;gap:14px}
     .group{
-      display:grid;gap:12px;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72)
+      display:grid;gap:14px;padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.76)
     }
     .group.alt{background:var(--surface-alt)}
     .groupHeader{display:flex;justify-content:space-between;gap:12px;align-items:center}
     .groupHeader p{color:var(--muted)}
-    .repeater{display:grid;gap:12px}
+    .repeater{display:grid;gap:14px}
     .repeaterItem{
-      display:grid;gap:10px;padding:14px;border:1px solid rgba(23,54,45,.1);border-radius:14px;background:#fff
+      display:grid;gap:12px;padding:16px;border:1px solid rgba(23,54,45,.1);border-radius:16px;background:#fff
     }
     .repeaterItem__head{display:flex;justify-content:space-between;gap:12px;align-items:center}
-    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .actions{display:flex;flex-wrap:wrap;gap:14px}
     button{
       border:0;border-radius:999px;padding:12px 18px;background:var(--primary);color:#fff;font:700 14px/1 Manrope, Arial, sans-serif;cursor:pointer
     }
@@ -61,13 +69,13 @@
     .status{min-height:24px;color:var(--muted);font-weight:600}
     .status.is-error{color:var(--danger)}
     .meta{font-size:14px;color:var(--muted)}
-    .divider{height:1px;background:var(--line);margin:6px 0}
+    .divider{height:1px;background:var(--line);margin:10px 0}
     @media (max-width:900px){
       .grid.two{grid-template-columns:1fr}
     }
     @media (max-width:720px){
-      main{width:min(100% - 20px,1180px);padding-top:20px}
-      .panel{padding:16px}
+      main{width:min(100% - 20px,1280px);padding-top:24px;padding-bottom:44px}
+      .panel{padding:18px}
       .groupHeader,.repeaterItem__head{align-items:start;flex-direction:column}
     }
   </style>
@@ -76,7 +84,7 @@
   <main>
     <section class="hero">
       <h1>Administration du site</h1>
-      <p>Cette page permet de modifier le contenu principal du site, les prestations et les horaires des cabinets. Les changements sont enregistrés via l’API puis répercutés sur le site public.</p>
+      <p>Cette page permet de modifier le contenu principal du site, les prestations et les horaires des cabinets. Les changements sont enregistrés via l'API puis répercutés sur le site public.</p>
     </section>
 
     <section class="panel stack">
@@ -95,7 +103,7 @@
       </div>
     </section>
 
-    <section class="panel stack">
+    <section class="panel stack sectionPlain">
       <div class="sectionHead">
         <h2>Contenu éditorial</h2>
         <p>Accueil, prestations, avis, zones, liens de contact et SEO principal.</p>
@@ -110,7 +118,7 @@
     <section class="panel stack">
       <div class="sectionHead">
         <h2>Horaires des cabinets</h2>
-        <p>Cabinets, adresses, bouton d’itinéraire et créneaux affichés sur la page d’accueil.</p>
+        <p>Cabinets, adresses, bouton d'itinéraire et créneaux affichés sur la page d'accueil.</p>
       </div>
 
       <div id="schedule-editor" class="stack"></div>
@@ -123,3 +131,4 @@
   <script src="assets/js/admin-hours.js" defer></script>
 </body>
 </html>
+

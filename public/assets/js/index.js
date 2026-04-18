@@ -270,10 +270,7 @@ function applyHomeContent(content) {
   const heroText = document.querySelector('.hero-badge__text');
   if (heroText) {
     const heroCopy = escapeHtml(hero.text || '');
-    const heroBrand = escapeHtml(hero.brand || '');
-    heroText.innerHTML = heroBrand
-      ? `${heroCopy}<span class="hero-badge__brand">${heroBrand}</span>`
-      : heroCopy;
+    heroText.innerHTML = heroCopy;
   }
 
   const heroCta = document.querySelector('.hero-badge__btn');
@@ -484,6 +481,53 @@ function initAvisCarousel() {
 
   updateMetrics();
   updateDots();
+}
+
+function initHeroRailLoop() {
+  const lanes = [...document.querySelectorAll('.hero-side-rail__lane')];
+  if (!lanes.length) return;
+
+  function syncLane(lane) {
+    const track = lane.querySelector('.hero-side-rail__track');
+    const baseGroup = track?.querySelector('.hero-side-rail__group');
+    if (!track || !baseGroup) return;
+
+    track.querySelectorAll('[data-hero-rail-clone="true"]').forEach((group) => group.remove());
+
+    const trackStyles = window.getComputedStyle(track);
+    const gap = parseFloat(trackStyles.rowGap || trackStyles.gap || '0') || 0;
+    const baseHeight = baseGroup.offsetHeight;
+    const loopDistance = baseHeight + gap;
+    if (!loopDistance) return;
+
+    while ((track.scrollHeight - loopDistance) < lane.clientHeight) {
+      const clone = baseGroup.cloneNode(true);
+      clone.dataset.heroRailClone = 'true';
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    }
+
+    track.style.setProperty('--hero-rail-loop-distance', `${loopDistance}px`);
+  }
+
+  const refreshRails = scheduleFrame(() => {
+    lanes.forEach(syncLane);
+  });
+
+  refreshRails();
+  window.addEventListener('load', refreshRails, { passive: true });
+  window.addEventListener('resize', refreshRails, { passive: true });
+
+  if ('ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(refreshRails);
+    lanes.forEach((lane) => {
+      resizeObserver.observe(lane);
+      const baseGroup = lane.querySelector('.hero-side-rail__group');
+      if (baseGroup) {
+        resizeObserver.observe(baseGroup);
+      }
+    });
+  }
 }
 
 function initBodymap() {
@@ -777,6 +821,7 @@ function initBodymapLocker() {
     console.error(error);
   }
 
+  initHeroRailLoop();
   initWhenNearViewport('.avis', initAvisCarousel);
   initWhenNearViewport('.bodymap', () => {
     initBodymap();

@@ -198,7 +198,7 @@
       createField('Adresse', contentState.shared.addressText, (value) => { contentState.shared.addressText = value; }),
       createField('URL Google Maps / itinéraire', contentState.shared.mapsUrl, (value) => { contentState.shared.mapsUrl = value; }),
       createField('Adresse 2', contentState.shared.secondaryAddressText, (value) => { contentState.shared.secondaryAddressText = value; }),
-      createField('URL Google Maps / itinÃ©raire 2', contentState.shared.secondaryMapsUrl, (value) => { contentState.shared.secondaryMapsUrl = value; }),
+      createField('URL Google Maps / itinéraire 2', contentState.shared.secondaryMapsUrl, (value) => { contentState.shared.secondaryMapsUrl = value; }),
     );
     shared.appendChild(sharedGrid);
     contentEditor.appendChild(shared);
@@ -220,7 +220,7 @@
     homeSeo.appendChild(homeSeoGrid);
     contentEditor.appendChild(homeSeo);
 
-    const bodymapGroup = createGroup('Accueil - Zones et motifs', 'Zones interactives du corps et casier “Ou encore”.');
+    const bodymapGroup = createGroup('Accueil - Zones et motifs', 'Zones interactives du corps et casier "Ou encore".');
     bodymapGroup.appendChild(
       createField('Titre de la zone', contentState.home.bodymap.title, (value) => { contentState.home.bodymap.title = value; })
     );
@@ -281,7 +281,7 @@
     ));
     contentEditor.appendChild(bodymapGroup);
 
-    const reviewsGroup = createGroup('Accueil - Avis', 'Titre de section et cartes d’avis.', true);
+    const reviewsGroup = createGroup('Accueil - Avis', "Titre de section et cartes d'avis.", true);
     reviewsGroup.appendChild(
       createField('Titre des avis', contentState.home.reviews.title, (value) => { contentState.home.reviews.title = value; })
     );
@@ -295,7 +295,7 @@
         const grid = document.createElement('div');
         grid.className = 'grid two';
         grid.append(
-          createField('Titre de l’avis', item.quote, (value) => { item.quote = value; }),
+          createField("Titre de l'avis", item.quote, (value) => { item.quote = value; }),
           createField('Nom', item.name, (value) => { item.name = value; }),
           createField('Texte', item.text, (value) => { item.text = value; }, { multiline: true })
         );
@@ -428,7 +428,7 @@
   }
 
   async function saveContent() {
-    setStatus(contentStatusNode, 'Enregistrement du contenu en cours…', false);
+    setStatus(contentStatusNode, 'Enregistrement du contenu en cours...', false);
 
     const response = await fetch(buildApiUrl('/api/content'), {
       method: 'POST',
@@ -439,7 +439,7 @@
       body: JSON.stringify(contentState)
     });
 
-    const payload = await parseApiJson(response, 'Impossible d’enregistrer le contenu.');
+    const payload = await parseApiJson(response, "Impossible d'enregistrer le contenu.");
 
     contentState = payload;
     renderContentEditor();
@@ -447,7 +447,7 @@
   }
 
   async function saveHours() {
-    setStatus(hoursStatusNode, 'Enregistrement des horaires en cours…', false);
+    setStatus(hoursStatusNode, 'Enregistrement des horaires en cours...', false);
 
     const response = await fetch(buildApiUrl('/api/hours'), {
       method: 'POST',
@@ -458,7 +458,7 @@
       body: JSON.stringify(hoursState)
     });
 
-    const payload = await parseApiJson(response, 'Impossible d’enregistrer les horaires.');
+    const payload = await parseApiJson(response, "Impossible d'enregistrer les horaires.");
 
     hoursState = payload;
     renderHoursEditor();
@@ -466,8 +466,8 @@
   }
 
   async function loadAll() {
-    setStatus(contentStatusNode, 'Chargement du contenu…', false);
-    setStatus(hoursStatusNode, 'Chargement des horaires…', false);
+    setStatus(contentStatusNode, 'Chargement du contenu...', false);
+    setStatus(hoursStatusNode, 'Chargement des horaires...', false);
 
     try {
       await Promise.all([loadContent(), loadHours()]);
@@ -490,7 +490,7 @@
       await saveHours();
     } catch (error) {
       console.error(error);
-      const message = error.message || 'Impossible d’enregistrer.';
+      const message = error.message || "Impossible d'enregistrer.";
       setStatus(contentStatusNode, message, true);
       setStatus(hoursStatusNode, message, true);
     }
@@ -500,3 +500,4 @@
 
   loadAll();
 })();
+
