@@ -1,8 +1,8 @@
-﻿{
+{
   "updatedAt": "2026-04-11T15:30:00.000Z",
   "shared": {
     "brandName": "Coraline TABERT",
-    "brandRole": "OstÃ©opathe Ã  Canet et Montpellier",
+    "brandRole": "Ostéopathe à Canet et Montpellier",
     "bookingLabel": "Prendre rendez-vous",
     "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697482&pid=practice-44027&source=profile",
     "addressText": "3 Lotissement la sarriette, 34800 Canet",
@@ -12,16 +12,16 @@
   },
   "home": {
     "seo": {
-      "title": "Coraline TABERT | Cabinet d'ostÃ©opathie Ã  Canet et Montpellier",
-      "description": "Cabinet d'ostÃ©opathie de Coraline TABERT Ã  Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisÃ©e.",
-      "ogTitle": "Coraline TABERT | Cabinet d'ostÃ©opathie Ã  Canet et Montpellier",
-      "ogDescription": "Cabinet d'ostÃ©opathie de Coraline TABERT Ã  Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisÃ©e."
+      "title": "Coraline TABERT | Cabinet d'ostéopathie à Canet et Montpellier",
+      "description": "Cabinet d'ostéopathie de Coraline TABERT à Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisée.",
+      "ogTitle": "Coraline TABERT | Cabinet d'ostéopathie à Canet et Montpellier",
+      "ogDescription": "Cabinet d'ostéopathie de Coraline TABERT à Canet et Montpellier. Consultations sur rendez-vous, prise en charge douce et personnalisée."
     },
     "hero": {
-      "kicker": "CABINET D'OSTÃ‰OPATHIE",
+      "kicker": "cabinet d'ostéopathie",
       "title": "Soulagez durablement vos douleurs",
-      "text": "OstÃ©opathe Ã  Canet et Montpellier",
-      "brand": "",
+      "text": "Une prise en charge douce et personnalisée.",
+      "brand": "Cabinet Coraline TABERT",
       "ctaLabel": "Prendre rendez-vous",
       "ctaUrl": "prestations.html"
     },
@@ -31,99 +31,99 @@
         {
           "label": "Migraine",
           "title": "Migraine",
-          "text": "Le travail cervical et crÃ¢nio-mandibulaire peut rÃ©duire certaines tensions mÃ©caniques associÃ©es aux migraines et cÃ©phalÃ©es.",
+          "text": "Le travail cervical et crânio-mandibulaire peut réduire certaines tensions mécaniques associées aux migraines et céphalées.",
           "className": "bodymap__tag--migraines"
         },
         {
           "label": "Douleur\ncervicale",
           "title": "Douleur cervicale",
-          "text": "L'ostÃ©opathie vise Ã  restaurer la mobilitÃ© du rachis cervical et Ã  diminuer les tensions musculaires responsables des blocages.",
+          "text": "L'ostéopathie vise à restaurer la mobilité du rachis cervical et à diminuer les tensions musculaires responsables des blocages.",
           "className": "bodymap__tag--cervicale"
         },
         {
-          "label": "Douleur\ndâ€™Ã©paule",
-          "title": "Douleur dâ€™Ã©paule",
-          "text": "La prise en charge de lâ€™Ã©paule tient compte de la posture, des cervicales et de la cage thoracique pour rÃ©duire les compensations.",
+          "label": "Douleur\nd'épaule",
+          "title": "Douleur d'épaule",
+          "text": "La prise en charge de l'épaule tient compte de la posture, des cervicales et de la cage thoracique pour réduire les compensations.",
           "className": "bodymap__tag--epaule"
         },
         {
           "label": "Lombalgie",
           "title": "Lombalgie",
-          "text": "Pour les douleurs lombaires, lâ€™objectif est de rÃ©duire lâ€™irritation mÃ©canique, amÃ©liorer la stabilitÃ© et prÃ©venir les rÃ©cidives.",
+          "text": "Pour les douleurs lombaires, l'objectif est de réduire l'irritation mécanique, améliorer la stabilité et prévenir les récidives.",
           "className": "bodymap__tag--lombalgie"
         },
         {
           "label": "Canal\ncarpien",
           "title": "Canal carpien",
-          "text": "Une Ã©valuation du membre supÃ©rieur et du rachis cervical peut aider Ã  mieux gÃ©rer les douleurs, fourmillements et pertes de force.",
+          "text": "Une évaluation du membre supérieur et du rachis cervical peut aider à mieux gérer les douleurs, fourmillements et pertes de force.",
           "className": "bodymap__tag--carpien"
         },
         {
           "label": "Douleur du\ngenou",
           "title": "Douleur du genou",
-          "text": "Lâ€™analyse du genou inclut aussi cheville, hanche et bassin afin de corriger les appuis et limiter les contraintes.",
+          "text": "L'analyse du genou inclut aussi cheville, hanche et bassin afin de corriger les appuis et limiter les contraintes.",
           "className": "bodymap__tag--genoux"
         },
         {
           "label": "Sciatique",
           "title": "Sciatique",
-          "text": "En cas de douleur irradiant dans la jambe, la prise en charge vise Ã  diminuer la compression, lâ€™irritation et Ã  restaurer la mobilitÃ© lombaire.",
+          "text": "En cas de douleur irradiant dans la jambe, la prise en charge vise à diminuer la compression, l'irritation et à restaurer la mobilité lombaire.",
           "className": "bodymap__tag--sciatique"
         }
       ],
       "lockerTitle": "Ou encore",
-      "lockerDefaultTitle": "SÃ©lectionnez un motif",
-      "lockerDefaultText": "Cliquez sur un Ã©lÃ©ment du casier pour afficher les informations.",
+      "lockerDefaultTitle": "Sélectionnez un motif",
+      "lockerDefaultText": "Cliquez sur un élément du casier pour afficher les informations.",
       "lockerItems": [
         {
           "label": "Vertiges",
           "title": "Vertiges",
-          "text": "Un bilan global permet dâ€™identifier les restrictions cervicales ou posturales pouvant entretenir des sensations vertigineuses."
+          "text": "Un bilan global permet d'identifier les restrictions cervicales ou posturales pouvant entretenir des sensations vertigineuses."
         },
         {
           "label": "Dorsalgie",
           "title": "Dorsalgie",
-          "text": "La dorsalgie est souvent liÃ©e Ã  une raideur thoracique, une posture prolongÃ©e ou des compensations. La prise en charge vise Ã  redonner de la mobilitÃ©, dÃ©tendre les tensions et amÃ©liorer le confort au quotidien."
+          "text": "La dorsalgie est souvent liée à une raideur thoracique, une posture prolongée ou des compensations. La prise en charge vise à redonner de la mobilité, détendre les tensions et améliorer le confort au quotidien."
         },
         {
           "label": "Hernie discale",
           "title": "Hernie discale",
-          "text": "En cas de hernie discale, le suivi est adaptÃ© et progressif. Lâ€™objectif est de rÃ©duire les contraintes mÃ©caniques, amÃ©liorer la mobilitÃ© et accompagner le retour aux activitÃ©s en sÃ©curitÃ©."
+          "text": "En cas de hernie discale, le suivi est adapté et progressif. L'objectif est de réduire les contraintes mécaniques, améliorer la mobilité et accompagner le retour aux activités en sécurité."
         },
         {
-          "label": "Raideur vertÃ©brale",
-          "title": "Raideur vertÃ©brale",
-          "text": "Les ajustements et mobilisations amÃ©liorent lâ€™amplitude articulaire et la qualitÃ© du mouvement, avec un plan dâ€™exercices simple."
+          "label": "Raideur vertébrale",
+          "title": "Raideur vertébrale",
+          "text": "Les ajustements et mobilisations améliorent l'amplitude articulaire et la qualité du mouvement, avec un plan d'exercices simple."
         },
         {
           "label": "Tendinite",
           "title": "Tendinite",
-          "text": "L'ostÃ©opathie agit sur les chaÃ®nes de compensation articulaires et musculaires pour dÃ©charger la zone tendineuse irritÃ©e. Des exercices peuvent aussi Ãªtre proposÃ©s pour accompagner la rÃ©cupÃ©ration."
+          "text": "L'ostéopathie agit sur les chaînes de compensation articulaires et musculaires pour décharger la zone tendineuse irritée. Des exercices peuvent aussi être proposés pour accompagner la récupération."
         },
         {
           "label": "Douleur de hanche",
           "title": "Douleur de hanche",
-          "text": "Le bassin, la colonne et la chaÃ®ne infÃ©rieure sont ajustÃ©s ensemble pour rÃ©duire les surcharges sur la hanche."
+          "text": "Le bassin, la colonne et la chaîne inférieure sont ajustés ensemble pour réduire les surcharges sur la hanche."
         },
         {
           "label": "Blessure sportive",
           "title": "Blessure sportive",
-          "text": "Objectif : rÃ©cupÃ©rer plus vite, optimiser la mobilitÃ© et prÃ©venir les rÃ©cidives grÃ¢ce Ã  un suivi adaptÃ© Ã  votre pratique."
+          "text": "Objectif : récupérer plus vite, optimiser la mobilité et prévenir les récidives grâce à un suivi adapté à votre pratique."
         },
         {
           "label": "Cheville",
           "title": "Cheville",
-          "text": "Une cheville limitÃ©e peut impacter toute la posture. Le traitement vise Ã  retrouver stabilitÃ©, mobilitÃ© et confiance en appui."
+          "text": "Une cheville limitée peut impacter toute la posture. Le traitement vise à retrouver stabilité, mobilité et confiance en appui."
         },
         {
-          "label": "MobilitÃ©",
-          "title": "MobilitÃ©",
-          "text": "Au-delÃ  de la douleur, l'ostÃ©opathie aide Ã  retrouver de lâ€™aisance dans les gestes du quotidien et une meilleure qualitÃ© de mouvement."
+          "label": "Mobilité",
+          "title": "Mobilité",
+          "text": "Au-delà de la douleur, l'ostéopathie aide à retrouver de l'aisance dans les gestes du quotidien et une meilleure qualité de mouvement."
         },
         {
-          "label": "Troubles fonctionnels associÃ©s",
-          "title": "Troubles fonctionnels associÃ©s",
-          "text": "L'ostÃ©opathie peut aussi accompagner certains troubles fonctionnels associÃ©s, notamment le stress et les troubles du sommeil, en aidant le corps Ã  mieux rÃ©cupÃ©rer et Ã  retrouver un meilleur Ã©quilibre global."
+          "label": "Troubles fonctionnels associés",
+          "title": "Troubles fonctionnels associés",
+          "text": "L'ostéopathie peut aussi accompagner certains troubles fonctionnels associés, notamment le stress et les troubles du sommeil, en aidant le corps à mieux récupérer et à retrouver un meilleur équilibre global."
         }
       ]
     },
@@ -131,115 +131,114 @@
       "title": "Vos avis",
       "items": [
         {
-          "quote": "Une Ã©volution remarquable",
-          "text": "Jâ€™Ã©tais votre ancienne patiente, on a eu quelques rendez-vous qui mâ€™ont beaucoup aidÃ©e. Câ€™Ã©tait la premiÃ¨re fois que je voyais un ostÃ©opathe et jâ€™ai Ã©tÃ© trÃ¨s surprise de dÃ©couvrir ce mÃ©tier. Jâ€™ai eu moins de frictions au dos et aux Ã©paules.\n\nJe ne regrette absolument pas mes rendez-vous : maintenant je suis moins gÃªnÃ©e dans mes mouvements et câ€™est plus agrÃ©able Ã  vivre.\n\nJe recommande sans hÃ©siter.",
+          "quote": "Une évolution remarquable",
+          "text": "J'étais votre ancienne patiente, on a eu quelques rendez-vous qui m'ont beaucoup aidée. C'était la première fois que je voyais un ostéopathe et j'ai été très surprise de découvrir ce métier. J'ai eu moins de frictions au dos et aux épaules.\n\nJe ne regrette absolument pas mes rendez-vous : maintenant je suis moins gênée dans mes mouvements et c'est plus agréable à vivre.\n\nJe recommande sans hésiter.",
           "name": "Magali"
         },
         {
           "quote": "Un vrai soulagement",
-          "text": "Je souffrais de douleurs Ã  la hanche depuis plusieurs mois. Jâ€™avais dÃ©jÃ  consultÃ© sans succÃ¨s avant de me tourner vers l'ostÃ©opathie.\n\nLa prise en charge a Ã©tÃ© rassurante, prÃ©cise et efficace. Jâ€™ai rapidement senti un vrai soulagement.",
-          "name": "AmÃ©lie"
+          "text": "Je souffrais de douleurs à la hanche depuis plusieurs mois. J'avais déjà consulté sans succès avant de me tourner vers l'ostéopathie.\n\nLa prise en charge a été rassurante, précise et efficace. J'ai rapidement senti un vrai soulagement.",
+          "name": "Amélie"
         },
         {
-          "quote": "Excellente expÃ©rience",
-          "text": "Consultation trÃ¨s professionnelle, explications claires et traitement adaptÃ©. Jâ€™ai apprÃ©ciÃ© la douceur de la prise en charge et les conseils donnÃ©s pour la suite.",
+          "quote": "Excellente expérience",
+          "text": "Consultation très professionnelle, explications claires et traitement adapté. J'ai apprécié la douceur de la prise en charge et les conseils donnés pour la suite.",
           "name": "Alexandra"
         }
       ]
     },
     "schedule": {
       "title": "Horaires des cabinets",
-      "subtitle": "Retrouvez les jours et horaires d'ouverture selon le cabinet oÃ¹ vous souhaitez consulter."
+      "subtitle": "Retrouvez les jours et horaires d'ouverture selon le cabinet où vous souhaitez consulter."
     },
     "localLinksTitle": "Secteurs proches du cabinet :"
   },
   "prestations": {
     "seo": {
-      "title": "Prestations d'ostÃ©opathie | Coraline TABERT Ã  Canet et Montpellier",
-      "description": "Consultez les prestations d'ostÃ©opathie de Coraline TABERT Ã  Canet et Montpellier : premiÃ¨re consultation, suivi, enfant et femme enceinte.",
-      "ogTitle": "Prestations d'ostÃ©opathie | Coraline TABERT Ã  Canet et Montpellier",
-      "ogDescription": "Consultez les prestations d'ostÃ©opathie de Coraline TABERT Ã  Canet et Montpellier : premiÃ¨re consultation, suivi, enfant et femme enceinte."
+      "title": "Prestations d'ostéopathie | Coraline TABERT à Canet et Montpellier",
+      "description": "Consultez les prestations d'ostéopathie de Coraline TABERT à Canet et Montpellier : première consultation, suivi, enfant et femme enceinte.",
+      "ogTitle": "Prestations d'ostéopathie | Coraline TABERT à Canet et Montpellier",
+      "ogDescription": "Consultez les prestations d'ostéopathie de Coraline TABERT à Canet et Montpellier : première consultation, suivi, enfant et femme enceinte."
     },
     "title": "Les prestations",
     "stepLabel": "Choisissez un service",
-    "summaryTitle": "RÃ©sumÃ©",
+    "summaryTitle": "Résumé",
     "summaryCabinetName": "Cabinet Coraline TABERT",
-    "summaryCabinetRole": "OstÃ©opathe Ã  Canet et Montpellier",
-    "summaryHint": "AprÃ¨s sÃ©lection, cliquez sur â€œPrendre rendez-vousâ€.",
+    "summaryCabinetRole": "Ostéopathe à Canet et Montpellier",
+    "summaryHint": "Après sélection, cliquez sur “Prendre rendez-vous”.",
     "services": [
       {
         "id": "premiere-adulte",
-        "name": "PremiÃ¨re consultation d'ostÃ©opathie",
-        "sub": "Pour dÃ©marrer votre prise en charge avec un bilan complet et un premier traitement adaptÃ©.",
-        "price": "65 â‚¬",
+        "name": "Première consultation d'ostéopathie",
+        "sub": "Pour démarrer votre prise en charge avec un bilan complet et un premier traitement adapté.",
+        "price": "65 €",
         "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697482&pid=practice-44027&source=profile",
         "details": [
           "Bilan initial complet et motif de consultation",
-          "Analyse de votre posture, de votre mobilitÃ© et de vos besoins",
-          "PremiÃ¨re prise en charge ostÃ©opathique personnalisÃ©e"
+          "Analyse de votre posture, de votre mobilité et de vos besoins",
+          "Première prise en charge ostéopathique personnalisée"
         ]
       },
       {
         "id": "suivi-adulte",
-        "name": "Consultation de suivi d'ostÃ©opathie",
-        "sub": "Pour poursuivre le travail engagÃ© et adapter le traitement Ã  votre Ã©volution.",
-        "price": "65 â‚¬",
+        "name": "Consultation de suivi d'ostéopathie",
+        "sub": "Pour poursuivre le travail engagé et adapter le traitement à votre évolution.",
+        "price": "65 €",
         "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697485&pid=practice-44027&source=profile",
         "details": [
-          "Ã‰valuation de l'Ã©volution depuis la sÃ©ance prÃ©cÃ©dente",
-          "Traitement ajustÃ© Ã  vos besoins du moment",
-          "Conseils personnalisÃ©s pour stabiliser les rÃ©sultats"
+          "Évaluation de l'évolution depuis la séance précédente",
+          "Traitement ajusté à vos besoins du moment",
+          "Conseils personnalisés pour stabiliser les résultats"
         ]
       },
       {
         "id": "premiere-enfant",
-        "name": "Enfant - PremiÃ¨re consultation d'ostÃ©opathie",
-        "sub": "Une premiÃ¨re sÃ©ance dÃ©diÃ©e Ã  l'enfant, avec un bilan adaptÃ© et une prise en charge douce.",
-        "price": "65 â‚¬",
+        "name": "Enfant - Première consultation d'ostéopathie",
+        "sub": "Une première séance dédiée à l'enfant, avec un bilan adapté et une prise en charge douce.",
+        "price": "65 €",
         "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697483&pid=practice-44027&source=profile",
         "details": [
-          "Bilan initial adaptÃ© Ã  l'Ã¢ge et aux besoins de l'enfant",
-          "Observation de la mobilitÃ©, de la posture et du confort global",
-          "Traitement ostÃ©opathique doux et conseils aux parents"
+          "Bilan initial adapté à l'âge et aux besoins de l'enfant",
+          "Observation de la mobilité, de la posture et du confort global",
+          "Traitement ostéopathique doux et conseils aux parents"
         ]
       },
       {
         "id": "suivi-enfant",
-        "name": "Enfant - Consultation de suivi d'ostÃ©opathie",
-        "sub": "Pour suivre l'Ã©volution de l'enfant et ajuster la prise en charge si besoin.",
-        "price": "35 â‚¬",
+        "name": "Enfant - Consultation de suivi d'ostéopathie",
+        "sub": "Pour suivre l'évolution de l'enfant et ajuster la prise en charge si besoin.",
+        "price": "35 €",
         "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697486&pid=practice-44027&source=profile",
         "details": [
-          "Point sur l'Ã©volution depuis la premiÃ¨re consultation",
-          "Traitement de suivi adaptÃ© Ã  l'enfant",
+          "Point sur l'évolution depuis la première consultation",
+          "Traitement de suivi adapté à l'enfant",
           "Conseils simples pour accompagner le confort au quotidien"
         ]
       },
       {
         "id": "premiere-grossesse",
-        "name": "Femme enceinte - PremiÃ¨re consultation d'ostÃ©opathie",
-        "sub": "Une premiÃ¨re consultation adaptÃ©e Ã  la grossesse pour soulager les tensions et amÃ©liorer le confort.",
-        "price": "65 â‚¬",
+        "name": "Femme enceinte - Première consultation d'ostéopathie",
+        "sub": "Une première consultation adaptée à la grossesse pour soulager les tensions et améliorer le confort.",
+        "price": "65 €",
         "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697484&pid=practice-44027&source=profile",
         "details": [
           "Bilan global en tenant compte du stade de la grossesse",
           "Prise en charge douce des tensions, douleurs et inconforts",
-          "Conseils personnalisÃ©s pour mieux vivre le quotidien"
+          "Conseils personnalisés pour mieux vivre le quotidien"
         ]
       },
       {
         "id": "suivi-grossesse",
-        "name": "Femme enceinte - Consultation de suivi d'ostÃ©opathie",
-        "sub": "Pour accompagner l'Ã©volution de la grossesse avec un suivi ostÃ©opathique rÃ©gulier si nÃ©cessaire.",
-        "price": "65 â‚¬",
+        "name": "Femme enceinte - Consultation de suivi d'ostéopathie",
+        "sub": "Pour accompagner l'évolution de la grossesse avec un suivi ostéopathique régulier si nécessaire.",
+        "price": "65 €",
         "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697487&pid=practice-44027&source=profile",
         "details": [
-          "Suivi de l'Ã©volution et des tensions liÃ©es Ã  la grossesse",
-          "Traitement adaptÃ© au moment de la grossesse",
-          "Conseils ciblÃ©s pour le confort et la mobilitÃ©"
+          "Suivi de l'évolution et des tensions liées à la grossesse",
+          "Traitement adapté au moment de la grossesse",
+          "Conseils ciblés pour le confort et la mobilité"
         ]
       }
     ]
   }
 }
-
