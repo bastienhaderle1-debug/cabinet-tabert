@@ -403,6 +403,13 @@ body.home .hero-badge__link:hover {
     display: none !important;
   }
 
+  body.home .hero-side-rail__lane,
+  body.home .hero-side-rail__track,
+  body.home .hero-side-rail__item {
+    display: none !important;
+    animation: none !important;
+  }
+
   body.home .hero__slide {
     inset: 0 !important;
     width: 100% !important;
@@ -412,47 +419,66 @@ body.home .hero-badge__link:hover {
   }
 
   body.home .hero {
+    --side-strip-width: 0px;
+    --text-left: 0px;
+    --panel-width: 100%;
+    --viewport-offset: 0px;
     height: auto !important;
-    min-height: clamp(340px, 58vw, 470px) !important;
+    min-height: clamp(420px, 88svh, 700px) !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 5 !important;
   }
 
   body.home .hero__image {
+    inset: 0 !important;
     left: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: 100% !important;
     object-fit: cover !important;
-    object-position: center 60% !important;
+    object-position: center 28% !important;
     right: 0 !important;
-    transform: translateX(0) scale(1.08) !important;
+    transform: none !important;
   }
 
   body.home .hero-badge {
-    left: 34px !important;
-    width: min(430px, calc(100% - 56px)) !important;
-    padding: 26px 24px 22px !important;
-    transform: translateY(-48%) scale(0.84) !important;
+    left: clamp(14px, 4vw, 24px) !important;
+    right: clamp(14px, 4vw, 24px) !important;
+    bottom: clamp(14px, 4vw, 24px) !important;
+    width: auto !important;
+    padding: 20px 18px 18px !important;
+    border-radius: 24px !important;
+    background: linear-gradient(180deg, rgba(250, 249, 244, 0.82), rgba(238, 238, 233, 0.74)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.34) !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.36) !important;
+    backdrop-filter: blur(10px) saturate(1.04) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(1.04) !important;
+    transform: none !important;
     transform-origin: left bottom !important;
   }
 
   body.home .hero-badge__kicker {
-    margin-bottom: 16px !important;
+    margin-bottom: 10px !important;
     font-size: 10px !important;
-    letter-spacing: 0.2em !important;
+    letter-spacing: 0.18em !important;
   }
 
   body.home .hero-badge__title {
-    max-width: 9ch !important;
-    font-size: clamp(34px, 5.8vw, 46px) !important;
+    max-width: 10ch !important;
+    font-size: clamp(30px, 8.6vw, 42px) !important;
+    line-height: 0.96 !important;
   }
 
   body.home .hero-badge__text {
-    max-width: 24ch !important;
-    font-size: 13px !important;
+    margin-top: 12px !important;
+    max-width: 32ch !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
   }
 
   body.home .hero-badge__btn,
   body.home .hero-badge__link {
-    flex: 1 1 calc(50% - 6px) !important;
+    flex: 1 1 100% !important;
   }
 }
 
@@ -515,7 +541,8 @@ body.home .hero-badge__link:hover {
 @media (max-width: 640px) {
   body.home .hero {
     height: auto !important;
-    min-height: 380px !important;
+    min-height: clamp(400px, 82svh, 620px) !important;
+    aspect-ratio: 10 / 13 !important;
   }
 
   body.home .hero__image {
@@ -523,57 +550,50 @@ body.home .hero-badge__link:hover {
     width: 100% !important;
     max-width: 100% !important;
     object-fit: cover !important;
-    object-position: center 62% !important;
+    object-position: center 24% !important;
     right: 0 !important;
-    transform: translateX(0) scale(1.06) !important;
+    transform: none !important;
   }
 
   body.home .hero__media::before {
     background:
-      radial-gradient(circle at 27% 18%, rgba(255, 244, 225, 0.18) 0%, rgba(255, 244, 225, 0.06) 7%, rgba(255, 244, 225, 0) 15%),
-      linear-gradient(
-        90deg,
-        rgba(17, 17, 17, 0.88) 0%,
-        rgba(17, 17, 17, 0.8) 22%,
-        rgba(17, 17, 17, 0.5) 40%,
-        rgba(17, 17, 17, 0.12) 58%,
-        rgba(17, 17, 17, 0) 72%
-      ),
-      linear-gradient(180deg, rgba(17, 17, 17, 0.1) 0%, rgba(17, 17, 17, 0.18) 100%) !important;
+      radial-gradient(circle at 50% 16%, rgba(255, 244, 225, 0.2) 0%, rgba(255, 244, 225, 0.08) 15%, rgba(255, 244, 225, 0) 32%),
+      linear-gradient(180deg, rgba(12, 24, 22, 0.08) 0%, rgba(12, 24, 22, 0) 30%, rgba(12, 24, 22, 0.14) 54%, rgba(12, 24, 22, 0.82) 100%) !important;
   }
 
   body.home .hero-badge {
-    left: 18px !important;
+    left: 12px !important;
+    right: 12px !important;
     top: auto !important;
-    bottom: 22px !important;
-    width: min(312px, calc(100% - 36px)) !important;
-    padding: 22px 18px 18px !important;
-    border-radius: 24px !important;
-    transform: scale(0.84) !important;
+    bottom: 12px !important;
+    width: auto !important;
+    padding: 18px 16px 16px !important;
+    border-radius: 22px !important;
+    transform: none !important;
     transform-origin: left bottom !important;
   }
 
   body.home .hero-badge::before {
-    left: 18px !important;
+    left: 16px !important;
     top: 14px !important;
-    width: 84px !important;
+    width: 72px !important;
   }
 
   body.home .hero-badge__kicker {
-    margin-bottom: 14px !important;
+    margin-bottom: 10px !important;
     font-size: 10px !important;
     letter-spacing: 0.16em !important;
   }
 
   body.home .hero-badge__title {
-    max-width: 8.4ch !important;
-    font-size: clamp(30px, 9vw, 40px) !important;
+    max-width: 10ch !important;
+    font-size: clamp(28px, 9.2vw, 38px) !important;
   }
 
   body.home .hero-badge__text {
     margin-top: 12px !important;
     max-width: none !important;
-    font-size: 13px !important;
+    font-size: 13.5px !important;
     line-height: 1.52 !important;
   }
 
