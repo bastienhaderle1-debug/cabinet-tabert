@@ -41,3 +41,189 @@
 .page-osteopathe .chiro-methodes--profil .chiro-methodes__values {
   text-align: center;
 }
+
+@media (max-width: 1000px) {
+  body {
+    padding-top: 88px;
+  }
+
+  body.home,
+  body.page-osteopathe {
+    padding-top: 132px;
+  }
+
+  .siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1300;
+    background: linear-gradient(180deg, rgba(255, 253, 248, 0.97), rgba(249, 245, 233, 0.92));
+    box-shadow: 0 10px 26px rgba(44, 58, 42, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .siteHeader__inner {
+    width: min(100% - 24px, 560px);
+    padding: 10px 0 8px;
+    align-items: center;
+    gap: 10px;
+    row-gap: 8px;
+  }
+
+  .siteHeader__brand {
+    flex: 1;
+    gap: 10px;
+  }
+
+  .siteHeader__logo {
+    width: 54px;
+  }
+
+  .siteHeader__brandName {
+    font-size: 17px;
+  }
+
+  .siteHeader__brandRole {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  .siteHeader__burger {
+    display: inline-grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1201;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .siteHeader__burgerLines {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(31, 45, 39, 0.78);
+  }
+
+  .siteHeader__burgerLines::before,
+  .siteHeader__burgerLines::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(31, 45, 39, 0.78);
+    transition: transform 0.18s ease, top 0.18s ease;
+  }
+
+  .siteHeader__burgerLines::before {
+    top: -7px;
+  }
+
+  .siteHeader__burgerLines::after {
+    top: 7px;
+  }
+
+  .siteNav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 12px;
+    right: 12px;
+    z-index: 1200;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    background: rgba(255, 252, 246, 0.98);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .siteNav a {
+    display: flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 12px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+
+  .siteHeader.is-menu-open .siteNav {
+    display: flex !important;
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines {
+    background: transparent;
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .siteHeader__cta {
+    min-height: 46px;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    box-shadow: 0 12px 24px rgba(77, 107, 77, 0.22);
+  }
+
+  body.page-prestations .siteHeader__cta {
+    display: none;
+  }
+
+  body.home .siteHeader__inner,
+  body.page-osteopathe .siteHeader__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand brand"
+      "cta burger";
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 8px;
+  }
+
+  body.home .siteHeader__brand,
+  body.page-osteopathe .siteHeader__brand {
+    grid-area: brand;
+  }
+
+  body.home .siteHeader__cta,
+  body.page-osteopathe .siteHeader__cta {
+    grid-area: cta;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  body.home .siteHeader__burger,
+  body.page-osteopathe .siteHeader__burger {
+    grid-area: burger;
+    margin-left: 0;
+    justify-self: end;
+  }
+
+  .siteMain {
+    scroll-margin-top: 104px;
+  }
+}
