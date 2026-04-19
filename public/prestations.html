@@ -73,7 +73,6 @@
       </nav>
 
       <a class="siteHeader__cta"
-         data-booking-link
          href="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697482&amp;pid=practice-44027&amp;source=profile"
          target="_blank" rel="noopener">
         Prendre rendez-vous
@@ -86,12 +85,12 @@
       <div class="prestations__inner">
         <header class="prestations__head">
           <h1 class="prestations__title" id="prestations-title">Les prestations</h1>
-          <div class="prestations__step"><span>Choisissez un service</span></div>
+          <div class="prestations__step"><span>1. Choisissez une prestation</span></div>
         </header>
 
         <div class="prestations__grid">
           <div class="prestations__list" role="list" aria-label="Liste des prestations">
-            <article class="service" role="listitem" data-service="premiere-adulte" data-fresha-url="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697482&amp;pid=practice-44027&amp;source=profile">
+            <article class="service" role="listitem" data-service="premiere-adulte">
               <button class="service__top" type="button" aria-expanded="false" aria-controls="service-premiere-adulte-body">
                 <div class="service__main">
                   <span class="service__name">Premi&egrave;re consultation d'ost&eacute;opathie</span>
@@ -111,7 +110,7 @@
               </div>
             </article>
 
-            <article class="service" role="listitem" data-service="suivi-adulte" data-fresha-url="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697485&amp;pid=practice-44027&amp;source=profile">
+            <article class="service" role="listitem" data-service="suivi-adulte">
               <button class="service__top" type="button" aria-expanded="false" aria-controls="service-suivi-adulte-body">
                 <div class="service__main">
                   <span class="service__name">Consultation de suivi d'ost&eacute;opathie</span>
@@ -131,7 +130,7 @@
               </div>
             </article>
 
-            <article class="service" role="listitem" data-service="premiere-enfant" data-fresha-url="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697483&amp;pid=practice-44027&amp;source=profile">
+            <article class="service" role="listitem" data-service="premiere-enfant">
               <button class="service__top" type="button" aria-expanded="false" aria-controls="service-premiere-enfant-body">
                 <div class="service__main">
                   <span class="service__name">Enfant - Premi&egrave;re consultation d'ost&eacute;opathie</span>
@@ -151,7 +150,7 @@
               </div>
             </article>
 
-            <article class="service" role="listitem" data-service="suivi-enfant" data-fresha-url="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697486&amp;pid=practice-44027&amp;source=profile">
+            <article class="service" role="listitem" data-service="suivi-enfant">
               <button class="service__top" type="button" aria-expanded="false" aria-controls="service-suivi-enfant-body">
                 <div class="service__main">
                   <span class="service__name">Enfant - Consultation de suivi d'ost&eacute;opathie</span>
@@ -171,7 +170,7 @@
               </div>
             </article>
 
-            <article class="service" role="listitem" data-service="premiere-grossesse" data-fresha-url="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697484&amp;pid=practice-44027&amp;source=profile">
+            <article class="service" role="listitem" data-service="premiere-grossesse">
               <button class="service__top" type="button" aria-expanded="false" aria-controls="service-premiere-grossesse-body">
                 <div class="service__main">
                   <span class="service__name">Femme enceinte - Premi&egrave;re consultation d'ost&eacute;opathie</span>
@@ -191,7 +190,7 @@
               </div>
             </article>
 
-            <article class="service" role="listitem" data-service="suivi-grossesse" data-fresha-url="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697487&amp;pid=practice-44027&amp;source=profile">
+            <article class="service" role="listitem" data-service="suivi-grossesse">
               <button class="service__top" type="button" aria-expanded="false" aria-controls="service-suivi-grossesse-body">
                 <div class="service__main">
                   <span class="service__name">Femme enceinte - Consultation de suivi d'ost&eacute;opathie</span>
@@ -238,16 +237,33 @@
                 </div>
               </div>
 
+              <div class="summaryCard__row">
+                <div class="summaryCard__icon" aria-hidden="true">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-pin"></use></svg>
+                </div>
+                <div>
+                  <div class="summaryCard__strong" id="sum-location">Choisissez le lieu</div>
+                  <div class="summaryCard__locations" role="group" aria-label="Choisir le lieu du rendez-vous">
+                    <button class="summaryCard__locationBtn" type="button" data-location-choice="canet" aria-pressed="false" disabled>Canet</button>
+                    <button class="summaryCard__locationBtn" type="button" data-location-choice="montpellier" aria-pressed="false" disabled>Montpellier</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="summaryCard__divider"></div>
+
               <div class="summaryCard__actions">
-                <a class="summaryCard__btn"
-                   data-booking-link
+                <a class="summaryCard__btn is-disabled"
+                   data-summary-booking-link
                    aria-describedby="summary-booking-hint"
-                   href="https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&amp;telehealth=false&amp;placeId=practice-44027&amp;motiveIds%5B%5D=697482&amp;pid=practice-44027&amp;source=profile"
+                   href="#"
+                   aria-disabled="true"
+                   tabindex="-1"
                    target="_blank"
                    rel="noopener">
                   Prendre rendez-vous
                 </a>
-                <p class="summaryCard__hint" id="summary-booking-hint">Apr&egrave;s s&eacute;lection, cliquez sur &ldquo;Prendre rendez-vous&rdquo;.</p>
+                <p class="summaryCard__hint" id="summary-booking-hint">Choisissez d'abord une prestation, puis le lieu du rendez-vous.</p>
               </div>
             </div>
           </aside>

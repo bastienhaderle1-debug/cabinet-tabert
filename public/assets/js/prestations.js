@@ -1,6 +1,7 @@
 (function () {
   const root = document.querySelector('.prestations');
   if (!root) return;
+
   const PRODUCTION_ORIGIN = 'https://cabinet-tabert.vercel.app';
   const isLocalApiContext = window.location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
   const siteApiBase = (() => {
@@ -18,6 +19,29 @@
 
     return window.location.origin.replace(/\/$/, '');
   })();
+
+  const LOCATION_OPTIONS = {
+    canet: {
+      label: 'Canet',
+      bookingUrl: 'https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/motives?specialityId=10&telehealth=false&placeId=practice-736102&source=profile'
+    },
+    montpellier: {
+      label: 'Montpellier',
+      bookingUrl: 'https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/motives?specialityId=10&telehealth=false&placeId=practice-44027&pid=practice-44027&source=profile'
+    }
+  };
+
+  const STEP_LABELS = {
+    service: '1. Choisissez une prestation',
+    location: '2. Choisissez le lieu',
+    booking: '3. Finalisez le rendez-vous'
+  };
+
+  const HINT_LABELS = {
+    service: "Choisissez d'abord une prestation, puis le lieu du rendez-vous.",
+    location: 'Choisissez maintenant le lieu du rendez-vous.',
+    booking: 'Cliquez sur "Prendre rendez-vous" pour continuer sur Doctolib.'
+  };
 
   function escapeHtml(value) {
     return String(value)
@@ -100,20 +124,21 @@
 
     const brandName = document.querySelector('.siteHeader__brandName');
     const brandRole = document.querySelector('.siteHeader__brandRole');
+    const headerCta = document.querySelector('.siteHeader__cta');
+
     if (brandName) brandName.textContent = normalizedShared.brandName;
     if (brandRole) brandRole.textContent = normalizedShared.brandRole;
 
-    document.querySelectorAll('.siteHeader__cta, [data-booking-link]').forEach((node) => {
-      node.setAttribute('href', normalizedShared.bookingUrl);
-      node.textContent = normalizedShared.bookingLabel;
-    });
+    if (headerCta) {
+      headerCta.setAttribute('href', normalizedShared.bookingUrl);
+      headerCta.textContent = normalizedShared.bookingLabel;
+    }
 
     document.querySelectorAll('.siteFooter__contact[href*="doctolib.fr"]').forEach((node) => {
       node.setAttribute('href', normalizedShared.bookingUrl);
       const label = node.querySelector('span');
       if (label) label.textContent = normalizedShared.bookingLabel;
     });
-
   }
 
   function renderServices(services) {
@@ -121,7 +146,7 @@
     if (!list) return;
 
     list.innerHTML = services.map((service) => `
-      <article class="service" role="listitem" data-service="${escapeHtml(service.id)}" data-fresha-url="${escapeHtml(service.bookingUrl)}">
+      <article class="service" role="listitem" data-service="${escapeHtml(service.id)}">
         <button class="service__top" type="button" aria-expanded="false" aria-controls="service-${escapeHtml(service.id)}-body">
           <div class="service__main">
             <span class="service__name">${escapeHtml(service.name)}</span>
@@ -141,19 +166,90 @@
     `).join('');
   }
 
-  function initAccordion() {
+  function initBookingFlow() {
     const items = [...root.querySelectorAll('.service')];
+    const stepNode = root.querySelector('.prestations__step span');
     const sumService = root.querySelector('#sum-service');
     const sumMeta = root.querySelector('#sum-meta');
-    const bookingLinks = [...document.querySelectorAll('[data-booking-link]')];
-    const defaultBookingUrl = bookingLinks[0]?.getAttribute('href') || '';
+    const sumLocation = root.querySelector('#sum-location');
+    const summaryHint = root.querySelector('#summary-booking-hint');
+    const bookingLink = root.querySelector('[data-summary-booking-link]');
+    const locationButtons = [...root.querySelectorAll('[data-location-choice]')];
 
-    function updateBookingLinks(url) {
-      const nextUrl = (url || defaultBookingUrl || '').trim();
-      if (!nextUrl) return;
-      bookingLinks.forEach((link) => {
-        link.setAttribute('href', nextUrl);
+    const state = {
+      serviceName: '',
+      serviceMeta: '',
+      locationId: ''
+    };
+
+    function setStepLabel(label) {
+      if (stepNode) {
+        stepNode.textContent = label;
+      }
+    }
+
+    function setHintLabel(label) {
+      if (summaryHint) {
+        summaryHint.textContent = label;
+      }
+    }
+
+    function setBookingLink(url, label, enabled) {
+      if (!bookingLink) return;
+
+      bookingLink.textContent = label;
+
+      if (enabled && url) {
+        bookingLink.setAttribute('href', url);
+        bookingLink.removeAttribute('aria-disabled');
+        bookingLink.removeAttribute('tabindex');
+        bookingLink.classList.remove('is-disabled');
+        return;
+      }
+
+      bookingLink.setAttribute('href', '#');
+      bookingLink.setAttribute('aria-disabled', 'true');
+      bookingLink.setAttribute('tabindex', '-1');
+      bookingLink.classList.add('is-disabled');
+    }
+
+    function updateLocationButtons() {
+      locationButtons.forEach((button) => {
+        const hasService = Boolean(state.serviceName);
+        const isActive = hasService && button.dataset.locationChoice === state.locationId;
+
+        button.disabled = !hasService;
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        button.classList.toggle('is-active', isActive);
       });
+    }
+
+    function updateSummary() {
+      const selectedLocation = LOCATION_OPTIONS[state.locationId] || null;
+
+      if (sumService) sumService.textContent = state.serviceName || '—';
+      if (sumMeta) sumMeta.textContent = state.serviceMeta || '—';
+      if (sumLocation) sumLocation.textContent = selectedLocation ? selectedLocation.label : 'Choisissez le lieu';
+
+      updateLocationButtons();
+
+      if (!state.serviceName) {
+        setStepLabel(STEP_LABELS.service);
+        setHintLabel(HINT_LABELS.service);
+        setBookingLink('', 'Prendre rendez-vous', false);
+        return;
+      }
+
+      if (!selectedLocation) {
+        setStepLabel(STEP_LABELS.location);
+        setHintLabel(HINT_LABELS.location);
+        setBookingLink('', 'Choisissez le lieu', false);
+        return;
+      }
+
+      setStepLabel(STEP_LABELS.booking);
+      setHintLabel(HINT_LABELS.booking);
+      setBookingLink(selectedLocation.bookingUrl, `Prendre rendez-vous à ${selectedLocation.label}`, true);
     }
 
     function closeAll() {
@@ -175,24 +271,41 @@
       if (button) button.setAttribute('aria-expanded', 'true');
       if (body) body.hidden = false;
 
-      const name = item.querySelector('.service__name')?.textContent?.trim() || '';
-      const meta = item.querySelector('.service__meta')?.textContent?.replace(/\s+/g, ' ').trim() || '';
-      const bookingUrl = item.dataset.freshaUrl || '';
+      state.serviceName = item.querySelector('.service__name')?.textContent?.trim() || '';
+      state.serviceMeta = item.querySelector('.service__meta')?.textContent?.replace(/\s+/g, ' ').trim() || '';
+      state.locationId = '';
 
-      if (sumService) sumService.textContent = name;
-      if (sumMeta) sumMeta.textContent = meta;
-      updateBookingLinks(bookingUrl);
+      updateSummary();
+    }
+
+    if (bookingLink) {
+      bookingLink.addEventListener('click', (event) => {
+        if (bookingLink.getAttribute('aria-disabled') === 'true') {
+          event.preventDefault();
+        }
+      });
     }
 
     items.forEach((item) => {
       const button = item.querySelector('.service__top');
       const body = item.querySelector('.service__body');
+
       if (!button) return;
       if (body) body.hidden = true;
+
       button.addEventListener('click', () => openItem(item));
     });
 
+    locationButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!state.serviceName) return;
+        state.locationId = button.dataset.locationChoice || '';
+        updateSummary();
+      });
+    });
+
     closeAll();
+    updateSummary();
   }
 
   async function init() {
@@ -213,15 +326,11 @@
       applySharedContent(shared);
 
       const titleNode = root.querySelector('.prestations__title');
-      const stepNode = root.querySelector('.prestations__step span');
       const summaryTitle = root.querySelector('.summaryCard__title');
-      const summaryHint = root.querySelector('#summary-booking-hint');
       const summaryRows = root.querySelectorAll('.summaryCard__row');
 
       if (titleNode) titleNode.textContent = prestations.title || titleNode.textContent;
-      if (stepNode) stepNode.textContent = prestations.stepLabel || stepNode.textContent;
       if (summaryTitle) summaryTitle.textContent = prestations.summaryTitle || summaryTitle.textContent;
-      if (summaryHint) summaryHint.textContent = prestations.summaryHint || summaryHint.textContent;
 
       if (summaryRows[0]) {
         const strong = summaryRows[0].querySelector('.summaryCard__strong');
@@ -237,7 +346,7 @@
       console.error(error);
     }
 
-    initAccordion();
+    initBookingFlow();
   }
 
   init();

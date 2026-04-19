@@ -5,6 +5,8 @@
       "id": "canet",
       "name": "Canet",
       "address": "3 Lotissement la sarriette, 34800 Canet",
+      "bookingLabel": "Prendre rendez-vous à Canet",
+      "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/availabilities?specialityId=10&telehealth=false&placeId=practice-44027&motiveIds%5B%5D=697482&pid=practice-44027&source=profile",
       "ctaLabel": "Venir au cabinet de Canet",
       "ctaUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Lotissement+la+sarriette+34800+Canet",
       "schedules": [
@@ -22,6 +24,8 @@
       "id": "montpellier",
       "name": "Montpellier",
       "address": "3 Rue Paul Lacroix, 34070 Montpellier",
+      "bookingLabel": "Prendre rendez-vous à Montpellier",
+      "bookingUrl": "https://www.doctolib.fr/osteopathe/canet/coraline-tabert/booking/motives?specialityId=10&telehealth=false&placeId=practice-44027&pid=practice-44027&source=profile",
       "ctaLabel": "Venir au cabinet de Montpellier",
       "ctaUrl": "https://www.google.com/maps/dir/?api=1&destination=3+Rue+Paul+Lacroix+34070+Montpellier",
       "schedules": [

@@ -373,6 +373,8 @@
         createField('Identifiant', cabinet.id, (value) => { cabinet.id = value; }),
         createField('Nom du cabinet', cabinet.name, (value) => { cabinet.name = value; }),
         createField('Adresse', cabinet.address, (value) => { cabinet.address = value; }, { multiline: true }),
+        createField('Libellé bouton RDV', cabinet.bookingLabel, (value) => { cabinet.bookingLabel = value; }),
+        createField('Lien Doctolib du cabinet', cabinet.bookingUrl, (value) => { cabinet.bookingUrl = value; }),
         createField('Libellé du bouton', cabinet.ctaLabel, (value) => { cabinet.ctaLabel = value; }),
         createField('Lien du bouton', cabinet.ctaUrl, (value) => { cabinet.ctaUrl = value; })
       );

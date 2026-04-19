@@ -92,6 +92,8 @@ function sanitizeHoursPayload(payload) {
       id: asTrimmedString(cabinet.id),
       name: asTrimmedString(cabinet.name),
       address: asTrimmedString(cabinet.address),
+      bookingLabel: asTrimmedString(cabinet.bookingLabel),
+      bookingUrl: asTrimmedString(cabinet.bookingUrl),
       ctaLabel: asTrimmedString(cabinet.ctaLabel),
       ctaUrl: asTrimmedString(cabinet.ctaUrl),
       schedules

@@ -46,6 +46,21 @@
           <span class="schedule-card__time">À venir</span>
         </li>
       `;
+    const actionLinks = [];
+
+    if (cabinet.bookingUrl) {
+      actionLinks.push(`
+        <a class="schedule-card__cta schedule-card__cta--booking" href="${escapeHtml(cabinet.bookingUrl)}" target="_blank" rel="noopener">
+          ${escapeHtml(cabinet.bookingLabel || 'Prendre rendez-vous')}
+        </a>
+      `);
+    }
+
+    actionLinks.push(`
+      <a class="schedule-card__cta" href="${escapeHtml(cabinet.ctaUrl)}" target="_blank" rel="noopener">
+        ${escapeHtml(cabinet.ctaLabel)}
+      </a>
+    `);
 
     return `
       <article class="schedule-card" aria-labelledby="${escapeHtml(titleId)}">
@@ -55,9 +70,9 @@
         <ul class="schedule-card__list">
           ${scheduleMarkup}
         </ul>
-        <a class="schedule-card__cta" href="${escapeHtml(cabinet.ctaUrl)}" target="_blank" rel="noopener">
-          ${escapeHtml(cabinet.ctaLabel)}
-        </a>
+        <div class="schedule-card__actions">
+          ${actionLinks.join('')}
+        </div>
       </article>
     `;
   }
