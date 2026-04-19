@@ -35,8 +35,28 @@ function getRepoApiUrl(filePath) {
   return `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodedPath}`;
 }
 
+function repairLikelyMojibake(value) {
+  if (!value || !/[\u00c2\u00c3]/.test(value)) {
+    return value;
+  }
+
+  try {
+    const repaired = Buffer.from(value, 'latin1').toString('utf8');
+    const beforeReplacementCount = (value.match(/\uFFFD/g) || []).length;
+    const afterReplacementCount = (repaired.match(/\uFFFD/g) || []).length;
+
+    if (!repaired || afterReplacementCount > beforeReplacementCount) {
+      return value;
+    }
+
+    return repaired;
+  } catch {
+    return value;
+  }
+}
+
 function asTrimmedString(value) {
-  return String(value || '').replace(/\r\n/g, '\n').trim();
+  return repairLikelyMojibake(String(value || '').replace(/\r\n/g, '\n').trim());
 }
 
 function sanitizeArray(value, label) {

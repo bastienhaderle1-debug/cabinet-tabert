@@ -35,6 +35,30 @@ function getRepoApiUrl(filePath) {
   return `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodedPath}`;
 }
 
+function repairLikelyMojibake(value) {
+  if (!value || !/[\u00c2\u00c3]/.test(value)) {
+    return value;
+  }
+
+  try {
+    const repaired = Buffer.from(value, 'latin1').toString('utf8');
+    const beforeReplacementCount = (value.match(/\uFFFD/g) || []).length;
+    const afterReplacementCount = (repaired.match(/\uFFFD/g) || []).length;
+
+    if (!repaired || afterReplacementCount > beforeReplacementCount) {
+      return value;
+    }
+
+    return repaired;
+  } catch {
+    return value;
+  }
+}
+
+function asTrimmedString(value) {
+  return repairLikelyMojibake(String(value || '').replace(/\r\n/g, '\n').trim());
+}
+
 function isValidScheduleEntry(entry) {
   return entry
     && typeof entry.day === 'string'
@@ -60,16 +84,16 @@ function sanitizeHoursPayload(payload) {
     const schedules = cabinet.schedules
       .filter(isValidScheduleEntry)
       .map((entry) => ({
-        day: entry.day.trim(),
-        time: entry.time.replace(/\r\n/g, '\n').trim()
+        day: asTrimmedString(entry.day),
+        time: asTrimmedString(entry.time)
       }));
 
     return {
-      id: String(cabinet.id || '').trim(),
-      name: String(cabinet.name || '').trim(),
-      address: String(cabinet.address || '').trim(),
-      ctaLabel: String(cabinet.ctaLabel || '').trim(),
-      ctaUrl: String(cabinet.ctaUrl || '').trim(),
+      id: asTrimmedString(cabinet.id),
+      name: asTrimmedString(cabinet.name),
+      address: asTrimmedString(cabinet.address),
+      ctaLabel: asTrimmedString(cabinet.ctaLabel),
+      ctaUrl: asTrimmedString(cabinet.ctaUrl),
       schedules
     };
   });
