@@ -4,8 +4,9 @@
 
 body.home .hero {
   --side-strip-width: clamp(144px, 16vw, 228px);
+  --hero-main-width: calc(100vw - (var(--side-strip-width) * 2));
   --text-left: calc(var(--side-strip-width) + 34px);
-  --panel-width: min(430px, calc(100vw - (var(--side-strip-width) * 2) - 68px));
+  --panel-width: min(430px, calc(var(--hero-main-width) * 0.45));
   --viewport-offset: 148px;
 
   width: 100% !important;
@@ -420,13 +421,14 @@ body.home .hero-badge__link:hover {
 
   body.home .hero {
     --side-strip-width: 0px;
+    --hero-main-width: 100vw;
     --text-left: 0px;
     --panel-width: 100%;
     --viewport-offset: 0px;
     height: auto !important;
-    min-height: clamp(420px, 88svh, 700px) !important;
+    min-height: clamp(500px, 88svh, 760px) !important;
     max-height: none !important;
-    aspect-ratio: 4 / 5 !important;
+    aspect-ratio: 10 / 13 !important;
   }
 
   body.home .hero__image {
@@ -445,9 +447,9 @@ body.home .hero-badge__link:hover {
     left: clamp(12px, 4vw, 20px) !important;
     right: auto !important;
     bottom: clamp(12px, 4vw, 20px) !important;
-    width: min(292px, calc(100% - 28px)) !important;
-    padding: 16px 15px 14px !important;
-    border-radius: 20px !important;
+    width: min(clamp(204px, 58vw, 214px), calc(100% - 24px)) !important;
+    padding: 14px 13px 12px !important;
+    border-radius: 18px !important;
     background: linear-gradient(180deg, rgba(250, 249, 244, 0.44), rgba(238, 238, 233, 0.3)) !important;
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
     box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
@@ -458,27 +460,323 @@ body.home .hero-badge__link:hover {
   }
 
   body.home .hero-badge__kicker {
-    margin-bottom: 8px !important;
-    font-size: 9px !important;
-    letter-spacing: 0.16em !important;
+    margin-bottom: 7px !important;
+    font-size: 8px !important;
+    letter-spacing: 0.13em !important;
   }
 
   body.home .hero-badge__title {
-    max-width: 9ch !important;
-    font-size: clamp(24px, 7.4vw, 34px) !important;
-    line-height: 0.94 !important;
+    max-width: 8.3ch !important;
+    font-size: clamp(21px, 6.2vw, 27px) !important;
+    line-height: 0.95 !important;
   }
 
   body.home .hero-badge__text {
-    margin-top: 9px !important;
-    max-width: 26ch !important;
-    font-size: 12.5px !important;
-    line-height: 1.46 !important;
+    margin-top: 8px !important;
+    max-width: 19ch !important;
+    font-size: 11.5px !important;
+    line-height: 1.42 !important;
   }
 
   body.home .hero-badge__btn,
   body.home .hero-badge__link {
     flex: 1 1 100% !important;
+  }
+}
+
+@media (max-width: 1500px) and (min-width: 1381px) {
+  body.home .hero-badge {
+    width: min(332px, calc(100% - 72px)) !important;
+    padding: 24px 23px 20px !important;
+    border-radius: 26px !important;
+    bottom: clamp(20px, 3.5vh, 32px) !important;
+    transform: none !important;
+  }
+
+  body.home .hero-badge__kicker {
+    margin-bottom: 11px !important;
+    font-size: 9.5px !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  body.home .hero-badge__title {
+    max-width: 8.9ch !important;
+    font-size: clamp(31px, 3.2vw, 41px) !important;
+  }
+
+  body.home .hero-badge__text {
+    margin-top: 12px !important;
+    max-width: 23ch !important;
+    font-size: 12.75px !important;
+    line-height: 1.46 !important;
+  }
+}
+
+@media (max-width: 1380px) and (min-width: 1261px) {
+  body.home .hero-badge {
+    width: min(312px, calc(100% - 64px)) !important;
+    padding: 22px 21px 18px !important;
+    border-radius: 24px !important;
+    bottom: clamp(18px, 3.2vh, 30px) !important;
+    transform: none !important;
+  }
+
+  body.home .hero-badge__kicker {
+    margin-bottom: 10px !important;
+    font-size: 9px !important;
+    letter-spacing: 0.17em !important;
+  }
+
+  body.home .hero-badge__title {
+    max-width: 8.8ch !important;
+    font-size: clamp(29px, 3vw, 38px) !important;
+  }
+
+  body.home .hero-badge__text {
+    margin-top: 11px !important;
+    max-width: 22ch !important;
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1141px) {
+  body.home .hero {
+    --side-strip-width: clamp(112px, 12vw, 152px);
+    --hero-main-width: calc(100vw - (var(--side-strip-width) * 2));
+    --text-left: calc(var(--side-strip-width) + 22px);
+  }
+
+  body.home .hero__image {
+    object-position: center 32% !important;
+  }
+
+  body.home .hero-badge {
+    width: min(292px, calc(100% - 56px)) !important;
+    padding: 20px 19px 17px !important;
+    border-radius: 22px !important;
+    bottom: 18px !important;
+    transform: none !important;
+  }
+
+  body.home .hero-badge__kicker {
+    margin-bottom: 9px !important;
+    font-size: 8.75px !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  body.home .hero-badge__title {
+    max-width: 8.7ch !important;
+    font-size: clamp(27px, 2.8vw, 35px) !important;
+  }
+
+  body.home .hero-badge__text {
+    margin-top: 10px !important;
+    max-width: 21ch !important;
+    font-size: 12.25px !important;
+    line-height: 1.44 !important;
+  }
+}
+
+@media (max-width: 1140px) and (min-width: 1025px) {
+  body.home .hero {
+    --side-strip-width: clamp(104px, 11vw, 136px);
+    --hero-main-width: calc(100vw - (var(--side-strip-width) * 2));
+    --text-left: calc(var(--side-strip-width) + 18px);
+  }
+
+  body.home .hero__image {
+    object-position: center 31% !important;
+  }
+
+  body.home .hero-badge {
+    width: min(270px, calc(100% - 48px)) !important;
+    padding: 18px 17px 15px !important;
+    border-radius: 20px !important;
+    bottom: 16px !important;
+    transform: none !important;
+  }
+
+  body.home .hero-badge__kicker {
+    margin-bottom: 8px !important;
+    font-size: 8.5px !important;
+    letter-spacing: 0.15em !important;
+  }
+
+  body.home .hero-badge__title {
+    max-width: 8.6ch !important;
+    font-size: clamp(25px, 2.7vw, 32px) !important;
+  }
+
+  body.home .hero-badge__text {
+    margin-top: 9px !important;
+    max-width: 20ch !important;
+    font-size: 12px !important;
+    line-height: 1.42 !important;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 761px) {
+  body.home .hero-side-rail {
+    display: none !important;
+  }
+
+  body.home .hero-side-rail__lane,
+  body.home .hero-side-rail__track,
+  body.home .hero-side-rail__item {
+    display: none !important;
+    animation: none !important;
+  }
+
+  body.home .hero__slide {
+    inset: 0 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
+
+  body.home .hero {
+    --side-strip-width: 0px;
+    --hero-main-width: 100vw;
+    --text-left: 0px;
+    --panel-width: 100%;
+    height: auto !important;
+    min-height: clamp(540px, 76svh, 780px) !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 10.75 !important;
+  }
+
+  body.home .hero__image {
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 30% !important;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 901px) {
+  body.home .hero-badge {
+    left: 20px !important;
+    right: auto !important;
+    bottom: 20px !important;
+    width: min(248px, calc(100% - 40px)) !important;
+    padding: 17px 15px 14px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(180deg, rgba(250, 249, 244, 0.42), rgba(238, 238, 233, 0.3)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(9px) saturate(1.03) !important;
+    -webkit-backdrop-filter: blur(9px) saturate(1.03) !important;
+    transform: none !important;
+  }
+
+  body.home .hero-badge__kicker {
+    margin-bottom: 8px !important;
+    font-size: 8.5px !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  body.home .hero-badge__title {
+    max-width: 8.5ch !important;
+    font-size: clamp(24px, 4vw, 32px) !important;
+    line-height: 0.95 !important;
+  }
+
+  body.home .hero-badge__text {
+    margin-top: 8px !important;
+    max-width: 20ch !important;
+    font-size: 12px !important;
+    line-height: 1.42 !important;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 761px) {
+  body.home .hero-badge {
+    left: 18px !important;
+    bottom: 18px !important;
+    width: min(230px, calc(100% - 36px)) !important;
+    padding: 16px 14px 13px !important;
+    border-radius: 19px !important;
+    transform: none !important;
+  }
+
+  body.home .hero-badge__kicker {
+    margin-bottom: 7px !important;
+    font-size: 8.25px !important;
+    letter-spacing: 0.13em !important;
+  }
+
+  body.home .hero-badge__title {
+    max-width: 8.4ch !important;
+    font-size: clamp(23px, 3.8vw, 29px) !important;
+    line-height: 0.95 !important;
+  }
+
+  body.home .hero-badge__text {
+    margin-top: 8px !important;
+    max-width: 19ch !important;
+    font-size: 11.75px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body.home .hero-badge {
+    width: min(198px, calc(100% - 22px)) !important;
+    padding: 13px 12px 11px !important;
+    border-radius: 17px !important;
+  }
+
+  body.home .hero-badge__title {
+    font-size: clamp(20px, 6.1vw, 25px) !important;
+  }
+
+  body.home .hero-badge__text {
+    max-width: 18.5ch !important;
+    font-size: 11.25px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.home .hero-badge {
+    width: min(186px, calc(100% - 20px)) !important;
+    padding: 12px 11px 10px !important;
+    border-radius: 16px !important;
+  }
+
+  body.home .hero-badge__kicker {
+    font-size: 8px !important;
+  }
+
+  body.home .hero-badge__title {
+    font-size: clamp(19px, 6vw, 23px) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body.home .hero {
+    min-height: clamp(480px, 86svh, 700px) !important;
+    aspect-ratio: 10 / 14 !important;
+  }
+
+  body.home .hero-badge {
+    left: 10px !important;
+    bottom: 10px !important;
+    width: min(174px, calc(100% - 20px)) !important;
+    padding: 11px 10px 9px !important;
+    border-radius: 15px !important;
+  }
+
+  body.home .hero-badge__title {
+    font-size: clamp(18px, 5.8vw, 22px) !important;
+  }
+
+  body.home .hero-badge__text {
+    max-width: 19ch !important;
+    font-size: 11px !important;
   }
 }
 
