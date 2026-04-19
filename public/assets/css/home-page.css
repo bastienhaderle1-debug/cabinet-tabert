@@ -220,6 +220,44 @@
   box-shadow: 0 16px 34px rgba(22, 53, 45, 0.12);
 }
 
+.home:not(.page-local) .avis__dots {
+  gap: 8px;
+}
+
+.home:not(.page-local) .avis__dot {
+  width: 22px;
+  height: 22px;
+}
+
+.home:not(.page-local) .avis__dot::before {
+  width: 6px;
+  height: 6px;
+}
+
+.home:not(.page-local) .avis__dot.is-active::before {
+  transform: scale(1.7);
+}
+
+@media (max-width: 768px) {
+  .home:not(.page-local) .avis__dots {
+    gap: 6px;
+  }
+
+  .home:not(.page-local) .avis__dot {
+    width: 20px;
+    height: 20px;
+  }
+
+  .home:not(.page-local) .avis__dot::before {
+    width: 5px;
+    height: 5px;
+  }
+
+  .home:not(.page-local) .avis__dot.is-active::before {
+    transform: scale(1.6);
+  }
+}
+
 .map-switcher__btn.is-active {
   background: var(--c-primary);
   color: #fff;

@@ -413,9 +413,13 @@ function initAvisCarousel() {
   const prevBtn = wrap.querySelector('.avis__nav--prev');
   const nextBtn = wrap.querySelector('.avis__nav--next');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ACTIVE_TOLERANCE_PX = 6;
+  const SCROLL_SETTLE_DELAY_MS = 160;
 
   let cardCenters = [];
   let maxScrollLeft = 0;
+  let pendingIndex = null;
+  let pendingResetTimer = 0;
 
   if (!viewport || cards.length === 0 || !dotsWrap) return;
 
@@ -442,14 +446,62 @@ function initAvisCarousel() {
     return Math.min(Math.max(center - viewport.clientWidth / 2, 0), maxScrollLeft);
   }
 
+  function setActiveDot(index) {
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === index;
+      dot.classList.toggle('is-active', isActive);
+      dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  function clearPendingIndex() {
+    pendingIndex = null;
+
+    if (!pendingResetTimer) return;
+    window.clearTimeout(pendingResetTimer);
+    pendingResetTimer = 0;
+  }
+
+  function schedulePendingIndexReset() {
+    if (pendingIndex === null) return;
+
+    if (pendingResetTimer) {
+      window.clearTimeout(pendingResetTimer);
+    }
+
+    pendingResetTimer = window.setTimeout(() => {
+      pendingResetTimer = 0;
+      pendingIndex = null;
+      updateDots();
+    }, SCROLL_SETTLE_DELAY_MS);
+  }
+
   function scrollToIndex(index) {
+    pendingIndex = index;
+    setActiveDot(index);
     viewport.scrollTo({
       left: getScrollTarget(index),
       behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
     });
+
+    if (prefersReducedMotion.matches) {
+      clearPendingIndex();
+      updateDots();
+      return;
+    }
+
+    schedulePendingIndexReset();
   }
 
   function getActiveIndex() {
+    if (viewport.scrollLeft <= 2) {
+      return 0;
+    }
+
+    if (viewport.scrollLeft >= maxScrollLeft - 2) {
+      return cards.length - 1;
+    }
+
     const center = viewport.scrollLeft + viewport.clientWidth / 2;
     let bestIndex = 0;
     let bestDistance = Infinity;
@@ -467,12 +519,19 @@ function initAvisCarousel() {
   }
 
   function updateDots() {
-    const activeIndex = getActiveIndex();
-    dots.forEach((dot, index) => {
-      const isActive = index === activeIndex;
-      dot.classList.toggle('is-active', isActive);
-      dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-    });
+    if (pendingIndex !== null) {
+      const pendingTarget = getScrollTarget(pendingIndex);
+
+      if (Math.abs(viewport.scrollLeft - pendingTarget) <= ACTIVE_TOLERANCE_PX) {
+        clearPendingIndex();
+      } else {
+        setActiveDot(pendingIndex);
+        schedulePendingIndexReset();
+        return;
+      }
+    }
+
+    setActiveDot(getActiveIndex());
   }
 
   const refreshCarousel = scheduleFrame(() => {
