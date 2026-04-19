@@ -906,39 +906,72 @@ function initHomeScheduleAndMap() {
   const mapEmbed = document.querySelector('[data-map-embed]');
   const mapCta = document.querySelector('[data-map-cta]');
   const mapSection = document.querySelector('.map-section');
-  const mobileMapQuery = window.matchMedia('(max-width: 768px)');
+  const mapWrapper = mapEmbed?.closest('.map-wrapper') || null;
 
-  if (!mapButtons.length || !mapEmbed || !mapCta) return;
+  if (!mapEmbed || !mapSection) return;
 
-  function refreshMobileMapEmbed(forceReload = false) {
-    if (!mobileMapQuery.matches) return;
+  let hasLoadedMap = false;
 
-    mapEmbed.setAttribute('loading', 'eager');
-
-    if (!forceReload) return;
-
-    const currentSrc = mapEmbed.getAttribute('src');
-    if (!currentSrc) return;
-    mapEmbed.setAttribute('src', currentSrc);
+  function markMapState(state) {
+    if (!mapWrapper) return;
+    mapWrapper.setAttribute('data-map-state', state);
   }
 
-  refreshMobileMapEmbed();
+  function loadMapEmbed(nextSrc = mapEmbed.getAttribute('data-map-src')) {
+    if (!nextSrc) return;
 
-  if (mapSection && 'IntersectionObserver' in window) {
+    const currentSrc = mapEmbed.getAttribute('src');
+    if (currentSrc === nextSrc && hasLoadedMap) return;
+
+    hasLoadedMap = true;
+    markMapState('loading');
+    mapEmbed.setAttribute('src', nextSrc);
+  }
+
+  markMapState('idle');
+
+  mapEmbed.addEventListener('load', () => {
+    markMapState('ready');
+  });
+
+  if (mapButtons.length && mapCta) {
+    const activeButton = mapButtons.find((button) => button.classList.contains('is-active')) || mapButtons[0];
+
+    if (activeButton) {
+      mapEmbed.setAttribute('data-map-src', activeButton.getAttribute('data-map-src') || '');
+      mapEmbed.title = `Localisation du cabinet de ${activeButton.getAttribute('data-map-label') || ''} sur Google Maps`;
+      mapCta.href = activeButton.getAttribute('data-map-link') || mapCta.href;
+      mapCta.textContent = `CLIQUEZ ICI POUR VENIR AU CABINET DE ${(activeButton.getAttribute('data-map-label') || '').toUpperCase()}`;
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       if (!entries.some((entry) => entry.isIntersecting)) return;
-      refreshMobileMapEmbed(true);
+      loadMapEmbed();
       observer.disconnect();
     }, {
-      rootMargin: '180px 0px'
+      rootMargin: '600px 0px'
     });
 
     observer.observe(mapSection);
   } else {
     window.addEventListener('load', () => {
-      refreshMobileMapEmbed(true);
+      loadMapEmbed();
     }, { passive: true });
   }
+
+  mapSection.addEventListener('focusin', () => {
+    loadMapEmbed();
+  });
+
+  mapSection.addEventListener('pointerenter', () => {
+    loadMapEmbed();
+  }, { passive: true });
+
+  mapSection.addEventListener('touchstart', () => {
+    loadMapEmbed();
+  }, { passive: true, once: true });
 
   mapButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -947,11 +980,11 @@ function initHomeScheduleAndMap() {
       });
 
       button.classList.add('is-active');
-      mapEmbed.src = button.getAttribute('data-map-src') || mapEmbed.src;
+      mapEmbed.setAttribute('data-map-src', button.getAttribute('data-map-src') || '');
       mapEmbed.title = `Localisation du cabinet de ${button.getAttribute('data-map-label') || ''} sur Google Maps`;
       mapCta.href = button.getAttribute('data-map-link') || mapCta.href;
       mapCta.textContent = `CLIQUEZ ICI POUR VENIR AU CABINET DE ${(button.getAttribute('data-map-label') || '').toUpperCase()}`;
-      refreshMobileMapEmbed();
+      loadMapEmbed(button.getAttribute('data-map-src') || '');
     });
   });
 }

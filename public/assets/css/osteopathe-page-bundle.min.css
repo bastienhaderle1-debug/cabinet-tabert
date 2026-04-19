@@ -1,0 +1,303 @@
+@font-face{font-family:Manrope;font-style:normal;font-weight:400 800;font-display:swap;src:url("../fonts/manrope-latin.woff2") format("woff2")}
+
+
+:root{--c-primary:#5a7e5a;--c-accent:#4d6b4d;--c-hero:#435f43;--c-highlight:#f7e4ac;--c-bg:#f5f2e6;--c-surface:#fcfbf2;--c-line:#d7ddcc;--c-text:#2f3d2f;--c-muted:#667260;--r-sm:10px;--r-md:16px;--r-lg:26px;--shadow-soft:0 18px 48px rgba(20,52,43,.10);--shadow-md:0 14px 36px rgba(20,38,32,.12);--shadow-lg:0 28px 72px rgba(20,38,32,.16);--shadow-focus:0 0 0 4px rgba(105,138,101,.24);--grad-accent:linear-gradient(135deg, #6a8b66 0%, #4d6b4d 100%);--grad-hero:linear-gradient(135deg, #5a7e5a 0%, #8fa376 100%);--grad-surface:linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(250,247,237,.92) 100%);--ff-title:"Bookman Old Style","Book Antiqua",Georgia,serif;--ff-body:"Manrope",sans-serif}*,::after,::before{box-sizing:border-box}body,html{margin:0;padding:0}html{scroll-behavior:smooth}body{min-width:320px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:15.5px;letter-spacing:.003em}img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}button,input,select,textarea{font:inherit}[hidden]{display:none!important}::selection{background:rgba(105,138,101,.24);color:#233023}:focus-visible{outline:2px solid var(--c-accent);outline-offset:3px;box-shadow:var(--shadow-focus)}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.icon{display:inline-block;width:1em;height:1em;fill:currentColor;flex:0 0 auto;vertical-align:middle}h1,h2,h3{text-wrap:balance;font-weight:700;line-height:.98;letter-spacing:.01em}li,p{letter-spacing:.004em}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,::after,::before{animation-duration:0s!important;animation-iteration-count:1!important;transition-duration:0s!important}}
+
+
+body{font-family:var(--ff-body);color:var(--c-text);line-height:1.7;background:radial-gradient(circle at 12% -10%,rgba(247,228,172,.18),transparent 28%),radial-gradient(circle at 100% 0,rgba(143,163,118,.10),transparent 30%),linear-gradient(180deg,#fbf8ef 0,#f5f2e6 46%,#efebdc 100%)}body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.36),rgba(255,255,255,0) 24%),radial-gradient(circle at 50% 0,rgba(255,255,255,.22),transparent 52%);z-index:0}h1,h2,h3,h4{font-family:var(--ff-title);color:var(--c-primary)}.container{width:min(1180px,92%);margin:0 auto}.siteSkipLink{position:absolute;left:12px;top:-120px;z-index:2000;padding:10px 14px;border-radius:10px;background:var(--c-text);color:#fff;text-decoration:none;font-weight:700;transition:top .2s ease}.siteSkipLink:focus{top:12px}.siteHeader{position:relative;z-index:1000;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,252,246,.88)),radial-gradient(circle at top left,rgba(247,228,172,.12),transparent 34%);border-bottom:1px solid rgba(67,95,67,.10);box-shadow:0 12px 30px rgba(44,58,42,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}@media (min-width:769px){.siteHeader{position:sticky;top:0}}.siteHeader__inner{width:min(1180px,92%);margin:0 auto;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:18px}.siteHeader__brand{display:flex;align-items:center;gap:14px;min-width:0;color:var(--c-text);text-decoration:none}.siteHeader__brand>picture{display:block;flex:0 0 auto;border-radius:20px;overflow:hidden;box-shadow:0 14px 30px rgba(67,95,67,.16)}.siteHeader__logo{width:74px;height:auto;display:block;flex:0 0 auto;border:1px solid rgba(255,255,255,.46);border-radius:20px;background:#698a65}.siteHeader__brandText{display:flex;flex-direction:column;min-width:0;line-height:1.1}.siteHeader__brandName{font-family:var(--ff-title);font-size:23px;font-weight:800;color:var(--c-primary);letter-spacing:.01em}.siteHeader__brandRole{font-size:12px;font-weight:600;color:var(--c-muted);letter-spacing:.08em;text-transform:uppercase}.siteNav{display:flex;gap:8px;padding:5px;border:1px solid rgba(23,54,45,.08);border-radius:999px;background:rgba(255,255,255,.68);box-shadow:0 10px 28px rgba(18,35,30,.06)}.siteNav a{text-decoration:none;padding:10px 14px;border-radius:999px;color:var(--c-text);font-size:14px;font-weight:700;transition:background .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}.siteNav a:hover{background:rgba(143,163,118,.12);color:var(--c-primary);transform:translateY(-1px)}.siteNav a.is-active,.siteNav a[aria-current=page]{background:var(--c-primary);color:#fff}.siteHeader__cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:var(--grad-accent);color:#fff;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.02em;white-space:nowrap;box-shadow:0 16px 32px rgba(77,107,77,.24);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}.siteHeader__cta:hover{filter:brightness(.98);transform:translateY(-1px);box-shadow:0 16px 32px rgba(77,107,77,.30)}.siteHeader__burger{display:none}.siteMain{position:relative;z-index:1;display:block;scroll-margin-top:120px}.siteFooter{position:relative;overflow:hidden;background:radial-gradient(circle at top left,rgba(247,228,172,.18),transparent 32%),linear-gradient(140deg,rgba(79,108,76,.98) 0,rgba(58,82,57,.98) 100%);color:#fff;padding:34px 0 30px;border-top:1px solid rgba(255,255,255,.16)}.siteFooter::before{content:"";position:absolute;inset:0 auto auto 0;width:min(420px,50vw);height:1px;background:linear-gradient(90deg,rgba(255,255,255,.34),transparent)}.siteFooter__inner{width:min(1180px,92%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 18px;font-size:14px;letter-spacing:.03em;opacity:.95}.siteFooter__copy{margin:0;font-size:14px}.siteFooter__contacts{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.siteFooter__contact{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-size:13px;font-weight:600;transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease}.siteFooter__contact span{line-height:1.2;overflow-wrap:anywhere}.siteFooter__contact .icon{width:16px;height:16px}.siteFooter__contact:hover{transform:translateY(-1px);background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.45);box-shadow:0 14px 28px rgba(0,0,0,.12)}body.page-prestations{min-height:100dvh;display:flex;flex-direction:column}body.page-prestations>main{flex:1 0 auto}body.page-prestations .siteHeader__cta{visibility:hidden;pointer-events:none}@media (max-width:860px){.siteFooter__inner{justify-content:center;text-align:center}.siteFooter__contacts{justify-content:center}}@media (max-width:768px){body{padding-top:88px}body.home,body.page-osteopathe{padding-top:140px}.siteHeader{position:fixed;top:0;left:0;right:0;width:100%;z-index:1300;backdrop-filter:none;-webkit-backdrop-filter:none}.siteHeader__inner{padding:10px 0;align-items:center;gap:10px}.siteHeader__burger{display:inline-grid;place-items:center;width:44px;height:44px;margin-left:auto;border:1px solid rgba(0,0,0,.1);border-radius:14px;background:rgba(255,255,255,.92);box-shadow:0 10px 28px rgba(0,0,0,.1);cursor:pointer;z-index:1201;-webkit-tap-highlight-color:transparent}.siteHeader__burger:active{transform:scale(.98)}.siteHeader__burgerLines{position:relative;display:block;width:20px;height:2px;border-radius:999px;background:rgba(31,45,39,.78)}.siteHeader__burgerLines::after,.siteHeader__burgerLines::before{content:"";position:absolute;left:0;width:20px;height:2px;border-radius:999px;background:rgba(31,45,39,.78);transition:transform .18s ease,top .18s ease}.siteHeader__burgerLines::before{top:-7px}.siteHeader__burgerLines::after{top:7px}.siteNav{position:absolute;top:calc(100% + 8px);left:4%;right:4%;z-index:1200;display:none;flex-direction:column;gap:8px;padding:12px;border:1px solid rgba(0,0,0,.08);border-radius:18px;background:rgba(255,252,246,.98);box-shadow:0 24px 64px rgba(0,0,0,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}.siteNav a{padding:12px;border-radius:14px}.siteHeader.is-menu-open .siteNav{display:flex!important}.siteHeader.is-menu-open .siteHeader__burgerLines{background:0 0}.siteHeader.is-menu-open .siteHeader__burgerLines::before{top:0;transform:rotate(45deg)}.siteHeader.is-menu-open .siteHeader__burgerLines::after{top:0;transform:rotate(-45deg)}.siteHeader__brand{flex:1}body.page-prestations .siteHeader__cta{display:none}body.home .siteHeader__inner,body.page-osteopathe .siteHeader__inner{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand brand" "cta burger";align-items:center;column-gap:10px;row-gap:10px}body.home .siteHeader__brand,body.page-osteopathe .siteHeader__brand{grid-area:brand}body.home .siteHeader__cta,body.page-osteopathe .siteHeader__cta{grid-area:cta;min-height:44px;width:100%;padding:10px 12px;font-size:13px;border-radius:14px}body.home .siteHeader__burger,body.page-osteopathe .siteHeader__burger{grid-area:burger;margin-left:0;justify-self:end}}@media (max-width:700px){.siteHeader__logo{width:56px}.siteHeader__brandName{font-size:18px}.siteHeader__brandRole{letter-spacing:.05em}}@media (max-width:560px){.siteFooter__contacts{width:100%;display:grid;grid-template-columns:1fr}.siteFooter__contact{justify-content:center}}@media (hover:hover){.siteHeader__burger:hover{background:#fff;box-shadow:0 14px 34px rgba(0,0,0,.14)}}.siteHeader::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:linear-gradient(90deg,transparent,rgba(247,228,172,.58),transparent);pointer-events:none}.siteHeader__brand{transition:transform .2s ease,opacity .2s ease}.siteHeader__brand:hover{transform:translateY(-1px)}.siteHeader__brandName{line-height:.92}.siteNav a{position:relative}.siteNav a.is-active,.siteNav a[aria-current=page]{box-shadow:0 10px 22px rgba(77,107,77,.22)}.siteHeader__cta{border:1px solid rgba(255,255,255,.24)}.siteHeader__cta:hover{box-shadow:0 18px 36px rgba(77,107,77,.32)}.siteFooter__copy{max-width:32ch;color:rgba(255,255,255,.86);line-height:1.6}.siteFooter__contact{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.siteFooter__contact .icon{opacity:.92}@media (max-width:768px){.siteNav a{font-size:15px}.siteFooter{padding:28px 0 24px}}@media (max-width:768px){body{line-height:1.62}body.home,body.page-osteopathe{padding-top:132px}.siteHeader{background:linear-gradient(180deg,rgba(255,253,248,.97),rgba(249,245,233,.92));box-shadow:0 10px 26px rgba(44,58,42,.08)}.siteHeader__inner{width:min(100% - 24px,560px);padding:10px 0 8px;row-gap:8px}.siteHeader__brand{gap:10px}.siteHeader__logo{width:54px}.siteHeader__brandName{font-size:17px}.siteHeader__brandRole{font-size:11px;letter-spacing:.04em}.siteHeader__cta{min-height:46px;font-size:13px;letter-spacing:.01em;box-shadow:0 12px 24px rgba(77,107,77,.22)}.siteHeader__burger{width:42px;height:42px;border-radius:12px}.siteNav{left:12px;right:12px;top:calc(100% + 10px);padding:10px;border-radius:16px}.siteNav a{min-height:46px;display:flex;align-items:center}.siteMain{scroll-margin-top:104px}.siteFooter__inner{width:min(100% - 24px,560px);gap:10px 14px}.siteFooter__copy{font-size:13px;max-width:none}.siteFooter__contact{min-height:42px;padding:9px 12px;font-size:12.5px}}@media (max-width:420px){body.home,body.page-osteopathe{padding-top:126px}.siteHeader__brandName{font-size:16px}.siteHeader__brandRole{font-size:10.5px}.siteHeader__cta{min-height:44px;font-size:12.5px}}@media (min-width:769px) and (max-width:1023px){.siteHeader__brandName{font-size:20px}.siteHeader__brandRole{font-size:11px}.siteNav a{font-size:13px;padding:8px 12px}.siteHeader__cta{font-size:13px;padding:10px 16px}.siteFooter__inner{font-size:13px}.siteFooter__contact{font-size:12px;padding:8px 12px}}
+
+
+
+.chiro-poster{background:var(--c-bg);padding:90px 18px}.chiro-poster__inner{position:relative;overflow:hidden;max-width:920px;margin:0 auto;padding:70px 64px;border:1px solid rgba(23,54,45,.1);border-radius:var(--r-lg);background:var(--c-bg);box-shadow:0 20px 52px rgba(22,53,45,.12)}.chiro-poster__inner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.28),transparent 55%),radial-gradient(circle at 80% 30%,rgba(255,255,255,.18),transparent 60%),radial-gradient(circle at 40% 90%,rgba(255,255,255,.12),transparent 60%);pointer-events:none}.chiro-poster__title{position:relative;margin:0;color:#556452;text-align:center;font-size:64px;line-height:1.02;font-weight:800;letter-spacing:.2px}.chiro-poster__line{position:relative;width:82%;height:1px;margin:22px auto 34px;background:rgba(74,58,50,.45)}.chiro-poster__text{position:relative;max-width:760px;margin:0 auto;color:#3f4e3e;font-size:16px;line-height:1.9}.chiro-poster__text p{margin:0 0 20px}.chiro-poster__focus{margin-top:26px!important;padding:18px;border-left:4px solid var(--c-accent);border-radius:12px;background:rgba(255,255,255,.35);color:#2a2a2a;font-weight:700}.chiro-methodes{background:var(--c-bg);padding:70px 0}.chiro-methodes__inner{width:min(1180px,92%);margin:0 auto}.chiro-methodes__title{margin:0 0 36px;color:var(--c-primary);text-align:center;font-size:44px;font-weight:600;letter-spacing:.5px}.chiro-methodes--profil .chiro-methodes__profile{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:28px;align-items:stretch}.chiro-methodes--profil .chiro-methodes__photoWrap{margin:0;overflow:hidden;border:1px solid rgba(23,54,45,.1);border-radius:var(--r-lg);background:var(--c-surface);box-shadow:0 20px 52px rgba(22,53,45,.12)}.chiro-methodes--profil .chiro-methodes__photoWrap picture{display:block;height:100%}.chiro-methodes--profil .chiro-methodes__photo{display:block;width:100%;height:100%;min-height:360px;object-fit:cover}.chiro-methodes--profil .chiro-methodes__profileText{padding:26px 28px 30px;border:1px solid rgba(23,54,45,.1);border-radius:var(--r-lg);background:var(--c-surface);color:var(--c-muted);font-size:16px;line-height:1.8;box-shadow:0 20px 52px rgba(22,53,45,.12)}.chiro-methodes--profil .chiro-methodes__profileText p{margin:0 0 16px}.chiro-methodes--profil .chiro-methodes__profileText p:last-child{margin-bottom:0}.chiro-methodes__eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px!important;color:var(--c-primary);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.chiro-methodes__eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,rgba(247,228,172,.95),rgba(105,138,101,.45))}.chiro-methodes__lead{margin-bottom:18px!important;color:var(--c-text);font-size:18px;line-height:1.8}.chiro-methodes__values{margin-top:24px;padding:18px 20px;border:1px solid rgba(23,54,45,.08);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.78),rgba(248,243,234,.92));box-shadow:0 14px 32px rgba(22,53,45,.06)}.chiro-methodes__valuesTitle{margin:0 0 10px;color:var(--c-primary);font-family:var(--ff-title);font-size:24px;font-weight:600}.chiro-methodes__values p{margin:0}.seance{background:var(--c-bg);padding:70px 0}.seance__inner{width:min(980px,calc(100% - 36px));margin:0 auto}.seance__head{text-align:center;margin:0 0 28px}.seance__title{margin:0 0 8px;color:var(--c-primary);font-size:44px;font-weight:600;letter-spacing:.4px}.seance__subtitle{margin:0;color:var(--c-muted);font-size:15px;line-height:1.6}.seance__steps{display:grid;gap:16px;margin:28px 0 0;padding:0;list-style:none;counter-reset:seance-step}.seance__step{display:grid;grid-template-columns:1fr;gap:0;align-items:start;counter-increment:seance-step}.seance__badge{display:none}.seance__card{padding:18px 18px 16px;border:1px solid rgba(23,54,45,.1);border-radius:18px;background:var(--c-surface);box-shadow:0 20px 52px rgba(22,53,45,.12)}.seance__top{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:10px}.seance__top::before{content:"Étape " counter(seance-step);display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:999px;background:rgba(90,126,90,.10);border:1px solid rgba(90,126,90,.14);color:var(--c-primary);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.seance__name{margin:0;color:var(--c-text);font-family:var(--ff-body);font-size:18px;font-weight:800}.seance__text{margin:0 0 10px;color:var(--c-muted);font-size:14px;line-height:1.7}.seance__list{margin:0;padding-left:18px;color:var(--c-muted);font-size:13.5px;line-height:1.65}.seance__list li{margin:6px 0}@media (max-width:980px){.chiro-methodes--profil .chiro-methodes__profile{grid-template-columns:1fr;gap:16px}.chiro-methodes--profil .chiro-methodes__photo{min-height:280px;max-height:420px}.chiro-methodes--profil .chiro-methodes__profileText{padding:18px 18px 22px;font-size:14px}.seance__step{align-items:start}}@media (max-width:768px){.chiro-poster{padding:60px 14px}.chiro-poster__inner{padding:38px 18px;border-radius:18px}.chiro-poster__title{font-size:34px}.chiro-poster__line{width:90%;margin:16px auto 22px}.chiro-poster__text{font-size:14px;line-height:1.75}.chiro-poster__focus{padding:14px}.seance{padding:52px 0}.chiro-methodes__title,.seance__title{font-size:30px}.seance__step{grid-template-columns:38px 1fr}.seance__badge{width:38px;height:38px;font-size:14px}.seance__card{padding:16px 14px 14px;border-radius:16px}.seance__name{font-size:16px}}.seance{position:relative;padding:84px 0 74px;background:radial-gradient(circle at top left,rgba(143,163,118,.10),transparent 24%),var(--c-bg)}.seance__head{margin-bottom:36px}.seance__title{font-size:clamp(38px, 5vw, 54px);letter-spacing:.01em}.seance__subtitle{max-width:58ch;margin-inline:auto;font-size:16px}.seance__steps{gap:22px;max-width:860px;margin:32px auto 0;padding-left:26px}.seance__badge{width:52px;height:52px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,252,246,.98));border-color:rgba(23,54,45,.1)}.seance__card{border-radius:24px;padding:22px 22px 20px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,252,246,.94))}.seance__name{font-family:var(--ff-title);font-size:24px;color:var(--c-primary)}.seance__text{font-size:15px}.seance__list{font-size:14px}.seance__list li::marker{color:var(--c-highlight)}.chiro-poster{position:relative;padding:96px 18px;background:radial-gradient(circle at 10% 0,rgba(247,228,172,.18),transparent 28%),var(--c-bg)}.chiro-poster__inner{max-width:980px;padding:78px 72px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,255,255,.18)),linear-gradient(135deg,rgba(255,252,246,.94),rgba(246,244,238,.96))}.chiro-poster__title{color:var(--c-primary);font-size:clamp(46px, 6vw, 76px)}.chiro-poster__line{width:min(520px,82%);height:2px;background:linear-gradient(90deg,transparent,rgba(90,126,90,.54),transparent)}.chiro-poster__text{max-width:780px;color:#465645;font-size:17px}.chiro-poster__focus{border-left-color:var(--c-highlight);background:rgba(255,255,255,.54);box-shadow:0 14px 30px rgba(22,53,45,.08)}.chiro-methodes{padding:84px 0;background:radial-gradient(circle at 100% 0,rgba(143,163,118,.08),transparent 22%),var(--c-bg)}.chiro-methodes__title{font-size:clamp(38px, 5vw, 54px);margin-bottom:40px}.chiro-methodes--profil .chiro-methodes__profile{gap:34px}.chiro-methodes--profil .chiro-methodes__photoWrap{border-radius:28px}.chiro-methodes--profil .chiro-methodes__photo{min-height:420px}.chiro-methodes--profil .chiro-methodes__profileText{padding:34px 34px 36px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,252,246,.95));font-size:16px}@media (max-width:980px){.seance{padding:68px 0 60px}.chiro-poster{padding:78px 16px}.chiro-poster__inner{padding:54px 28px}.chiro-methodes{padding:68px 0}}@media (max-width:768px){.seance__badge{width:42px;height:42px}.seance__card{border-radius:18px;padding:18px 16px 16px}.seance__name{font-size:20px}.chiro-poster__text{font-size:15px}.chiro-methodes--profil .chiro-methodes__profileText{padding:24px 18px 24px;border-radius:22px}.chiro-methodes__lead{font-size:16px;line-height:1.75}.chiro-methodes__values{margin-top:20px;padding:16px;border-radius:16px}.chiro-methodes__valuesTitle{font-size:21px}}.chiro-methodes__inner>.chiro-methodes__title,.seance__head{max-width:780px;margin-left:auto;margin-right:auto}.chiro-methodes__title::after,.chiro-poster__title::after,.seance__title::after{content:"";display:block;width:78px;height:2px;margin:16px auto 0;border-radius:999px;background:linear-gradient(90deg,rgba(247,228,172,0),rgba(247,228,172,.88),rgba(105,138,101,.45),rgba(105,138,101,0))}.chiro-methodes--profil .chiro-methodes__photoWrap,.chiro-methodes--profil .chiro-methodes__profileText,.seance__card{overflow:hidden}.chiro-methodes--profil .chiro-methodes__profileText::before,.seance__card::before{content:"";display:block;height:3px;margin:-22px -22px 18px;background:linear-gradient(90deg,rgba(247,228,172,.85),rgba(105,138,101,.55))}.chiro-methodes--profil .chiro-methodes__profileText strong,.chiro-poster__text strong,.seance__text strong{color:var(--c-primary)}.chiro-poster__inner{box-shadow:0 26px 62px rgba(22,53,45,.12)}.chiro-poster__text{line-height:1.95}.chiro-methodes--profil .chiro-methodes__photo{object-position:center 56%}.chiro-methodes--profil .chiro-methodes__profileText{position:relative}.seance__card{box-shadow:0 22px 56px rgba(22,53,45,.11)}@media (max-width:768px){.chiro-methodes--profil .chiro-methodes__profileText::before,.seance__card::before{margin:-18px -16px 16px}.chiro-methodes__title::after,.chiro-poster__title::after,.seance__title::after{margin-top:12px}}.chiro-methodes,.chiro-poster,.seance{background:0 0}.chiro-methodes--profil .chiro-methodes__profileText,.seance__card{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,251,244,.94))}.chiro-poster__inner{background:linear-gradient(180deg,rgba(255,255,255,.52),rgba(255,255,255,.26)),linear-gradient(135deg,rgba(255,252,246,.96),rgba(250,245,238,.96))}@media (max-width:768px){.chiro-methodes,.chiro-poster,.seance{padding-top:56px;padding-bottom:56px}.chiro-methodes__inner,.seance__inner{width:min(100% - 24px,560px)}.seance__head{margin-bottom:24px}.chiro-methodes__title,.seance__title{font-size:clamp(30px, 8vw, 38px)}.seance__subtitle{font-size:14px;line-height:1.6}.seance__steps{gap:16px;margin-top:22px;max-width:none;padding-left:0}.seance__step{grid-template-columns:1fr;gap:8px;align-items:start}.seance__badge{display:none}.seance__card{padding:16px 14px 14px;border-radius:18px}.seance__top{gap:7px;margin-bottom:8px}.seance__top::before{min-height:28px;padding:0 10px;font-size:10.5px}.seance__name{font-size:19px}.seance__text{font-size:14px;line-height:1.65}.seance__list{font-size:13px;line-height:1.58}.chiro-poster{padding-inline:12px}.chiro-poster__inner{padding:34px 18px;border-radius:22px}.chiro-poster__title{font-size:clamp(34px, 10vw, 46px)}.chiro-poster__line{margin:14px auto 18px}.chiro-poster__text{font-size:14.5px;line-height:1.78}.chiro-poster__focus{margin-top:18px!important;padding:14px;border-radius:14px}.chiro-methodes__title{margin-bottom:24px}.chiro-methodes--profil .chiro-methodes__profile{gap:18px}.chiro-methodes--profil .chiro-methodes__photoWrap,.chiro-methodes--profil .chiro-methodes__profileText{border-radius:20px}.chiro-methodes--profil .chiro-methodes__photo{min-height:260px;max-height:380px;object-position:center 58%}.chiro-methodes--profil .chiro-methodes__profileText{padding:20px 16px 20px;font-size:14px;line-height:1.7}.chiro-methodes__eyebrow{margin-bottom:14px!important;font-size:11px;letter-spacing:.16em}.chiro-methodes__lead{font-size:15px}.chiro-methodes__values{margin-top:18px;padding:14px}.chiro-methodes__valuesTitle{font-size:19px}}@media (max-width:420px){.chiro-methodes__inner,.seance__inner{width:min(100% - 20px,520px)}.seance__card{padding:15px 13px 13px}.chiro-poster__inner{padding:30px 14px}.chiro-poster__title{font-size:32px}.chiro-methodes--profil .chiro-methodes__profileText{padding:18px 14px 18px}}@media (min-width:769px) and (max-width:1023px){.chiro-poster__title{font-size:42px}.chiro-poster__text{font-size:16px}.seance__title{font-size:38px}.seance__card{padding:24px 20px}.chiro-methodes__title{font-size:40px}.chiro-methodes--profil .chiro-methodes__profileText{font-size:15px}}
+
+
+@media (min-width: 769px) {
+  .siteNav {
+    gap: 6px;
+    padding: 4px;
+  }
+
+  .siteNav a {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .siteNav__nowrap {
+    white-space: nowrap;
+  }
+
+  .siteNav__link--osteopathie.is-active,
+  .siteNav__link--osteopathie[aria-current="page"] {
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__profile {
+  display: block;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__profileText {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__eyebrow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__values {
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  body {
+    padding-top: 88px;
+  }
+
+  body.home,
+  body.page-osteopathe {
+    padding-top: 132px;
+  }
+
+  .siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1300;
+    background: linear-gradient(180deg, rgba(255, 253, 248, 0.97), rgba(249, 245, 233, 0.92));
+    box-shadow: 0 10px 26px rgba(44, 58, 42, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .siteHeader__inner {
+    width: min(100% - 24px, 560px);
+    padding: 10px 0 8px;
+    align-items: center;
+    gap: 10px;
+    row-gap: 8px;
+  }
+
+  .siteHeader__brand {
+    flex: 1;
+    gap: 10px;
+  }
+
+  .siteHeader__logo {
+    width: 54px;
+  }
+
+  .siteHeader__brandName {
+    font-size: 17px;
+  }
+
+  .siteHeader__brandRole {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  .siteHeader__burger {
+    display: inline-grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1201;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .siteHeader__burgerLines {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(31, 45, 39, 0.78);
+  }
+
+  .siteHeader__burgerLines::before,
+  .siteHeader__burgerLines::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(31, 45, 39, 0.78);
+    transition: transform 0.18s ease, top 0.18s ease;
+  }
+
+  .siteHeader__burgerLines::before {
+    top: -7px;
+  }
+
+  .siteHeader__burgerLines::after {
+    top: 7px;
+  }
+
+  .siteNav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 12px;
+    right: 12px;
+    z-index: 1200;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    background: rgba(255, 252, 246, 0.98);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .siteNav a {
+    display: flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 12px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+
+  .siteHeader.is-menu-open .siteNav {
+    display: flex !important;
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines {
+    background: transparent;
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .siteHeader__cta {
+    min-height: 46px;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    box-shadow: 0 12px 24px rgba(77, 107, 77, 0.22);
+  }
+
+  body.page-prestations .siteHeader__cta {
+    display: none;
+  }
+
+  body.home .siteHeader__inner,
+  body.page-osteopathe .siteHeader__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand brand"
+      "cta burger";
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 8px;
+  }
+
+  body.home .siteHeader__brand,
+  body.page-osteopathe .siteHeader__brand {
+    grid-area: brand;
+  }
+
+  body.home .siteHeader__cta,
+  body.page-osteopathe .siteHeader__cta {
+    grid-area: cta;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  body.home .siteHeader__burger,
+  body.page-osteopathe .siteHeader__burger {
+    grid-area: burger;
+    margin-left: 0;
+    justify-self: end;
+  }
+
+  .siteMain {
+    scroll-margin-top: 104px;
+  }
+}
+
+.page-prestations .summaryCard__locations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.page-prestations .summaryCard__locationBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: 1px solid rgba(23, 54, 45, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--c-text);
+  min-height: 40px;
+  padding: 0 14px;
+  font: 800 13px/1 var(--ff-body);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.page-prestations .summaryCard__locationBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 28px rgba(22, 53, 45, 0.1);
+}
+
+.page-prestations .summaryCard__locationBtn.is-active {
+  background: var(--grad-accent);
+  color: #fff;
+  border-color: rgba(77, 107, 77, 0.2);
+  box-shadow: 0 14px 30px rgba(77, 107, 77, 0.2);
+}
+
+.page-prestations .summaryCard__locationBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.page-prestations .summaryCard__btn.is-disabled {
+  pointer-events: none;
+  opacity: 0.58;
+  box-shadow: none;
+}
+
+@media (max-width: 520px) {
+  .page-prestations .summaryCard__locations {
+    gap: 10px;
+  }
+
+  .page-prestations .summaryCard__locationBtn {
+    flex: 1 1 100%;
+    width: 100%;
+    justify-content: center;
+  }
+}
+

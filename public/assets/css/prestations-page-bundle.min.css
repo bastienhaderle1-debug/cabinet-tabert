@@ -1,0 +1,303 @@
+@font-face{font-family:Manrope;font-style:normal;font-weight:400 800;font-display:swap;src:url("../fonts/manrope-latin.woff2") format("woff2")}
+
+
+:root{--c-primary:#5a7e5a;--c-accent:#4d6b4d;--c-hero:#435f43;--c-highlight:#f7e4ac;--c-bg:#f5f2e6;--c-surface:#fcfbf2;--c-line:#d7ddcc;--c-text:#2f3d2f;--c-muted:#667260;--r-sm:10px;--r-md:16px;--r-lg:26px;--shadow-soft:0 18px 48px rgba(20,52,43,.10);--shadow-md:0 14px 36px rgba(20,38,32,.12);--shadow-lg:0 28px 72px rgba(20,38,32,.16);--shadow-focus:0 0 0 4px rgba(105,138,101,.24);--grad-accent:linear-gradient(135deg, #6a8b66 0%, #4d6b4d 100%);--grad-hero:linear-gradient(135deg, #5a7e5a 0%, #8fa376 100%);--grad-surface:linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(250,247,237,.92) 100%);--ff-title:"Bookman Old Style","Book Antiqua",Georgia,serif;--ff-body:"Manrope",sans-serif}*,::after,::before{box-sizing:border-box}body,html{margin:0;padding:0}html{scroll-behavior:smooth}body{min-width:320px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:15.5px;letter-spacing:.003em}img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}button,input,select,textarea{font:inherit}[hidden]{display:none!important}::selection{background:rgba(105,138,101,.24);color:#233023}:focus-visible{outline:2px solid var(--c-accent);outline-offset:3px;box-shadow:var(--shadow-focus)}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.icon{display:inline-block;width:1em;height:1em;fill:currentColor;flex:0 0 auto;vertical-align:middle}h1,h2,h3{text-wrap:balance;font-weight:700;line-height:.98;letter-spacing:.01em}li,p{letter-spacing:.004em}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,::after,::before{animation-duration:0s!important;animation-iteration-count:1!important;transition-duration:0s!important}}
+
+
+body{font-family:var(--ff-body);color:var(--c-text);line-height:1.7;background:radial-gradient(circle at 12% -10%,rgba(247,228,172,.18),transparent 28%),radial-gradient(circle at 100% 0,rgba(143,163,118,.10),transparent 30%),linear-gradient(180deg,#fbf8ef 0,#f5f2e6 46%,#efebdc 100%)}body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.36),rgba(255,255,255,0) 24%),radial-gradient(circle at 50% 0,rgba(255,255,255,.22),transparent 52%);z-index:0}h1,h2,h3,h4{font-family:var(--ff-title);color:var(--c-primary)}.container{width:min(1180px,92%);margin:0 auto}.siteSkipLink{position:absolute;left:12px;top:-120px;z-index:2000;padding:10px 14px;border-radius:10px;background:var(--c-text);color:#fff;text-decoration:none;font-weight:700;transition:top .2s ease}.siteSkipLink:focus{top:12px}.siteHeader{position:relative;z-index:1000;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,252,246,.88)),radial-gradient(circle at top left,rgba(247,228,172,.12),transparent 34%);border-bottom:1px solid rgba(67,95,67,.10);box-shadow:0 12px 30px rgba(44,58,42,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}@media (min-width:769px){.siteHeader{position:sticky;top:0}}.siteHeader__inner{width:min(1180px,92%);margin:0 auto;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:18px}.siteHeader__brand{display:flex;align-items:center;gap:14px;min-width:0;color:var(--c-text);text-decoration:none}.siteHeader__brand>picture{display:block;flex:0 0 auto;border-radius:20px;overflow:hidden;box-shadow:0 14px 30px rgba(67,95,67,.16)}.siteHeader__logo{width:74px;height:auto;display:block;flex:0 0 auto;border:1px solid rgba(255,255,255,.46);border-radius:20px;background:#698a65}.siteHeader__brandText{display:flex;flex-direction:column;min-width:0;line-height:1.1}.siteHeader__brandName{font-family:var(--ff-title);font-size:23px;font-weight:800;color:var(--c-primary);letter-spacing:.01em}.siteHeader__brandRole{font-size:12px;font-weight:600;color:var(--c-muted);letter-spacing:.08em;text-transform:uppercase}.siteNav{display:flex;gap:8px;padding:5px;border:1px solid rgba(23,54,45,.08);border-radius:999px;background:rgba(255,255,255,.68);box-shadow:0 10px 28px rgba(18,35,30,.06)}.siteNav a{text-decoration:none;padding:10px 14px;border-radius:999px;color:var(--c-text);font-size:14px;font-weight:700;transition:background .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}.siteNav a:hover{background:rgba(143,163,118,.12);color:var(--c-primary);transform:translateY(-1px)}.siteNav a.is-active,.siteNav a[aria-current=page]{background:var(--c-primary);color:#fff}.siteHeader__cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:var(--grad-accent);color:#fff;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.02em;white-space:nowrap;box-shadow:0 16px 32px rgba(77,107,77,.24);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}.siteHeader__cta:hover{filter:brightness(.98);transform:translateY(-1px);box-shadow:0 16px 32px rgba(77,107,77,.30)}.siteHeader__burger{display:none}.siteMain{position:relative;z-index:1;display:block;scroll-margin-top:120px}.siteFooter{position:relative;overflow:hidden;background:radial-gradient(circle at top left,rgba(247,228,172,.18),transparent 32%),linear-gradient(140deg,rgba(79,108,76,.98) 0,rgba(58,82,57,.98) 100%);color:#fff;padding:34px 0 30px;border-top:1px solid rgba(255,255,255,.16)}.siteFooter::before{content:"";position:absolute;inset:0 auto auto 0;width:min(420px,50vw);height:1px;background:linear-gradient(90deg,rgba(255,255,255,.34),transparent)}.siteFooter__inner{width:min(1180px,92%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 18px;font-size:14px;letter-spacing:.03em;opacity:.95}.siteFooter__copy{margin:0;font-size:14px}.siteFooter__contacts{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.siteFooter__contact{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.09);color:#fff;text-decoration:none;font-size:13px;font-weight:600;transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease}.siteFooter__contact span{line-height:1.2;overflow-wrap:anywhere}.siteFooter__contact .icon{width:16px;height:16px}.siteFooter__contact:hover{transform:translateY(-1px);background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.45);box-shadow:0 14px 28px rgba(0,0,0,.12)}body.page-prestations{min-height:100dvh;display:flex;flex-direction:column}body.page-prestations>main{flex:1 0 auto}body.page-prestations .siteHeader__cta{visibility:hidden;pointer-events:none}@media (max-width:860px){.siteFooter__inner{justify-content:center;text-align:center}.siteFooter__contacts{justify-content:center}}@media (max-width:768px){body{padding-top:88px}body.home,body.page-osteopathe{padding-top:140px}.siteHeader{position:fixed;top:0;left:0;right:0;width:100%;z-index:1300;backdrop-filter:none;-webkit-backdrop-filter:none}.siteHeader__inner{padding:10px 0;align-items:center;gap:10px}.siteHeader__burger{display:inline-grid;place-items:center;width:44px;height:44px;margin-left:auto;border:1px solid rgba(0,0,0,.1);border-radius:14px;background:rgba(255,255,255,.92);box-shadow:0 10px 28px rgba(0,0,0,.1);cursor:pointer;z-index:1201;-webkit-tap-highlight-color:transparent}.siteHeader__burger:active{transform:scale(.98)}.siteHeader__burgerLines{position:relative;display:block;width:20px;height:2px;border-radius:999px;background:rgba(31,45,39,.78)}.siteHeader__burgerLines::after,.siteHeader__burgerLines::before{content:"";position:absolute;left:0;width:20px;height:2px;border-radius:999px;background:rgba(31,45,39,.78);transition:transform .18s ease,top .18s ease}.siteHeader__burgerLines::before{top:-7px}.siteHeader__burgerLines::after{top:7px}.siteNav{position:absolute;top:calc(100% + 8px);left:4%;right:4%;z-index:1200;display:none;flex-direction:column;gap:8px;padding:12px;border:1px solid rgba(0,0,0,.08);border-radius:18px;background:rgba(255,252,246,.98);box-shadow:0 24px 64px rgba(0,0,0,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}.siteNav a{padding:12px;border-radius:14px}.siteHeader.is-menu-open .siteNav{display:flex!important}.siteHeader.is-menu-open .siteHeader__burgerLines{background:0 0}.siteHeader.is-menu-open .siteHeader__burgerLines::before{top:0;transform:rotate(45deg)}.siteHeader.is-menu-open .siteHeader__burgerLines::after{top:0;transform:rotate(-45deg)}.siteHeader__brand{flex:1}body.page-prestations .siteHeader__cta{display:none}body.home .siteHeader__inner,body.page-osteopathe .siteHeader__inner{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand brand" "cta burger";align-items:center;column-gap:10px;row-gap:10px}body.home .siteHeader__brand,body.page-osteopathe .siteHeader__brand{grid-area:brand}body.home .siteHeader__cta,body.page-osteopathe .siteHeader__cta{grid-area:cta;min-height:44px;width:100%;padding:10px 12px;font-size:13px;border-radius:14px}body.home .siteHeader__burger,body.page-osteopathe .siteHeader__burger{grid-area:burger;margin-left:0;justify-self:end}}@media (max-width:700px){.siteHeader__logo{width:56px}.siteHeader__brandName{font-size:18px}.siteHeader__brandRole{letter-spacing:.05em}}@media (max-width:560px){.siteFooter__contacts{width:100%;display:grid;grid-template-columns:1fr}.siteFooter__contact{justify-content:center}}@media (hover:hover){.siteHeader__burger:hover{background:#fff;box-shadow:0 14px 34px rgba(0,0,0,.14)}}.siteHeader::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:linear-gradient(90deg,transparent,rgba(247,228,172,.58),transparent);pointer-events:none}.siteHeader__brand{transition:transform .2s ease,opacity .2s ease}.siteHeader__brand:hover{transform:translateY(-1px)}.siteHeader__brandName{line-height:.92}.siteNav a{position:relative}.siteNav a.is-active,.siteNav a[aria-current=page]{box-shadow:0 10px 22px rgba(77,107,77,.22)}.siteHeader__cta{border:1px solid rgba(255,255,255,.24)}.siteHeader__cta:hover{box-shadow:0 18px 36px rgba(77,107,77,.32)}.siteFooter__copy{max-width:32ch;color:rgba(255,255,255,.86);line-height:1.6}.siteFooter__contact{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.siteFooter__contact .icon{opacity:.92}@media (max-width:768px){.siteNav a{font-size:15px}.siteFooter{padding:28px 0 24px}}@media (max-width:768px){body{line-height:1.62}body.home,body.page-osteopathe{padding-top:132px}.siteHeader{background:linear-gradient(180deg,rgba(255,253,248,.97),rgba(249,245,233,.92));box-shadow:0 10px 26px rgba(44,58,42,.08)}.siteHeader__inner{width:min(100% - 24px,560px);padding:10px 0 8px;row-gap:8px}.siteHeader__brand{gap:10px}.siteHeader__logo{width:54px}.siteHeader__brandName{font-size:17px}.siteHeader__brandRole{font-size:11px;letter-spacing:.04em}.siteHeader__cta{min-height:46px;font-size:13px;letter-spacing:.01em;box-shadow:0 12px 24px rgba(77,107,77,.22)}.siteHeader__burger{width:42px;height:42px;border-radius:12px}.siteNav{left:12px;right:12px;top:calc(100% + 10px);padding:10px;border-radius:16px}.siteNav a{min-height:46px;display:flex;align-items:center}.siteMain{scroll-margin-top:104px}.siteFooter__inner{width:min(100% - 24px,560px);gap:10px 14px}.siteFooter__copy{font-size:13px;max-width:none}.siteFooter__contact{min-height:42px;padding:9px 12px;font-size:12.5px}}@media (max-width:420px){body.home,body.page-osteopathe{padding-top:126px}.siteHeader__brandName{font-size:16px}.siteHeader__brandRole{font-size:10.5px}.siteHeader__cta{min-height:44px;font-size:12.5px}}@media (min-width:769px) and (max-width:1023px){.siteHeader__brandName{font-size:20px}.siteHeader__brandRole{font-size:11px}.siteNav a{font-size:13px;padding:8px 12px}.siteHeader__cta{font-size:13px;padding:10px 16px}.siteFooter__inner{font-size:13px}.siteFooter__contact{font-size:12px;padding:8px 12px}}
+
+
+
+.prestations{background:var(--c-bg);padding:60px 0}.prestations__inner{width:min(1180px,92%);margin:0 auto}.prestations__head{margin-bottom:26px}.prestations__title{margin:0 0 10px;font-family:var(--ff-title);font-size:44px;letter-spacing:-.3px;color:var(--c-primary);font-weight:700}.prestations__step{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:8px 14px 8px 4px;border-radius:999px;border:1px solid rgba(90,126,90,.18);background:linear-gradient(135deg,rgba(90,126,90,.12) 0,rgba(143,163,118,.08) 100%);font-family:var(--ff-body);color:var(--c-primary);font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 8px 20px rgba(90,126,90,.12)}.prestations__step::before{content:"";width:9px;height:9px;border-radius:999px;background:var(--grad-accent);box-shadow:0 0 0 5px rgba(143,163,118,.16);flex:0 0 auto;margin-left:-2px}.prestations__step span{line-height:1}.prestations__grid{display:grid;grid-template-columns:1.6fr 1fr;gap:22px;align-items:start}.prestations__list{display:flex;flex-direction:column;gap:14px}.service{background:var(--c-surface);border:1px solid #e7eeea;border-radius:12px;overflow:hidden}.service__top{width:100%;background:0 0;border:0;padding:18px;display:flex;justify-content:space-between;align-items:flex-start;cursor:pointer;text-align:left}.service__name{display:block;margin:0;font-family:var(--ff-title);font-size:18px;color:var(--c-primary);font-weight:700}.service__sub{margin:6px 0 10px;font-family:var(--ff-body);color:var(--c-muted);font-size:13px}.service__meta{font-family:var(--ff-body);color:var(--c-muted);font-size:13px;display:flex;gap:8px;flex-wrap:wrap}.service__body{display:none;padding:0 18px 18px;color:var(--c-muted);font-family:var(--ff-body);font-size:14px;line-height:1.6}.service__body ul{margin:10px 0 0;padding-left:18px}.service__body li{margin:6px 0}.service.is-open .service__body{display:block}.service__check{width:22px;height:22px;border-radius:50%;border:2px solid #cfded8;display:inline-block;position:relative;flex-shrink:0;transition:all .2s ease}.service.is-open .service__check{border-color:var(--c-accent);background:var(--c-accent)}.service.is-open .service__check::after{content:"";position:absolute;inset:5px;background:#fff;border-radius:50%}.service.is-open{border-color:rgba(105,138,101,.34);box-shadow:0 4px 18px rgba(105,138,101,.12)}.prestations__summary{position:relative}.summaryCard{position:sticky;top:18px;background:var(--c-surface);border:1px solid #e7eeea;border-radius:12px;padding:18px}.summaryCard__title{margin:0 0 14px;font-family:var(--ff-title);font-size:16px;color:var(--c-primary);font-weight:800}.summaryCard__row{display:flex;gap:12px;align-items:flex-start;padding:10px 0}.summaryCard__icon{width:34px;height:34px;border-radius:999px;background:#f2f6f4;border:1px solid #e7eeea;display:grid;place-items:center;color:var(--c-muted);font-weight:700;font-family:var(--ff-body);font-size:14px}.summaryCard__icon .icon{width:16px;height:16px}.summaryCard__strong{font-family:var(--ff-body);color:var(--c-text);font-weight:800;font-size:14px}.summaryCard__muted{font-family:var(--ff-body);color:var(--c-muted);font-size:13px;margin-top:4px}.summaryCard__divider{height:1px;background:#e7eeea;margin:10px 0}.summaryCard__actions{margin-top:10px}.summaryCard__btn{display:inline-flex;justify-content:center;align-items:center;width:100%;padding:12px 14px;background:var(--c-accent);color:#fff;text-decoration:none;border-radius:10px;font-family:var(--ff-body);font-weight:800}.summaryCard__hint{margin:10px 0 0;color:var(--c-muted);font-family:var(--ff-body);font-size:12.5px;line-height:1.4}@media (max-width:980px){.prestations__grid{grid-template-columns:1fr}.summaryCard{position:relative;top:auto}}@media (max-width:520px){.prestations__title{font-size:30px}.prestations__step{font-size:12px;gap:6px;padding:7px 12px 7px 4px}}.service,.summaryCard{border:1px solid rgba(23,54,45,.1);box-shadow:0 16px 42px rgba(22,53,45,.1)}.service__top{transition:background .2s ease}.service:hover .service__top{background:rgba(143,163,118,.10)}.service.is-open{border-color:rgba(105,138,101,.42);box-shadow:0 18px 42px rgba(105,138,101,.18)}.summaryCard__btn{background:var(--grad-accent);box-shadow:0 12px 28px rgba(77,107,77,.24);transition:transform .2s ease,box-shadow .2s ease}.summaryCard__btn:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(77,107,77,.30)}.prestations{position:relative;padding:82px 0 76px;background:radial-gradient(circle at top left,rgba(143,163,118,.10),transparent 26%),radial-gradient(circle at top right,rgba(247,228,172,.14),transparent 28%),var(--c-bg)}.prestations__head{margin-bottom:34px;text-align:center}.prestations__title{font-size:clamp(38px, 5vw, 56px);letter-spacing:.01em}.prestations__step{margin:0 auto;box-shadow:0 12px 30px rgba(90,126,90,.12)}.prestations__grid{gap:28px}.service{border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,252,246,.95));box-shadow:0 18px 42px rgba(22,53,45,.1)}.service__top{padding:22px 22px 20px}.service__name{font-size:22px;letter-spacing:.01em}.service__sub{max-width:54ch;line-height:1.7}.service__meta{color:#697562;font-weight:700;letter-spacing:.01em}.service__body{padding:0 22px 22px;font-size:14.5px;line-height:1.7}.service__body ul{margin-top:12px}.service__body li::marker{color:var(--c-highlight)}.service__check{width:26px;height:26px;display:grid;place-items:center;border-width:1px;border-color:rgba(23,54,45,.14);border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(244,247,244,.92));box-shadow:inset 0 1px 0 rgba(255,255,255,.75)}.service__check::before{content:"";width:8px;height:8px;border-radius:999px;background:rgba(23,54,45,.18);transition:transform .22s ease,background .22s ease,opacity .22s ease}.service.is-open .service__check{border-color:rgba(105,138,101,.30);background:linear-gradient(180deg,rgba(105,138,101,.18),rgba(143,163,118,.12));box-shadow:0 10px 22px rgba(105,138,101,.18),inset 0 1px 0 rgba(255,255,255,.55)}.service.is-open .service__check::before{transform:scale(1.25);background:var(--c-primary)}.service.is-open .service__check::after{content:none}.summaryCard{top:24px;border-radius:24px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,252,246,.94))}.summaryCard__title{margin-bottom:18px;font-size:22px}.summaryCard__row{padding:12px 0}.summaryCard__icon{width:40px;height:40px;background:rgba(143,163,118,.10);border-color:rgba(143,163,118,.12)}.summaryCard__strong{font-size:15px}.summaryCard__muted{line-height:1.55}.summaryCard__divider{margin:12px 0;background:linear-gradient(90deg,rgba(23,54,45,.12),rgba(23,54,45,.04))}.summaryCard__btn{min-height:50px;border-radius:999px;letter-spacing:.02em}.summaryCard__hint{margin-top:12px;line-height:1.55}@media (max-width:980px){.prestations{padding:68px 0 62px}.prestations__head{text-align:left}.prestations__step{margin:0}}@media (max-width:520px){.service{border-radius:18px}.service__body,.service__top,.summaryCard{padding-left:18px;padding-right:18px}}.prestations__head{max-width:760px}.prestations__title::after{content:"";display:block;width:76px;height:2px;margin:16px auto 0;border-radius:999px;background:linear-gradient(90deg,rgba(247,228,172,0),rgba(247,228,172,.9),rgba(105,138,101,.45),rgba(105,138,101,0))}.service,.summaryCard{overflow:hidden}.service::before{content:"";display:block;height:3px;background:linear-gradient(90deg,rgba(247,228,172,.85),rgba(105,138,101,.55))}.service__top{position:relative}.service__top:focus-visible{background:rgba(143,163,118,.10)}.service__name{line-height:.96}.service__sub{margin-bottom:12px}.service__meta span:first-child,.service__meta span:last-child{color:var(--c-primary)}.service.is-open .service__top{background:rgba(143,163,118,.08)}.summaryCard{box-shadow:0 22px 52px rgba(22,53,45,.11)}.summaryCard__btn{border:1px solid rgba(255,255,255,.24)}.summaryCard__btn:focus-visible{transform:translateY(-1px)}@media (max-width:980px){.prestations__title::after{margin-left:0;margin-right:auto}}.prestations{background:0 0}.service,.summaryCard{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,251,244,.94))}.summaryCard{box-shadow:0 24px 56px rgba(22,53,45,.11)}@media (max-width:768px){.prestations{padding:56px 0 52px}.prestations__inner{width:min(100% - 24px,560px)}.prestations__head{margin-bottom:24px}.prestations__title{font-size:clamp(30px, 8vw, 38px);margin-bottom:8px}.prestations__step{font-size:12px;gap:6px;padding:7px 12px 7px 4px}.prestations__grid{gap:18px}.prestations__list{gap:12px}.service{border-radius:18px}.service__top{padding:18px 16px 16px;gap:12px}.service__name{font-size:20px}.service__sub{font-size:13px;line-height:1.6}.service__meta{font-size:12.5px;gap:6px}.service__body{padding:0 16px 16px;font-size:13.5px}.service__check{width:24px;height:24px;margin-top:2px}.summaryCard{padding:18px 16px;border-radius:20px}.summaryCard__title{font-size:20px}.summaryCard__row{gap:10px;padding:10px 0}.summaryCard__icon{width:36px;height:36px}.summaryCard__strong{font-size:14px}.summaryCard__muted{font-size:12.5px}.summaryCard__btn{min-height:48px;font-size:13px}.summaryCard__hint{font-size:12px}}@media (max-width:420px){.prestations__inner{width:min(100% - 20px,520px)}.service__top{padding:16px 14px 14px}.service__body,.summaryCard{padding-left:14px;padding-right:14px}.service__name{font-size:18px}.summaryCard__btn{width:100%}}@media (min-width:769px) and (max-width:1023px){.prestations__title{font-size:42px}.prestations__subtitle{font-size:16px}.service__name{font-size:22px}.service__desc{font-size:15px}.summaryCard__title{font-size:20px}.summaryCard__text{font-size:14px}}
+
+
+@media (min-width: 769px) {
+  .siteNav {
+    gap: 6px;
+    padding: 4px;
+  }
+
+  .siteNav a {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .siteNav__nowrap {
+    white-space: nowrap;
+  }
+
+  .siteNav__link--osteopathie.is-active,
+  .siteNav__link--osteopathie[aria-current="page"] {
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__profile {
+  display: block;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__profileText {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__eyebrow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-osteopathe .chiro-methodes--profil .chiro-methodes__values {
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  body {
+    padding-top: 88px;
+  }
+
+  body.home,
+  body.page-osteopathe {
+    padding-top: 132px;
+  }
+
+  .siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1300;
+    background: linear-gradient(180deg, rgba(255, 253, 248, 0.97), rgba(249, 245, 233, 0.92));
+    box-shadow: 0 10px 26px rgba(44, 58, 42, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .siteHeader__inner {
+    width: min(100% - 24px, 560px);
+    padding: 10px 0 8px;
+    align-items: center;
+    gap: 10px;
+    row-gap: 8px;
+  }
+
+  .siteHeader__brand {
+    flex: 1;
+    gap: 10px;
+  }
+
+  .siteHeader__logo {
+    width: 54px;
+  }
+
+  .siteHeader__brandName {
+    font-size: 17px;
+  }
+
+  .siteHeader__brandRole {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  .siteHeader__burger {
+    display: inline-grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1201;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .siteHeader__burgerLines {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(31, 45, 39, 0.78);
+  }
+
+  .siteHeader__burgerLines::before,
+  .siteHeader__burgerLines::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(31, 45, 39, 0.78);
+    transition: transform 0.18s ease, top 0.18s ease;
+  }
+
+  .siteHeader__burgerLines::before {
+    top: -7px;
+  }
+
+  .siteHeader__burgerLines::after {
+    top: 7px;
+  }
+
+  .siteNav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 12px;
+    right: 12px;
+    z-index: 1200;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    background: rgba(255, 252, 246, 0.98);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .siteNav a {
+    display: flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 12px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+
+  .siteHeader.is-menu-open .siteNav {
+    display: flex !important;
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines {
+    background: transparent;
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .siteHeader.is-menu-open .siteHeader__burgerLines::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .siteHeader__cta {
+    min-height: 46px;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    box-shadow: 0 12px 24px rgba(77, 107, 77, 0.22);
+  }
+
+  body.page-prestations .siteHeader__cta {
+    display: none;
+  }
+
+  body.home .siteHeader__inner,
+  body.page-osteopathe .siteHeader__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand brand"
+      "cta burger";
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 8px;
+  }
+
+  body.home .siteHeader__brand,
+  body.page-osteopathe .siteHeader__brand {
+    grid-area: brand;
+  }
+
+  body.home .siteHeader__cta,
+  body.page-osteopathe .siteHeader__cta {
+    grid-area: cta;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  body.home .siteHeader__burger,
+  body.page-osteopathe .siteHeader__burger {
+    grid-area: burger;
+    margin-left: 0;
+    justify-self: end;
+  }
+
+  .siteMain {
+    scroll-margin-top: 104px;
+  }
+}
+
+.page-prestations .summaryCard__locations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.page-prestations .summaryCard__locationBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: 1px solid rgba(23, 54, 45, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--c-text);
+  min-height: 40px;
+  padding: 0 14px;
+  font: 800 13px/1 var(--ff-body);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.page-prestations .summaryCard__locationBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 28px rgba(22, 53, 45, 0.1);
+}
+
+.page-prestations .summaryCard__locationBtn.is-active {
+  background: var(--grad-accent);
+  color: #fff;
+  border-color: rgba(77, 107, 77, 0.2);
+  box-shadow: 0 14px 30px rgba(77, 107, 77, 0.2);
+}
+
+.page-prestations .summaryCard__locationBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.page-prestations .summaryCard__btn.is-disabled {
+  pointer-events: none;
+  opacity: 0.58;
+  box-shadow: none;
+}
+
+@media (max-width: 520px) {
+  .page-prestations .summaryCard__locations {
+    gap: 10px;
+  }
+
+  .page-prestations .summaryCard__locationBtn {
+    flex: 1 1 100%;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
