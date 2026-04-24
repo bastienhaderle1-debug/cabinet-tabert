@@ -281,35 +281,6 @@
     ));
     contentEditor.appendChild(bodymapGroup);
 
-    const reviewsGroup = createGroup('Accueil - Avis', "Titre de section et cartes d'avis.", true);
-    reviewsGroup.appendChild(
-      createField('Titre des avis', contentState.home.reviews.title, (value) => { contentState.home.reviews.title = value; })
-    );
-    reviewsGroup.appendChild(createRepeater(
-      contentState.home.reviews.items,
-      (item, index) => {
-        const repeaterItem = createRepeaterItem(`Avis ${index + 1}`, () => {
-          contentState.home.reviews.items.splice(index, 1);
-          renderContentEditor();
-        });
-        const grid = document.createElement('div');
-        grid.className = 'grid two';
-        grid.append(
-          createField("Titre de l'avis", item.quote, (value) => { item.quote = value; }),
-          createField('Nom', item.name, (value) => { item.name = value; }),
-          createField('Texte', item.text, (value) => { item.text = value; }, { multiline: true })
-        );
-        repeaterItem.appendChild(grid);
-        return repeaterItem;
-      },
-      () => {
-        contentState.home.reviews.items.push({ quote: '', text: '', name: '' });
-        renderContentEditor();
-      },
-      'Ajouter un avis'
-    ));
-    contentEditor.appendChild(reviewsGroup);
-
     const prestationsGroup = createGroup('Prestations', 'SEO, résumé et liste de services.');
     const prestationsGrid = document.createElement('div');
     prestationsGrid.className = 'grid two';

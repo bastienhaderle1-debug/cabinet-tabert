@@ -206,17 +206,6 @@ function renderBodymapLocker(listNode, items) {
   `).join('');
 }
 
-function renderReviews(trackNode, items) {
-  trackNode.innerHTML = items.map((item) => `
-    <article class="avis__card" role="listitem">
-      <div class="avis__stars" aria-label="5 étoiles">★★★★★</div>
-      <h3 class="avis__quote">${escapeHtml(item.quote)}</h3>
-      <p class="avis__text">${nl2br(item.text)}</p>
-      <p class="avis__name">${escapeHtml(item.name)}</p>
-    </article>
-  `).join('');
-}
-
 function applySharedContent(shared) {
   if (!shared) return;
 
@@ -268,7 +257,6 @@ function applyHomeContent(content) {
     text: normalizeCanetMontpellier(home.hero?.text || '')
   };
   const bodymap = home.bodymap || {};
-  const reviews = home.reviews || {};
   const schedule = home.schedule || {};
   const seo = home.seo || {};
 
@@ -311,12 +299,6 @@ function applyHomeContent(content) {
   const lockerList = document.querySelector('.bodymap__lockerList');
   if (lockerList && Array.isArray(bodymap.lockerItems) && bodymap.lockerItems.length) {
     renderBodymapLocker(lockerList, bodymap.lockerItems);
-  }
-
-  setTextContent('.avis__title', reviews.title);
-  const reviewsTrack = document.querySelector('.avis__track');
-  if (reviewsTrack && Array.isArray(reviews.items) && reviews.items.length) {
-    renderReviews(reviewsTrack, reviews.items);
   }
 
   setTextContent('.schedule-section__title', schedule.title);
@@ -402,159 +384,6 @@ function applyHomeContent(content) {
     closeAll(openEntry);
   });
 })();
-
-function initAvisCarousel() {
-  const wrap = document.querySelector('.avis__wrap');
-  if (!wrap) return;
-
-  const viewport = wrap.querySelector('.avis__viewport');
-  const cards = [...wrap.querySelectorAll('.avis__card')];
-  const dotsWrap = wrap.querySelector('.avis__dots');
-  const prevBtn = wrap.querySelector('.avis__nav--prev');
-  const nextBtn = wrap.querySelector('.avis__nav--next');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const ACTIVE_TOLERANCE_PX = 6;
-  const SCROLL_SETTLE_DELAY_MS = 160;
-
-  let cardCenters = [];
-  let maxScrollLeft = 0;
-  let pendingIndex = null;
-  let pendingResetTimer = 0;
-
-  if (!viewport || cards.length === 0 || !dotsWrap) return;
-
-  dotsWrap.replaceChildren();
-
-  const dots = cards.map((_, index) => {
-    const button = document.createElement('button');
-    button.className = 'avis__dot';
-    button.type = 'button';
-    button.setAttribute('aria-label', `Aller a l'avis ${index + 1}`);
-    button.setAttribute('aria-pressed', 'false');
-    button.addEventListener('click', () => scrollToIndex(index));
-    dotsWrap.appendChild(button);
-    return button;
-  });
-
-  function updateMetrics() {
-    cardCenters = cards.map((card) => card.offsetLeft + card.offsetWidth / 2);
-    maxScrollLeft = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-  }
-
-  function getScrollTarget(index) {
-    const center = cardCenters[index] ?? 0;
-    return Math.min(Math.max(center - viewport.clientWidth / 2, 0), maxScrollLeft);
-  }
-
-  function setActiveDot(index) {
-    dots.forEach((dot, dotIndex) => {
-      const isActive = dotIndex === index;
-      dot.classList.toggle('is-active', isActive);
-      dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-    });
-  }
-
-  function clearPendingIndex() {
-    pendingIndex = null;
-
-    if (!pendingResetTimer) return;
-    window.clearTimeout(pendingResetTimer);
-    pendingResetTimer = 0;
-  }
-
-  function schedulePendingIndexReset() {
-    if (pendingIndex === null) return;
-
-    if (pendingResetTimer) {
-      window.clearTimeout(pendingResetTimer);
-    }
-
-    pendingResetTimer = window.setTimeout(() => {
-      pendingResetTimer = 0;
-      pendingIndex = null;
-      updateDots();
-    }, SCROLL_SETTLE_DELAY_MS);
-  }
-
-  function scrollToIndex(index) {
-    pendingIndex = index;
-    setActiveDot(index);
-    viewport.scrollTo({
-      left: getScrollTarget(index),
-      behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
-    });
-
-    if (prefersReducedMotion.matches) {
-      clearPendingIndex();
-      updateDots();
-      return;
-    }
-
-    schedulePendingIndexReset();
-  }
-
-  function getActiveIndex() {
-    if (viewport.scrollLeft <= 2) {
-      return 0;
-    }
-
-    if (viewport.scrollLeft >= maxScrollLeft - 2) {
-      return cards.length - 1;
-    }
-
-    const center = viewport.scrollLeft + viewport.clientWidth / 2;
-    let bestIndex = 0;
-    let bestDistance = Infinity;
-
-    cardCenters.forEach((cardCenter, index) => {
-      const distance = Math.abs(center - cardCenter);
-
-      if (distance < bestDistance) {
-        bestDistance = distance;
-        bestIndex = index;
-      }
-    });
-
-    return bestIndex;
-  }
-
-  function updateDots() {
-    if (pendingIndex !== null) {
-      const pendingTarget = getScrollTarget(pendingIndex);
-
-      if (Math.abs(viewport.scrollLeft - pendingTarget) <= ACTIVE_TOLERANCE_PX) {
-        clearPendingIndex();
-      } else {
-        setActiveDot(pendingIndex);
-        schedulePendingIndexReset();
-        return;
-      }
-    }
-
-    setActiveDot(getActiveIndex());
-  }
-
-  const refreshCarousel = scheduleFrame(() => {
-    updateMetrics();
-    updateDots();
-  });
-
-  prevBtn?.addEventListener('click', () => {
-    const index = getActiveIndex();
-    scrollToIndex(Math.max(0, index - 1));
-  });
-
-  nextBtn?.addEventListener('click', () => {
-    const index = getActiveIndex();
-    scrollToIndex(Math.min(cards.length - 1, index + 1));
-  });
-
-  viewport.addEventListener('scroll', scheduleFrame(updateDots), { passive: true });
-  window.addEventListener('resize', refreshCarousel, { passive: true });
-
-  updateMetrics();
-  updateDots();
-}
 
 function initHeroRailLoop() {
   const lanes = [...document.querySelectorAll('.hero-side-rail__lane')];
@@ -896,12 +725,6 @@ function initBodymapLocker() {
 
 function initHomeScheduleAndMap() {
   const scheduleSection = document.querySelector('.schedule-section');
-  const avisSection = document.querySelector('.avis');
-
-  if (scheduleSection && avisSection && scheduleSection.nextElementSibling !== avisSection) {
-    scheduleSection.insertAdjacentElement('afterend', avisSection);
-  }
-
   const mapButtons = [...document.querySelectorAll('.map-switcher__btn')];
   const mapEmbed = document.querySelector('[data-map-embed]');
   const mapCta = document.querySelector('[data-map-cta]');
@@ -1111,8 +934,6 @@ function initHomeNavState() {
   initHorairesHashScroll();
   initHomeNavState();
   initHeroRailLoop();
-
-  initWhenNearViewport('.avis', initAvisCarousel);
   initWhenNearViewport('.bodymap', () => {
     initBodymap();
     initBodymapLocker();

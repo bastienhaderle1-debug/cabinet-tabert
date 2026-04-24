@@ -127,26 +127,6 @@
         }
       ]
     },
-    "reviews": {
-      "title": "Vos avis",
-      "items": [
-        {
-          "quote": "Une évolution remarquable",
-          "text": "J'étais votre ancienne patiente, on a eu quelques rendez-vous qui m'ont beaucoup aidée. C'était la première fois que je voyais un ostéopathe et j'ai été très surprise de découvrir ce métier. J'ai eu moins de frictions au dos et aux épaules.\n\nJe ne regrette absolument pas mes rendez-vous : maintenant je suis moins gênée dans mes mouvements et c'est plus agréable à vivre.\n\nJe recommande sans hésiter.",
-          "name": "Magali"
-        },
-        {
-          "quote": "Un vrai soulagement",
-          "text": "Je souffrais de douleurs à la hanche depuis plusieurs mois. J'avais déjà consulté sans succès avant de me tourner vers l'ostéopathie.\n\nLa prise en charge a été rassurante, précise et efficace. J'ai rapidement senti un vrai soulagement.",
-          "name": "Amélie"
-        },
-        {
-          "quote": "Excellente expérience",
-          "text": "Consultation très professionnelle, explications claires et traitement adapté. J'ai apprécié la douceur de la prise en charge et les conseils donnés pour la suite.",
-          "name": "Alexandra"
-        }
-      ]
-    },
     "schedule": {
       "title": "Horaires des cabinets",
       "subtitle": "Retrouvez les jours et horaires d'ouverture selon le cabinet où vous souhaitez consulter."

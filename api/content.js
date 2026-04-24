@@ -141,24 +141,6 @@ function sanitizeBodymap(value, currentValue = {}) {
   };
 }
 
-function sanitizeReviews(value) {
-  const reviews = sanitizeObject(value, 'home.reviews');
-  const items = sanitizeArray(reviews.items || [], 'home.reviews.items');
-
-  return {
-    title: asTrimmedString(reviews.title),
-    items: items.map((raw) => {
-      const item = sanitizeObject(raw, 'home.reviews.item');
-
-      return {
-        quote: asTrimmedString(item.quote),
-        text: asTrimmedString(item.text),
-        name: asTrimmedString(item.name)
-      };
-    })
-  };
-}
-
 function sanitizeServices(value) {
   const services = sanitizeArray(value, 'prestations.services');
 
@@ -201,7 +183,6 @@ function sanitizeContentPayload(payload, currentContent = {}) {
         ctaUrl: asTrimmedString(currentHero.ctaUrl)
       },
       bodymap: sanitizeBodymap(home.bodymap, currentBodymap),
-      reviews: sanitizeReviews(home.reviews),
       schedule: {
         title: asTrimmedString(home.schedule?.title),
         subtitle: asTrimmedString(home.schedule?.subtitle)
