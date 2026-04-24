@@ -18,13 +18,39 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/prestations-page-bundle.min.css?v=20260424-css-bundle-v2" />
+  <link rel="stylesheet" href="assets/css/prestations-page-bundle.min.css?v=20260424-css-bundle-v3" />
   <style>
     .page-prestations .summaryJump {
       display: none;
     }
 
     @media (max-width: 768px) {
+      .page-prestations .summaryCard__locationBtn {
+        touch-action: manipulation;
+      }
+
+      .page-prestations .summaryCard__locationBtn:hover:not(:disabled):not(.is-active):not([aria-pressed="true"]) {
+        background: rgba(255, 255, 255, 0.96);
+        color: var(--c-text);
+        -webkit-text-fill-color: var(--c-text);
+      }
+
+      .page-prestations .summaryCard__locationBtn.is-active,
+      .page-prestations .summaryCard__locationBtn.is-active:hover:not(:disabled),
+      .page-prestations .summaryCard__locationBtn.is-active:active:not(:disabled),
+      .page-prestations .summaryCard__locationBtn.is-active:focus-visible:not(:disabled),
+      .page-prestations .summaryCard__locationBtn[aria-pressed="true"],
+      .page-prestations .summaryCard__locationBtn[aria-pressed="true"]:hover:not(:disabled),
+      .page-prestations .summaryCard__locationBtn[aria-pressed="true"]:active:not(:disabled),
+      .page-prestations .summaryCard__locationBtn[aria-pressed="true"]:focus-visible:not(:disabled) {
+        background: linear-gradient(135deg, #6a8b66 0%, #4d6b4d 100%) !important;
+        background-color: #4d6b4d !important;
+        color: #fff !important;
+        -webkit-text-fill-color: #fff !important;
+        border-color: rgba(77, 107, 77, 0.2) !important;
+        box-shadow: 0 14px 30px rgba(77, 107, 77, 0.2) !important;
+      }
+
       .page-prestations .service:not(.is-open) .service__sub {
         display: none;
       }
