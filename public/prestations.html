@@ -19,9 +19,102 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/prestations-page-bundle.min.css?v=20260424-css-bundle-v2" />
+  <style>
+    .page-prestations .summaryJump {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .page-prestations .service:not(.is-open) .service__sub {
+        display: none;
+      }
+
+      .page-prestations .summaryJump {
+        position: fixed;
+        left: 50%;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 18px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        background: rgba(67, 95, 67, 0.96);
+        color: #fff;
+        box-shadow: 0 18px 36px rgba(22, 53, 45, 0.24);
+        transform: translate(-50%, 18px);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1250;
+        transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+
+      .page-prestations .summaryJump.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+      }
+
+      .page-prestations .summaryJump__label {
+        font: 800 13px/1 var(--ff-body);
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+
+      .page-prestations .summaryJump__icon {
+        display: inline-grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .page-prestations .summaryJump.is-visible .summaryJump__icon {
+        animation: summaryJumpBob 1.2s ease-in-out infinite;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .page-prestations .summaryJump {
+        min-height: 50px;
+        padding: 0 16px;
+        gap: 8px;
+      }
+
+      .page-prestations .summaryJump__label {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-prestations .summaryJump,
+      .page-prestations .summaryJump__icon {
+        transition: none;
+        animation: none;
+      }
+    }
+
+    @keyframes summaryJumpBob {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(4px);
+      }
+    }
+  </style>
   <script src="assets/js/site.min.js?v=20260418-cache-v1" defer></script>
   <script src="assets/js/header.min.js?v=20260418-cache-v1" defer></script>
-  <script src="assets/js/prestations.js?v=20260418-cache-v1" defer></script>
+  <script src="assets/js/prestations.js?v=20260424-mobile-summary-jump-v1" defer></script>
 </head>
 
 <body class="page-prestations">
@@ -68,7 +161,7 @@
       <nav class="siteNav" id="mobileNav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a href="index.html#horaires-cabinets">Horaires</a>
-        <a class="siteNav__link--osteopathie" href="osteopathe.html">L'ost&eacute;opathie | &Agrave; quoi <span class="siteNav__nowrap">s'attendre&nbsp;?</span></a>
+        <a class="siteNav__link--osteopathie" href="osteopathe.html">L'ost&eacute;opathie | &Agrave; quoi<span class="siteNav__nowrap">&nbsp;s'attendre&nbsp;?</span></a>
         <a class="is-active" href="prestations.html" aria-current="page">Voir les prestations</a>
       </nav>
 

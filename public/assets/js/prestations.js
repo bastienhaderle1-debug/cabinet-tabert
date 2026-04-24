@@ -169,18 +169,81 @@
   function initBookingFlow() {
     const items = [...root.querySelectorAll('.service')];
     const stepNode = root.querySelector('.prestations__step span');
+    const summarySection = root.querySelector('.prestations__summary');
+    const summaryLocations = root.querySelector('.summaryCard__locations');
     const sumService = root.querySelector('#sum-service');
     const sumMeta = root.querySelector('#sum-meta');
     const sumLocation = root.querySelector('#sum-location');
     const summaryHint = root.querySelector('#summary-booking-hint');
     const bookingLink = root.querySelector('[data-summary-booking-link]');
     const locationButtons = [...root.querySelectorAll('[data-location-choice]')];
+    const jumpButton = createSummaryJumpButton();
 
     const state = {
       serviceName: '',
       serviceMeta: '',
       locationId: ''
     };
+
+    function isMobileViewport() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function createSummaryJumpButton() {
+      if (!summarySection || !summaryLocations) return null;
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'summaryJump';
+      button.setAttribute('aria-label', 'Aller au resume pour choisir le lieu');
+      button.setAttribute('aria-hidden', 'true');
+      button.tabIndex = -1;
+      button.innerHTML = `
+        <span class="summaryJump__label">Choisir le lieu</span>
+        <span class="summaryJump__icon" aria-hidden="true">&#8595;</span>
+      `;
+
+      button.addEventListener('click', () => {
+        const siteHeader = document.querySelector('.siteHeader');
+        const headerOffset = siteHeader ? siteHeader.getBoundingClientRect().height : 88;
+        const top = window.scrollY + summaryLocations.getBoundingClientRect().top - headerOffset - 18;
+
+        window.scrollTo({
+          top: Math.max(0, top),
+          behavior: 'smooth'
+        });
+
+        const firstEnabledLocation = locationButtons.find((locationButton) => !locationButton.disabled);
+        if (firstEnabledLocation) {
+          window.setTimeout(() => {
+            firstEnabledLocation.focus({ preventScroll: true });
+          }, 420);
+        }
+      });
+
+      document.body.appendChild(button);
+      return button;
+    }
+
+    function isSummaryVisible() {
+      if (!summarySection) return false;
+
+      const rect = summarySection.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    function updateJumpButton() {
+      if (!jumpButton) return;
+
+      const shouldShow = isMobileViewport()
+        && Boolean(state.serviceName)
+        && !state.locationId
+        && !isSummaryVisible();
+
+      jumpButton.classList.toggle('is-visible', shouldShow);
+      jumpButton.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+      jumpButton.tabIndex = shouldShow ? 0 : -1;
+    }
 
     function setStepLabel(label) {
       if (stepNode) {
@@ -237,6 +300,7 @@
         setStepLabel(STEP_LABELS.service);
         setHintLabel(HINT_LABELS.service);
         setBookingLink('', 'Prendre rendez-vous', false);
+        updateJumpButton();
         return;
       }
 
@@ -244,6 +308,7 @@
         setStepLabel(STEP_LABELS.location);
         setHintLabel(HINT_LABELS.location);
         setBookingLink('', 'Choisissez le lieu', false);
+        updateJumpButton();
         return;
       }
 
@@ -276,6 +341,7 @@
       state.locationId = '';
 
       updateSummary();
+      updateJumpButton();
     }
 
     if (bookingLink) {
@@ -301,11 +367,16 @@
         if (!state.serviceName) return;
         state.locationId = button.dataset.locationChoice || '';
         updateSummary();
+        updateJumpButton();
       });
     });
 
+    window.addEventListener('scroll', updateJumpButton, { passive: true });
+    window.addEventListener('resize', updateJumpButton);
+
     closeAll();
     updateSummary();
+    updateJumpButton();
   }
 
   async function init() {
