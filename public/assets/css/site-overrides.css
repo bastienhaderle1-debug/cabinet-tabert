@@ -240,6 +240,8 @@
   align-items: center;
   justify-content: center;
   appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
   border: 1px solid rgba(23, 54, 45, 0.12);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.78);
@@ -260,8 +262,18 @@
 .page-prestations .summaryCard__locationBtn.is-active {
   background: var(--grad-accent);
   color: #fff;
+  -webkit-text-fill-color: #fff;
   border-color: rgba(77, 107, 77, 0.2);
   box-shadow: 0 14px 30px rgba(77, 107, 77, 0.2);
+}
+
+.page-prestations .summaryCard__locationBtn:active:not(:disabled),
+.page-prestations .summaryCard__locationBtn:focus-visible:not(:disabled),
+.page-prestations .summaryCard__locationBtn[aria-pressed="true"] {
+  background: var(--grad-accent);
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  border-color: rgba(77, 107, 77, 0.2);
 }
 
 .page-prestations .summaryCard__locationBtn:disabled {
